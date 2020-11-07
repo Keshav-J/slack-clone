@@ -7,10 +7,13 @@ import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { SideNavModule } from './main/side-nav/side-nav.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AsideModule } from './main/aside/aside.module';
 
 import { AppComponent } from './app.component';
+import { MessagingPanelModule } from './main/messaging-panel/messaging-panel.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { AppComponent } from './app.component';
     MatIconModule,
     MatMenuModule,
     MatToolbarModule,
-    AsideModule
+    AsideModule,
+    HttpClientModule,
+    SideNavModule,
+    MessagingPanelModule
   ],
   providers: [],
   bootstrap: [AppComponent]

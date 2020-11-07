@@ -1,0 +1,46 @@
+.messages {
+    padding : 1.5em 0 0 2em;
+    max-height: 23em;
+    min-height: 23em;
+    overflow: hidden;
+    margin-right: 3px;
+    &:hover {
+        overflow: auto;
+    }
+}
+.messages::-webkit-scrollbar {
+    width: 6px;    
+    margin: 2px;    
+  }
+
+.messages::-webkit-scrollbar-thumb {
+    background-color: rgb(114, 114, 114);  
+    border-radius: 20px;      
+    height: 10px;
+    transition: width 2s;
+}
+.hr-text { 
+    display: flex; 
+    flex-direction: row; 
+} 
+  
+.hr-text:before, 
+.hr-text:after { 
+    content: ""; 
+    flex: 1 1; 
+    border-bottom: 1px solid rgb(180, 180, 180); 
+    margin: auto; 
+} 
+button {
+    border-radius: 6em;  
+    border: 1px solid rgb(184, 184, 184);
+    background-color: #fff;
+    margin: 2em 0 2em 0;
+    padding: 7px;
+    width: 120px;
+    i {
+        margin-left: 10px;
+    }
+}
+
+
