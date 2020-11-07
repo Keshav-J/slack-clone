@@ -10,6 +10,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SideNavModule } from './main/side-nav/side-nav.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AsideModule } from './main/aside/aside.module';
+
 import { AppComponent } from './app.component';
 import { MessagingPanelModule } from './main/messaging-panel/messaging-panel.module';
 
@@ -25,6 +27,7 @@ import { MessagingPanelModule } from './main/messaging-panel/messaging-panel.mod
     MatIconModule,
     MatMenuModule,
     MatToolbarModule,
+    AsideModule,
     HttpClientModule,
     SideNavModule,
     MessagingPanelModule
