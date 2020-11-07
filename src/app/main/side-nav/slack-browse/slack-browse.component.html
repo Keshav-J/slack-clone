@@ -1,0 +1,7 @@
+<p (click)="showSlackBrowseContainer=!showSlackBrowseContainer"><i class="far fa-comments"></i>More</p>
+<div *ngIf="showSlackBrowseContainer" class="slack-browse-container" >
+    <div class="slack-browse-item" *ngFor="let item of slackBrowseList">
+        <i class="far fa-comments"></i>
+        <span>{{item.name}}</span>
+    </div> 
+</div>
