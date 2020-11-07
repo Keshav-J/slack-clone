@@ -1,0 +1,158 @@
+.header{
+    background-color:#350D36;
+    height:38px;
+}
+.history{
+    margin-left:340px;
+    margin-right:13px;
+    margin-top: 8px;
+}
+ .button_history{
+    color:silver;
+    transform: scale(0.9);
+    background-color: #350D36;
+    border: hidden;
+ }
+ .c-button_history,.c-button_help{
+    border: 0;
+    margin: 0;
+    cursor: pointer;
+ }
+.p-search_button {
+    background: rgb(67,30,68);
+    color: #FFFFFF;
+    width: 550px;
+    height: 60%;
+    border-radius: 5px;
+}
+.c-button-unstyled
+{
+    border: 0;
+    margin: 0;
+    text-align: initial;
+    cursor: pointer;
+}
+.c-button-unstyled:active, .c-button-unstyled:focus, .c-button-unstyled:hover,.c-button_help:active, .c-button_help:focus, .c-button_help:hover,
+.c-button_history:active,.c-button_history:focus,.c-button_history:hover {
+    outline: none;
+}
+.help{
+    margin-left: 15px;
+    margin-top: 6px;
+}
+.button_help{
+    color:silver;
+    transform: scale(0.8);
+    background-color: #350D36;
+    border: hidden;
+ }
+.container{
+    margin-top: 5px;
+}
+.row{
+    position: relative;
+    margin-bottom: 2px;
+}
+.col{
+    position:absolute;
+    top:17px;
+    left: 260px;
+    margin-top:3px;
+    margin-left:3px;
+}
+.image{
+    width: 29px;
+    height: 30px;
+    margin-top:5px;
+    border-radius: 5px;
+    margin-left: 250px;
+}
+.circle{
+    line-height: 1;
+    transform: scale(0.5);
+    color: white;
+    background-color: #350D36;
+    border-radius:9px;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width:auto;
+    height: auto;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px 5px;
+    position: absolute;
+    top: 150%;
+    left: 50%;
+}
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width:3px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+  }
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+.guide_icon{
+    margin-left: 115px;
+    transform: scale(0.6);
+}
+.shortcut_icon{
+    margin-left: 80px;
+    color: gray;
+}
+.button:hover{
+    background-color: blue;
+}
+.user_details{
+    margin-left: 20px;
+    margin-top:10px;
+    display: flex;
+    flex-direction:row;
+}
+.user_detail{
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    color: gray;
+}
+.user_detail .circle{
+    transform: scale(0.3);
+}
+.activity_status{
+    display: flex;
+    flex-direction:row;
+}
+.user_image{
+    width: 40px;
+    height: 40px;
+}
+.username{
+    font-weight: bold;
+    margin-left: 5px;
+    color: black;
+}
+.search{
+    width: 150px;
+    height: 30px;
+}
+.partition{
+    border-bottom: 1px solid silver;
+}
+.button{
+    width: 1000px;
+    height: 40px;
+}
+

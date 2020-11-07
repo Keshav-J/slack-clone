@@ -10,11 +10,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SideNavModule } from './main/side-nav/side-nav.module';
 
 import { AppComponent } from './app.component';
+import { TopnavbarComponent } from './main/header/topnavbar/topnavbar.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TopnavbarComponent,
   ],
   imports: [
     BrowserModule,
