@@ -13,17 +13,19 @@ export class AsideComponent implements OnInit {
 
   ngOnInit(): void {
     this.initCollapsibles();
+    console.log('asd');
+    
   }
 
   initCollapsibles() {
-    let coll = document.getElementsByClassName("collapsible-header");
+    let collapsibles = document.getElementsByClassName("collapsible-header");
     
-    for (let i = 0; i < coll.length ; i++) {
-      coll[i].addEventListener("click", function() {
+    for (let i = 0; i < collapsibles.length ; i++) {
+      collapsibles[i].addEventListener("click", function() {
         let temp = document.getElementsByClassName("collapsible-header");
         
         for(let j=0 ; j<temp.length ; ++j) {
-          var content = temp[j].nextElementSibling;
+          let content = temp[j].nextElementSibling as HTMLElement;
           
           if (this == temp[j]){
             if (content.style.maxHeight){
@@ -37,8 +39,6 @@ export class AsideComponent implements OnInit {
         }
       });
     }
-
-    coll[0].nextElementSibling.style.maxHeight = coll[0].nextElementSibling.scrollHeight + "px";
   }
   
 
