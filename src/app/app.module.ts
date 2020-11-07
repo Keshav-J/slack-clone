@@ -8,9 +8,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SideNavModule } from './main/side-nav/side-nav.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-
+import { MessagingPanelModule } from './main/messaging-panel/messaging-panel.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { AppComponent } from './app.component';
     MatIconModule,
     MatMenuModule,
     MatToolbarModule,
-    SideNavModule
+    HttpClientModule,
+    SideNavModule,
+    MessagingPanelModule
   ],
   providers: [],
   bootstrap: [AppComponent]

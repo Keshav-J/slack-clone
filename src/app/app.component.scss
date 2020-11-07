@@ -1,6 +1,15 @@
-.side-nav {
-    background-color: #481449;
-    color: #F7F7F7;
-    width: 250px;
-    height: 100vh;
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+
+    app-side-nav {
+        background-color: #481449;
+        color: #F7F7F7;
+        width: 250px;
+    }
+
+    app-messaging-panel {
+        flex-grow: 1;
+    }
 }
