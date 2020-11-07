@@ -7,8 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { SideNavModule } from './main/side-nav/side-nav.module';
 
 import { AppComponent } from './app.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { AppComponent } from './app.component';
     FormsModule,
     MatIconModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    SideNavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
