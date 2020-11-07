@@ -18,6 +18,7 @@ import { ChatboxComponent } from './shared/chatbox/chatbox.component';
 import { MessageContainerComponent } from './shared/message-container/message-container.component';
 import { MessageComponent } from './shared/message/message.component';
 import { PrivateHeaderComponent } from './main/messaging-panel/private-view/private-header/private-header.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { PrivateHeaderComponent } from './main/messaging-panel/private-view/priv
     MatIconModule,
     MatMenuModule,
     MatToolbarModule,
-    SideNavModule
+    SideNavModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
