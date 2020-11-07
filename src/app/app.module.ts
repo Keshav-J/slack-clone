@@ -8,6 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { AsideModule } from './main/aside/aside.module';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -21,7 +23,8 @@ import { AppComponent } from './app.component';
     FormsModule,
     MatIconModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    AsideModule
   ],
   providers: [],
   bootstrap: [AppComponent]
