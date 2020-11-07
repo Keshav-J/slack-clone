@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "slack-clone"
+  "defaultProject": "slack-clone",
+  "cli": {
+    "analytics": "6abe5296-eca9-4883-8e27-39851427dfb5"
+  }
 }

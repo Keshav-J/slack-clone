@@ -1,0 +1,23 @@
+<div class="message-box">
+    <div class="profile-pic">
+        <img src="assets/profile-pic/profile-pic1.png" />
+    </div>
+    <div class="content">
+        <div class = "info">
+            <ng-container *ngIf="message">
+                <b><span class = "name">{{ message.username }}</span></b>
+                <span class = "time">{{ message.time | date:'shortTime' }}</span>
+            </ng-container>
+        </div>
+        <div class="message">
+            {{message.msg}}
+        </div>
+    </div>
+    <div class="pop-up hide">
+        <i class="fal fa-smile-plus"></i>
+        <i class="far fa-comment-lines fa-flip-horizontal"></i>
+        <i class="far fa-share"></i>
+        <i class="fal fa-bookmark"></i>
+        <i class="fas fa-ellipsis-v"></i>
+    </div>
+</div>
