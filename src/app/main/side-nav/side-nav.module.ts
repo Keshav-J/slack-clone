@@ -13,7 +13,7 @@ import { SlackBrowseComponent } from './slack-browse/slack-browse.component';
   declarations: [SideNavComponent, AppsComponent, ChannelsComponent, CustomiseBrowseComponent, DirectMessagesComponent, SlackBrowseComponent],
   imports: [
     CommonModule
-  ],
+    ],
   exports: [SideNavComponent, AppsComponent, ChannelsComponent, CustomiseBrowseComponent, DirectMessagesComponent, SlackBrowseComponent],
   bootstrap: [SideNavComponent]
 })

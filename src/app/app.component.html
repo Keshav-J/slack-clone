@@ -1,7 +1,13 @@
-<div class="side-nav">
-    <app-customise-browse></app-customise-browse>
-    <app-slack-browse></app-slack-browse>
-    <app-channels></app-channels>
-    <app-direct-messages></app-direct-messages>
-    <app-apps></app-apps> 
+<div class="flex main">
+    <div class="flex side-nav">
+        <app-side-nav></app-side-nav>
+    </div>
+    <div class="resizer" id="dragMe"></div>
+    <div class="flex content">content
+        <router-outlet></router-outlet>
+    </div>
+    <div class="resizer-1" id="dragMe-1"></div>
+    <div class="flex detail flex-wrap">detail
+        <router-outlet></router-outlet>
+    </div>
 </div>

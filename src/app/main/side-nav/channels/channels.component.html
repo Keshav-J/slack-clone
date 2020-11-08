@@ -1,1 +1,29 @@
-<p>channels works!</p>
+<div class="channel-container">
+    <div class="channel-header flex">
+        <div class="left flex" (click)="caret=!caret">
+            <div class="icon">
+                <i *ngIf="caret"  class="fas fa-caret-right"></i>
+                <i *ngIf="caret!=true"  class="fas fa-caret-down"></i>
+            </div>
+            <div>
+                Channels
+            </div>
+        </div>
+       <div class="right">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+    
+    <div *ngIf="caret!=true" class="channels">
+        <div class="channel-item" 
+        *ngFor="let channel of channelsList" 
+        (click) = "selectItem(channel.name)" 
+        [class.selected]="channel.name == selectedItem">
+        <a class="channel-content" routerLink='/channels'>
+            <i [attr.class]="channel.iconUrl"></i>
+            <span>{{channel.name}}</span>
+        </a>
+            
+        </div>    
+    </div>
+</div>
