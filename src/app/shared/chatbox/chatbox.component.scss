@@ -11,6 +11,7 @@ $border-color : 1px solid rgb(128, 125, 125);
         width: 100%;
         border: none;
         font-size: medium;
+        padding-left: 1em;
     }
     .format{
         height: 40px;
@@ -43,9 +44,16 @@ $border-color : 1px solid rgb(128, 125, 125);
             object-fit: cover;
             height: 1em;
             width: 1em;
+            padding: 0.3em;
+            font-size: 1.2em;
             opacity: 0.2;
             &:hover {
                 opacity: 0.3;
+            }
+            &:active {
+                opacity: 1;
+                color: #fff;
+                background-color: rgb(9, 82, 21);
             }
         }
         .fa-smile {
@@ -58,6 +66,20 @@ $border-color : 1px solid rgb(128, 125, 125);
         .fa-paperclip {
             font-weight: lighter;
             transform: rotate(135deg);
+        }
+    }
+    .format-left {
+        min-width: 15em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 1em;
+        img {
+            opacity: 0.5;
+            height: 18px;
+            width: 18px;
+            padding-right: 0.3em;
+            border-right: 1px solid rgb(114, 113, 113);
         }
     }
 
