@@ -32,8 +32,7 @@ import { AsideModule } from './main/aside/aside.module';
     AsideModule,
     HttpClientModule,
     SideNavModule,
-    MessagingPanelModule,
-    
+    MessagingPanelModule
   ],
   providers: [],
   bootstrap: [AppComponent]

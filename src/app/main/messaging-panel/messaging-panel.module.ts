@@ -11,6 +11,7 @@ import { MessagingPanelComponent } from './messaging-panel.component';
 
 import {MatDialogModule} from '@angular/material/dialog';
 import { PeopleanduserComponent } from './people-and-user/people-and-user.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { PeopleanduserComponent } from './people-and-user/people-and-user.compon
     MessageComponent,
     MessageContainerComponent,
     MessagingPanelComponent,
-    PeopleanduserComponent
+    PeopleanduserComponent,
+    MatIconModule
   ],
   imports: [
     CommonModule
