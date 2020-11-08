@@ -1,0 +1,153 @@
+body{
+
+
+}
+.applayout {
+    //display: block;
+    display: grid;
+    
+  grid-template-columns: auto auto auto ;
+  grid-gap: 5px;
+  grid-auto-flow: dense;
+    //width: 100%;
+    //height: 100%;
+    background-color: honeydew;
+    //grid-row-start: 1;
+    /**grid-row-end: 5;
+    grid-column-start: 3;
+    grid-column-end: 6;*/
+  
+    margin-left: 20%;
+    margin-top: 2%;
+    border: 2px solid purple;
+
+    
+            
+    .header{
+        
+        margin-top: 2%;
+        margin-left: 2%;
+        grid-column-start: 1;
+        grid-column-end:   4;
+
+        .left{
+            float: left;
+         
+
+    //grid-column: span 2;  grid-row: span 2;
+        }
+        .right{
+            margin-right: 12%;
+            float:right;
+           
+            border: 1px solid black;
+            
+            
+        }
+
+    }
+    .search{
+        height: 30px;
+        width: 85%;
+        margin-left: 5%;
+        //background-image:url('https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png');
+        grid-row: 2;
+        grid-column-start: 1;
+        grid-column-end:   4;
+
+        //margin-left: auto;
+        //margin-right: auto;
+        //margin-top: 10%;
+        //padding:10px;
+        //box-shadow:1px 1px 1px 1px blue;
+        box-shadow: 0 0 5px 2px blue;
+
+        
+        }
+
+    div.gallery {
+        margin-top: 5%;
+       
+
+        //grid-column: span 2;  grid-row: span 2;
+        border: 1px solid #ccc;
+        float: left;
+        width: 180px;
+        padding: 1%;
+      }
+      
+      div.gallery:hover {
+        border: 1px solid #777;
+      }
+      
+      div.gallery img {
+        width: 100%;
+        height: auto;
+      }
+      
+      div.desc {
+        padding: 10px;
+        
+        display: inline;
+        font-family: 'Lato', sans-serif;
+
+      }
+      .row {
+        margin-top: 8%;
+        display: -ms-flexbox; /* IE10 */
+        display: flex;
+        -ms-flex-wrap: wrap; /* IE10 */
+        flex-wrap: wrap;
+        padding: 0 4px;
+      }
+      
+      /* Create four equal columns that sits next to each other */
+      .column {
+        -ms-flex: 25%; /* IE10 */
+        flex: 20%;
+        max-width: 20%;
+        padding: 0 4px;
+        img{
+          border: 2px solid lightgray;
+          border-radius: 5px;
+          box-shadow: 0 1px 3px rgba(94, 79, 79, 0.12)
+        }
+        .button span {
+         
+          display: inline-block;
+          position: relative;
+          width: 15px;
+          height: 15px;
+          
+          
+          transform: translate(-50%, -50%);
+          border-radius: 100%;
+          background: green;
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+          transition: ease .3s;
+        }
+        input[type='radio']:after {
+          width: 15px;
+          height: 15px;
+          border-radius: 8px;
+          top: -2px;
+          left: -1px;
+          position: relative;
+          background-color: green;
+          content: '';
+          display: inline-block;
+          visibility: visible;
+          border: 2px solid white;
+      }
+      .my-panel{
+        border-radius: 30px;
+    }
+
+      }
+      
+
+      
+
+        
+
+  }
