@@ -1,0 +1,30 @@
+<div class="chatbox">
+    <div class="input">
+        <input placeholder="Send a message to #general" id="msgData" (blur)="isBlur()">
+    </div>
+    <ng-container *ngIf="blur?false:true"> <hr> </ng-container>
+    <ng-container *ngIf="showFormat">
+        <div class="format">
+            <div class="left">  
+            <i class="fas fa-bolt tooltip"></i>
+        <i class="fas fa-bold tooltip"></i>
+        <i class="fas fa-italic tooltip"></i>
+        <i class="fas fa-strikethrough tooltip"></i>
+        <i class="fas fa-code tooltip"></i>
+        <i class="fas fa-link tooltip"></i>
+        <i class="fas fa-list-ol tooltip"></i>
+        <i class="fas fa-list tooltip"></i>
+        <i class="fas fa-grip-lines tooltip"></i>
+        <i class="fas fa-code tooltip"><span class="tooltiptext"></span></i>
+    </div>
+            <div class="format-right">
+                <button  (click)="changeFormat()" class="pointer">Aa</button>
+                <i class="fal fa-at pointer"></i>
+                <i class="fal fa-smile pointer"></i>
+                <i class="far fa-paperclip pointer"></i>
+                <span class="material-icons send-msg pointer" (click)="addmsg()" >send</span>
+            </div>
+            
+        </div>
+    </ng-container>
+</div>

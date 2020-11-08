@@ -1,4 +1,3 @@
-
 .flex {
     display: flex;
 }
@@ -7,8 +6,8 @@
 }
 .main {
     width: 100vw;
-    min-height: 100vh;   
-    
+    // min-height: 100vh;   
+    height: calc(100% - 40px);
 }
 
 .side-nav {
@@ -18,11 +17,12 @@
     min-width: 300px;
     flex-direction: column;
     font-size: 1rem;
+    overflow: auto;
 }
 
 .resizer, .resizer-1 {
     cursor: ew-resize;
-    width: 3px;
+    width: 5px;
 }
 
 .resizer:hover, .resizer-1:hover {
@@ -35,3 +35,22 @@
 .detail {
     min-width:300px;
 }
+// .container {
+//     display: flex;
+//     flex-direction: row;
+//     height: calc(100% - 40px);
+//     width: 100%;
+
+//     app-side-nav {
+//         background-color: #481449;
+//         color: #F7F7F7;
+//         width: 250px;
+//     }
+
+//     app-messaging-panel {
+//         flex-grow: 1;
+//     }
+
+//     app-aside {
+//         width: 400px;
+//     }

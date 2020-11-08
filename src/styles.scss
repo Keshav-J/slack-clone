@@ -1,9 +1,22 @@
 @import "./tool-tip.scss";
 
-html, body { height: 100%; }
+html, body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 body * {
     font-family: 'Lato', sans-serif;
     font-weight: 400;
+}
+.fa-circle {
+    color: rgb(2, 110, 2);
+    font-size: 0.6em;
+    padding: 0.5em;
+}
+.pointer {
+    cursor: pointer;
 }

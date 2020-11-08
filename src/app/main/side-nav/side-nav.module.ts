@@ -10,11 +10,27 @@ import { SlackBrowseComponent } from './slack-browse/slack-browse.component';
 
 
 @NgModule({
-  declarations: [SideNavComponent, AppsComponent, ChannelsComponent, CustomiseBrowseComponent, DirectMessagesComponent, SlackBrowseComponent],
+  declarations: [
+    SideNavComponent,
+    AppsComponent,
+    ChannelsComponent,
+    CustomiseBrowseComponent,
+    DirectMessagesComponent,
+    SlackBrowseComponent
+  ],
   imports: [
     CommonModule
-    ],
-  exports: [SideNavComponent, AppsComponent, ChannelsComponent, CustomiseBrowseComponent, DirectMessagesComponent, SlackBrowseComponent],
-  bootstrap: [SideNavComponent]
+  ],
+  exports: [
+    SideNavComponent,
+    AppsComponent,
+    ChannelsComponent,
+    CustomiseBrowseComponent,
+    DirectMessagesComponent,
+    SlackBrowseComponent
+  ],
+  bootstrap: [
+    SideNavComponent
+  ]
 })
 export class SideNavModule { }
