@@ -3,7 +3,7 @@ $white: #FFFFFF;
 $blue: #1264A3;
 $bg-darkest: #C0C0C0;
 $bg-dark: #E6E6E6;
-$bg-med: #F0F0F0;
+$bg-med: rgb(220, 220, 220);
 $bg-light: #F6F6F6;
 $text-dark: #606060;
 $text-light: #6F6F6F;
@@ -12,7 +12,7 @@ $text-light: #6F6F6F;
     height: 100%;
     border-right: 1px solid $bg-med;
 
-    & > *, .menu-section > * {
+    .header, .actions, .menu-section > * {
         background-color: $white;
         border-bottom: 1px solid $bg-med;
         color: $text-dark;
