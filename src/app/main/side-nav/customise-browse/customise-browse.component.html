@@ -1,7 +1,12 @@
-<div class="customize-browse-container" *ngFor="let item of customList">
-    <div class="customize-browse-item">
-        <i class="far fa-comments"></i>
-        <span>{{item.name}}</span>
+<div class="customize-browse-container">
+    <div class="customize-browse-item"
+     *ngFor="let item of customList"
+     (click) = "selectItem(item.name)"
+     [class.selected]="item.name == selectedItem">
+        <div class="item-content">
+            <i [attr.class]="item.iconUrl"></i>
+            <span>{{item.name}}</span>
+        </div>
+        
     </div>
-    
 </div>

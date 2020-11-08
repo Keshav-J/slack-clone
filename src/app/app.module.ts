@@ -7,17 +7,19 @@ import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { SideNavModule } from './main/side-nav/side-nav.module';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AsideModule } from './main/aside/aside.module';
-
 import { AppComponent } from './app.component';
+
+import { TopnavbarComponent } from './main/header/topnavbar/topnavbar.component';
+import { SideNavModule } from './main/side-nav/side-nav.module';
 import { MessagingPanelModule } from './main/messaging-panel/messaging-panel.module';
+import { AsideModule } from './main/aside/aside.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TopnavbarComponent,
   ],
   imports: [
     BrowserModule,

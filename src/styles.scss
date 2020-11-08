@@ -20,3 +20,8 @@ body * {
 .pointer {
     cursor: pointer;
 }
+.hover {
+    &:hover {
+        background-color: rgb(184, 184, 184);
+    }
+}

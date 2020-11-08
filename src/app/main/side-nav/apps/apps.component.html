@@ -1,1 +1,29 @@
-<p>apps works!</p>
+<div class="apps-container">
+    <div class="apps-header flex">
+        <div class="left flex" (click)="caret=!caret">
+            <div class="icon">
+                <i *ngIf="caret"  class="fas fa-caret-right"></i>
+                <i *ngIf="caret!=true"  class="fas fa-caret-down"></i>
+            </div>
+            <div>
+                Apps
+            </div>
+        </div>
+       <div class="right">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+    
+    <div *ngIf="caret!=true" class="apps">
+        <div class="app-item" 
+        *ngFor="let app of appsList" 
+        (click) = "selectItem(app.name)" 
+        [class.selected]="app.name == selectedItem">
+        <a class="app-content" routerLink='/apps'>
+            <i [attr.class]="app.iconUrl"></i>
+            <span>{{app.name}}</span>
+        </a>
+            
+        </div>    
+    </div>
+</div>
