@@ -1,11 +1,7 @@
 .container {
     display: flex;
     flex-direction: row;
-<<<<<<< HEAD
-    height: 100%;
-=======
     height: calc(100% - 40px);
->>>>>>> top-nav-bar
     width: 100%;
 
     app-side-nav {
@@ -19,10 +15,6 @@
     }
 
     app-aside {
-<<<<<<< HEAD
-        min-width: 350px;
-=======
->>>>>>> top-nav-bar
         width: 400px;
     }
 }
