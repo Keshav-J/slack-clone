@@ -1,0 +1,15 @@
+<div class="container">
+    <img class="dp" src="{{ user.display_picture }}" alt="user.first_name">
+    <div class="name">
+        <span> {{ user.first_name }} </span>
+        <span> {{ user.last_name }} </span>
+    </div>
+    <div class="is-active">
+        <ng-container *ngIf="user.isActive;else inactive">
+            <div class="active"></div>
+        </ng-container>
+        <ng-template #inactive>
+            <div class="inactive"></div>
+        </ng-template>
+    </div>
+</div>
