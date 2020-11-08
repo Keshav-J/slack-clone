@@ -3,8 +3,9 @@
     flex-direction: column;
     justify-content: space-around;
     max-height: 100%;
-    border: 1px solid black;
+    border-right: 1px solid #E6E6E6;
     height: 100%;
+
     app-message-container {
         flex-grow: 1;
         overflow: auto;

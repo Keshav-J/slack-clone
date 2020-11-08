@@ -1,7 +1,11 @@
-<p (click)="showSlackBrowseContainer=!showSlackBrowseContainer"><i class="far fa-comments"></i>More</p>
-<div *ngIf="showSlackBrowseContainer" class="slack-browse-container" >
-    <div class="slack-browse-item" *ngFor="let item of slackBrowseList">
-        <i class="far fa-comments"></i>
-        <span>{{item.name}}</span>
-    </div> 
-</div>
+<div class="slack-browse-container">
+    <p class="slack-browse-header" (click)="showSlackBrowseContainer=!showSlackBrowseContainer"><i class="fas fa-ellipsis-v"></i>More</p>
+    <div *ngIf="showSlackBrowseContainer" class="slack-browse-items" >
+        <div class="slack-browse-item" *ngFor="let item of slackBrowseList">
+           <div class="item-content">
+                <i class="far fa-comments"></i>
+                <span>{{item.name}}</span>
+           </div>
+        </div> 
+    </div>  
+</div> 
