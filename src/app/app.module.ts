@@ -30,7 +30,8 @@ import { MessagingPanelModule } from './main/messaging-panel/messaging-panel.mod
     AsideModule,
     HttpClientModule,
     SideNavModule,
-    MessagingPanelModule
+    MessagingPanelModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

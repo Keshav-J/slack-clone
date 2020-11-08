@@ -5,8 +5,18 @@
     <ng-container *ngIf="blur?false:true"> <hr> </ng-container>
     <ng-container *ngIf="showFormat">
         <div class="format">
-            <div>
-            </div>
+            <div class="left">  
+            <i class="fas fa-bolt tooltip"></i>
+        <i class="fas fa-bold tooltip"></i>
+        <i class="fas fa-italic tooltip"></i>
+        <i class="fas fa-strikethrough tooltip"></i>
+        <i class="fas fa-code tooltip"></i>
+        <i class="fas fa-link tooltip"></i>
+        <i class="fas fa-list-ol tooltip"></i>
+        <i class="fas fa-list tooltip"></i>
+        <i class="fas fa-grip-lines tooltip"></i>
+        <i class="fas fa-code tooltip"><span class="tooltiptext"></span></i>
+    </div>
             <div class="format-right">
                 <button  (click)="changeFormat()" class="pointer">Aa</button>
                 <i class="fal fa-at pointer"></i>
