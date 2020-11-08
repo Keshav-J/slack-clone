@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { SideNavService } from '../../../core/side-nav.service';
 @Component({
   selector: 'app-channels',
   templateUrl: './channels.component.html',
@@ -7,25 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChannelsComponent implements OnInit {
 
-  customList = [
-    {
-      iconUrl: "",
-      name: "Threads"
-    },
-    {
-      iconUrl: "",
-      name: "All DMs"
-    },
-    {
-      iconUrl: "",
-      name: "All unreads"
-    },
-    {
-      iconUrl: "",
-      name: "Save items"
-    }
-  ]
-  constructor() { }
+  caret: boolean =false;
+
+  selectedItem: string;
+  
+  selectItem(item: string): void {
+    console.log(item)
+    this.sidenavService.setSelectedItem(item);
+    this.selectedItem = item;
+  }
+
+  channelsList = this.sidenavService.getChannels();
+
+  constructor(private sidenavService: SideNavService) { }
 
   ngOnInit(): void {
   }

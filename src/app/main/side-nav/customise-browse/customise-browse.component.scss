@@ -1,12 +1,29 @@
-.customize-browse-item {
-    display: inline;
-    position: relative;
-}
 i {
-    position: absolute;
-    margin-left: 10px;
+    margin-right: 10px;
+}
+.customize-browse-container {
+    color: #B7A5B7;
 }
 
-span {
-    margin-left: 40px;
+.customize-browse-item {
+    margin-bottom: 7px;
+}
+
+.item-content {
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 28px;
+    line-height: 28px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: Consolas,monaco,"Ubuntu Mono",courier,monospace!important;
+}
+
+.item-content:hover {
+    background-color: #350D36;
+}
+
+.selected {
+    background-color: #1164A3;
+    color:#ECF3F8;
 }

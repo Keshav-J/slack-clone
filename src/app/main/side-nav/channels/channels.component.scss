@@ -1,0 +1,80 @@
+.channel-container {
+    color: #B7A5B7;
+    line-height: 28px;
+    font-family: Consolas,monaco,"Ubuntu Mono",courier,monospace!important;
+    font-size: 18px;
+    cursor: pointer;
+    position: relative;
+    padding-top: 15px;
+}
+ 
+.flex {
+    display: flex;
+}
+.channel-header {
+    padding-left: 11px;
+}
+.channel-header:hover {
+    .right {
+        visibility: visible;
+    }
+}
+.channel-item:hover {
+    background-color: #350D36;
+}
+.icon {
+    text-align: center;
+    margin-right: 5px;
+}
+.channel-header i:hover { 
+    color: white;
+    background-color: rgb(192, 192, 192,.2);
+}
+.channel-header i {
+    font-size: 22px;
+    height: 1em;
+    width: 1em;
+    padding: 3px;
+}
+.right {
+    position: absolute;
+    right: 16px; 
+    height: 1em;
+    width: 1em;
+    text-align: center;
+    visibility: hidden;
+}
+.right i {
+    font-weight: 500;
+}
+.right i:hover {
+    color: white;
+    background-color: rgb(192, 192, 192,.2);
+}
+
+.fa-plus {
+    font-size: 20px;
+}
+a {
+    padding-left: 30px;
+}
+
+.channel-item i {
+    padding: 4.5px;
+    border-radius: 25%;
+    background-color: rgba(255, 255, 255, 0.1);
+    font-size: 13px;
+    
+}
+
+.selected {
+    background-color: #1164A3;
+    color:#ECF3F8;
+} 
+span {
+    padding-left: 8px;
+}
+.channel-item {
+    padding-top: 1.5px;
+    padding-bottom: 1.5px;
+}

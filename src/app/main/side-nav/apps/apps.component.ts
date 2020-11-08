@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SideNavService } from '../../../core/side-nav.service';
 
 @Component({
   selector: 'app-apps',
@@ -6,25 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./apps.component.scss']
 })
 export class AppsComponent implements OnInit {
-  customList = [
-    {
-      iconUrl: "",
-      name: "Threads"
-    },
-    {
-      iconUrl: "",
-      name: "All DMs"
-    },
-    {
-      iconUrl: "",
-      name: "All unreads"
-    },
-    {
-      iconUrl: "",
-      name: "Save items"
-    }
-  ]
-  constructor() { }
+  
+  caret: boolean = false;
+
+  selectedItem: string = this.sidenavService.getSelectedItem();
+  
+  selectItem(item: string): void {
+    this.sidenavService.setSelectedItem(item);
+    this.selectedItem = this.sidenavService.getSelectedItem()
+  }
+
+  appsList =  this.sidenavService.getApps();
+
+  constructor(private sidenavService: SideNavService) { }
 
   ngOnInit(): void {
   }

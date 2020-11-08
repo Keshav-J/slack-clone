@@ -1,0 +1,50 @@
+.slack-browse-item, .slack-browse-header {
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 28px;
+    line-height: 28px;
+    cursor: pointer;
+    font-size: 18px;
+    // font-family: Consolas,monaco,"Ubuntu Mono",courier,monospace!important;
+    color: #B7A5B7;
+    margin-bottom: 0px;
+    
+}
+.slack-browse-container {
+    position: relative;
+
+}
+.slack-browse-items {
+    background-color: white;
+    color: black;
+    position: absolute;
+    z-index: 100;
+    border-radius: 5%;
+    left:10px;
+    width: 200px;
+    height: max-content;
+    padding-top: 20px;
+    border: 0.5px rgb(173, 173, 173, 0.5) solid;
+}
+.slack-browse-header:hover {
+    color: white;
+}
+.slack-browse-item {
+    color: grey
+}
+.slack-browse-item:hover {
+    background-color: #1164A3;
+    color: white;
+}
+.item-content {
+    padding: 0px 10px;
+}
+
+i {
+    margin-right: 10px;
+}
+
+.fa-ellipsis-v {
+    padding-left: 5px;
+    padding-right: 5px;
+}

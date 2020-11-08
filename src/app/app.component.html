@@ -1,7 +1,18 @@
 <app-topnavbar></app-topnavbar>
-<div class="container">
-    <app-side-nav></app-side-nav>
-    <app-messaging-panel></app-messaging-panel>
-    <app-aside></app-aside>
+<div class="flex main">
+    <div class="flex side-nav">
+        <app-side-nav></app-side-nav>
+    </div>
     
+    <div class="resizer" id="dragMe"></div>
+    
+    <div class="flex content">
+        <app-messaging-panel></app-messaging-panel>
+    </div>
+    
+    <div class="resizer-1" id="dragMe-1"></div>
+    
+    <div class="flex detail flex-wrap">
+        <app-aside></app-aside>
+    </div>
 </div>
