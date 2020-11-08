@@ -24,11 +24,12 @@ import { MatIconModule } from '@angular/material/icon';
     MessageComponent,
     MessageContainerComponent,
     MessagingPanelComponent,
-    PeopleanduserComponent,
-    MatIconModule
+    PeopleanduserComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatIconModule,
+    MatDialogModule
   ],
   exports: [
     ChannelComponent,
@@ -39,6 +40,8 @@ import { MatIconModule } from '@angular/material/icon';
     MessageComponent,
     MessageContainerComponent,
     MessagingPanelComponent,
+    PeopleanduserComponent,
+    MatIconModule,
     MatDialogModule
   ]
 })
