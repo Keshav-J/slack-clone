@@ -11,8 +11,8 @@
 }
 
 .side-nav {
-    background-color: #481449;
-    color: #F7F7F7;
+    background-color: #3F0E40;
+    color: rgb(188,171,188);
     max-width: 40vw;
     min-width: 300px;
     flex-direction: column;
@@ -22,7 +22,7 @@
 
 .resizer, .resizer-1 {
     cursor: ew-resize;
-    width: 5px;
+    width: 3px;
 }
 
 .resizer:hover, .resizer-1:hover {
@@ -30,6 +30,10 @@
 }
 .content {
     min-width: 600px;
+
+    app-messaging-panel {
+        width: 100%;
+    }
 }
 
 .detail {
