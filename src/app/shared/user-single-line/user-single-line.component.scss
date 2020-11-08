@@ -1,0 +1,39 @@
+$text-dark: #606060;
+$text-light: #6F6F6F;
+
+.container{
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    padding: 5px 10px;
+
+    > * {
+        margin-right: 10px;
+    }
+
+    .dp {
+        height: 25px;
+        width: 25px;
+        border-radius: 4px;
+    }
+
+    .name span {
+        color: $text-dark;
+        font-weight: 600;
+    }
+
+    .is-active {
+        .active {
+            background-color: green;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+        }
+        .inactive {
+            border-radius: 50%;
+            height: 6px;
+            width: 6px;
+            border: 2px solid $text-light;
+        }
+    }
+}

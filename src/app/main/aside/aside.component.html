@@ -1,18 +1,28 @@
 <div class="container">
+    <div class="header">
+        <div class="left">
+            <span class="title"> Details </span>
+            <span> {{ containerName }} </span>
+        </div>
+        <div class="right">
+            <i class="fal fa-times"></i>
+        </div>
+    </div>
+
     <div class="actions">
         <div class="actions-container">
             <div class="action tooltip">
                 <i class="action-icon far fa-user-plus"></i>
                 <span class="action-description">Add</span>
                 <span class="tooltip-text">
-                    Add people to {{'#general'}}
+                    Add people to {{ containerName }}
                 </span>
             </div>
             <div class="action tooltip">
                 <i class="action-icon fal fa-file-search"></i>
                 <span class="action-description">Find</span>
                 <span class="tooltip-text">
-                    Find in {{ '#general' }}
+                    Find in {{ containerName }}
                 </span>
             </div>
             <div class="action tooltip">
@@ -28,60 +38,106 @@
                 <span class="tooltip-text">
                     More options for
                     <br>
-                    {{ '#general' }}
+                    {{ containerName }}
                 </span>
             </div>
         </div>
     </div>
 
-    <div class="about collapsible">
-        <div class="collapsible-header">
-            About
-        </div>
-        <div class="collapsible-content">
-            <div class="collapsible-content-container">
-                <div class="about-content">
-                    <span class="heading"> Topic </span>
-                    <p class="content">
-                        What’s up for discussion?
-                    </p>
-                    <a class="edit"> Edit </a>
+    <div class="menu-section">
+        <div class="about collapsible">
+            <div class="collapsible-header">
+                <label> About </label>
+                <div class="right">
+                    <!-- <i class="fal fa-angle-right inactive-section" style="font-size: 22px;"></i>
+                    <i class="fal fa-angle-down active-section" style="font-size: 22px;"></i> -->
                 </div>
-                <div class="about-content">
-                    <span class="heading"> Description </span>
-                    <p class="content">
-                        This is the one channel that will always include everyone. It’s a great spot for announcements and team-wide conversations.
-                    </p>
-                    <a class="edit"> Edit </a>
-                </div>
-                <div class="about-content about-created">
-                    <img src="assets/images/profile-1.png" />
-                    <span class="created-date"> Created on September 4, 2020 </span>
+            </div>
+            <div class="collapsible-content">
+                <div class="collapsible-content-container">
+                    <div class="about-content">
+                        <span class="heading"> Topic </span>
+                        <p class="content">
+                            What’s up for discussion?
+                        </p>
+                        <a class="edit"> Edit </a>
+                    </div>
+                    <div class="about-content">
+                        <span class="heading"> Description </span>
+                        <p class="content">
+                            This is the one channel that will always include everyone. It’s a great spot for announcements and team-wide conversations.
+                        </p>
+                        <a class="edit"> Edit </a>
+                    </div>
+                    <div class="about-content about-created">
+                        <img src="assets/images/profile-1.png" />
+                        <span class="created-date"> Created on September 4, 2020 </span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div class="collapsible">
-        <div class="collapsible-header">
-            Section 2
+        
+        <div class="members collapsible">
+            <div class="collapsible-header">
+                Members
+            </div>
+            <div class="collapsible-content">
+                <ng-container *ngFor="let user of users">
+                    
+                    <div class="user-container">
+                        <img class="dp" src="{{ user.display_picture }}" alt="user.first_name">
+                        <div class="name">
+                            <span> {{ user.first_name }} </span>
+                            <span> {{ user.last_name }} </span>
+                        </div>
+                        <div class="is-active">
+                            <ng-container *ngIf="user.isActive;else inactiveUser">
+                                <div class="active"></div>
+                            </ng-container>
+                            <ng-template #inactive>
+                                <div class="inactiveUser"></div>
+                            </ng-template>
+                        </div>
+                    </div>
+                    
+                </ng-container>
+                
+                <div class="button-section">
+                    <button class="btn left">
+                        See All {{ users.length }} Members
+                    </button>
+                    <button class="btn right">
+                        Add People
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="collapsible-content">
-            Content 2
+        
+        <div class="collapsible">
+            <div class="collapsible-header">
+                Shortcuts
+            </div>
+            <div class="collapsible-content">
+                <div></div>
+            </div>
         </div>
-    </div>
-    <div class="collapsible">
-        <div class="collapsible-header">
-            Section 3
-        </div>
-        <div class="collapsible-content">
-            Content 3
-        </div>
-    </div>
 
-    <div class="about">
+        <div class="collapsible">
+            <div class="collapsible-header">
+                Pinned
+            </div>
+            <div class="collapsible-content">
+                <div></div>
+            </div>
+        </div>
 
+        <div class="collapsible">
+            <div class="collapsible-header">
+                Files
+            </div>
+            <div class="collapsible-content">
+                <div></div>
+            </div>
+        </div>
     </div>
-    
-    <button mat-raised-button color="primary"> Primary </button>
 </div>
