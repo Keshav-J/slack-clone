@@ -1,0 +1,54 @@
+.message-box {
+    padding : 1.5em 0 0 1em;
+    position: relative;
+    // border: 1px solid black;
+    &:hover{
+        background-color: rgb(247, 247, 247);
+        
+    }
+    display: flex;
+    .profile-pic img{
+        width: 35px;
+        height: 35px;
+        border-radius: 15%;
+    }
+    .content {
+        display: flex;
+        flex-direction: column;
+        padding-left: 1.5em;
+    }
+    .info {
+        
+        .name {
+            font-weight: bolder;
+            font-size: 1em;  
+        }
+        
+        .time {
+            opacity: 0.6;
+            padding-left: 1em;
+            font-size: 0.8em;
+        }
+    }
+    .pop-up {
+        width:150px;
+        height:35px;
+        border: 0.5px solid rgb(180, 180, 180);
+        position:absolute;
+        right:1rem;
+        top:-1rem;
+        border-radius: 5px;
+        align-items: center;
+        .fa-comment-lines, .fa-share, .fa-ellipsis-v {
+            font-weight: lighter;
+        }
+    }
+   
+}
+.hide {
+    display: none;
+}
+.message-box:hover > .hide {
+    display: flex;
+    justify-content: space-around;
+}

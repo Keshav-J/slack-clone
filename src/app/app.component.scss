@@ -1,6 +1,20 @@
-.side-nav {
-    background-color: #481449;
-    color: #F7F7F7;
-    width: 250px;
-    height: 100vh;
+.container {
+    display: flex;
+    flex-direction: row;
+    height: calc(100% - 40px);
+    width: 100%;
+
+    app-side-nav {
+        background-color: #481449;
+        color: #F7F7F7;
+        width: 250px;
+    }
+
+    app-messaging-panel {
+        flex-grow: 1;
+    }
+
+    app-aside {
+        width: 400px;
+    }
 }
