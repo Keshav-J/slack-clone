@@ -1,0 +1,95 @@
+
+<mat-toolbar class="header">
+
+    <div class="history">
+    <button type="button" [matMenuTriggerFor]="history" class="button_history c-button_history tooltip">
+        <span class="tooltiptext">history</span>
+        <mat-icon >schedule</mat-icon>
+    </button> 
+    <mat-menu #history="matMenu" class="menu_history">
+        <button mat-menu-item class="button" >
+            <mat-icon>bookmark_border</mat-icon>
+          <span><b>Saved items</b></span>
+        </button>
+        <button mat-menu-item class="button">
+            &nbsp;&nbsp;<a>#</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span><b>General</b></span>
+        </button>
+      </mat-menu>
+    </div>
+
+    <button class="c-button-unstyled p-search_button">
+        <span class="search_text">Search Coda Academy Batch 2021</span>
+    </button>
+
+
+    <div class="help">
+        <button [matMenuTriggerFor]="help" type="button" class="button_help c-button_help tooltip" >
+            <span class="tooltiptext">help</span>
+            <mat-icon >help_outline</mat-icon>
+        </button> 
+        <mat-menu #help="matMenu" class="help">
+            <button mat-menu-item class="button">
+              <span>Get help</span>
+            </button>
+            <button mat-menu-item class="button">
+              <span>Quick start guide</span>
+              <mat-icon class="guide_icon">open_in_new</mat-icon>
+            </button>
+            <button mat-menu-item class="button">
+              <span>What's new</span>
+            </button>
+            <button mat-menu-item class="button">
+                <span>Keyboard shortcuts</span>
+                <span class="shortcut_icon">Ctrl+/</span>
+            </button>
+          </mat-menu>
+    </div>
+
+    <div class="container" [matMenuTriggerFor]="user">
+    <div class=row>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSui0UOaWxrG-kLX4QHo8chotDj_j1HJusnPg&usqp=CAU" class="image" [title]="user">
+        <div class="col">
+            <mat-icon class="circle">trip_origin</mat-icon>
+        </div>
+    </div> 
+    <mat-menu #user="matMenu">
+        <div class="user_details">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSui0UOaWxrG-kLX4QHo8chotDj_j1HJusnPg&usqp=CAU" class="user_image">
+            <div class="user_detail">
+            <span class="username">Username</span>
+            <div class="activity_status">
+            <mat-icon class="circle">circle </mat-icon>
+            <span>Active</span>
+            </div>
+            </div>
+        </div>
+        <button mat-menu-item>
+            <span><mat-icon> insert_emoticon</mat-icon></span>
+            <input class="status" type="text" placeholder="Update you status">
+        </button>
+        <button mat-menu-item class="button">
+            <span>Set yourself as <b>away</b></span>
+        </button>
+        <button mat-menu-item class="partition button">
+            <span>Pause notifications</span>
+        </button>
+        <button mat-menu-item class="button">
+            <span>Edit profile</span>
+        </button>
+        <button mat-menu-item class="button">
+            <span>View profile</span>
+        </button>
+        <button mat-menu-item class="partition button">
+            <span>preferences</span>
+        </button>
+        <button mat-menu-item class="button">
+            <span>Sign out of Coda Academy Batch 2020</span>
+        </button>
+      </mat-menu>
+    </div>
+
+
+</mat-toolbar>
+
+
