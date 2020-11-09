@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { File } from './file';
 import { User } from './user';
 
 @Injectable({
@@ -8,6 +9,7 @@ import { User } from './user';
 export class ChatService {
 
   users: User[];
+  files: File[];
 
   constructor(private http: HttpClient) {
     this.users = [
@@ -17,6 +19,13 @@ export class ChatService {
       new User(4, 'Lily', '', true, "assets/profile-pic/profile-pic4.png"),
       new User(5, 'Joe', 'Tribiani', true, "assets/profile-pic/profile-pic5.png")
     ];
+
+    this.files = [
+      new File(1, 'Angular Documentation', 'Miško Hevery', 'Yesterday at 10:00', "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png"),
+      new File(2, 'React Documentation', 'Jordan Walke', 'Yesterday at 16:00', "https://cdn.auth0.com/blog/react-js/react.png"),
+      new File(3, 'Vue', 'Evan You', 'Today at 10:00', "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png"),
+      new File(4, 'HTML docs', 'Tim Berners-Lee', 'Oct 20th at 08:10', "https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png")
+    ]
   }
 
   message=[
@@ -42,5 +51,9 @@ export class ChatService {
 
   getUsers() {
     return this.users;
+  }
+
+  getFiles() {
+    return this.files;
   }
 }
