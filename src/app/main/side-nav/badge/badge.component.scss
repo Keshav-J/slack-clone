@@ -1,0 +1,67 @@
+.badge{
+    border-top:0.1em solid rgb(59, 55, 55);
+    width: 250px;
+    height: 60px;
+    display: inline-flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    border-bottom: 0.1em solid rgb(59, 55, 55);
+}
+.down_arrow{
+    margin-bottom: 0px;
+}
+.button_badge{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #481449;
+    border: none;
+    color: #ffffff;
+}
+.image{
+    border-radius: 100px;
+    padding-top: 10px;
+    img{
+        border-radius: 100px;
+        height: 40px;
+    }
+}
+.head{
+    margin-top:20px;
+    display: flex;
+    flex-direction:row;
+}
+.head_image{
+    margin-left: 20px;
+    img{
+        width: 40px;
+        height: 40px;
+    }
+}
+.info{
+    margin-left: 10px;
+}
+.title{
+    color: black;
+    font-weight: bolder;
+    font-weight: 900;
+}
+.subtitle{
+    color: gray;
+    font-size: small;
+}
+.buton{
+    height: 10px;
+}
+.button:hover{
+    background-color: blue;
+    }
+.partition{
+    border-bottom: 1px solid silver;
+}
+.logo{
+        margin-left: 90px;
+        margin-top: 5px;
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+}

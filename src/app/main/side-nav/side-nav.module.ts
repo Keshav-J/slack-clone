@@ -7,6 +7,9 @@ import { CustomiseBrowseComponent } from './customise-browse/customise-browse.co
 import { DirectMessagesComponent } from './direct-messages/direct-messages.component';
 import { SlackBrowseComponent } from './slack-browse/slack-browse.component';
 import { BadgeComponent } from './badge/badge.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+
 
 
 
@@ -18,10 +21,13 @@ import { BadgeComponent } from './badge/badge.component';
     CustomiseBrowseComponent,
     DirectMessagesComponent,
     SlackBrowseComponent,
-    BadgeComponent
+    BadgeComponent,
+
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatMenuModule,
+    MatIconModule,
   ],
   exports: [
     SideNavComponent,

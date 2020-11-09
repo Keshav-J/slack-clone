@@ -1,1 +1,55 @@
-<p>badge works!</p>
+<div class="badge"> 
+        <div class="badge_description">
+            <button class="button_badge" [matMenuTriggerFor]="badge">
+            <span class="desc">Coda Academy Batch 2021
+            </span>
+            <mat-icon class="down_arrow">keyboard_arrow_down</mat-icon>
+            </button>
+        </div>
+        <div class="image">
+            <img src="./assets/badge/message.png">
+        </div>
+
+        <mat-menu #badge="matMenu" class="badge_menu">
+            <div class="head partition">
+                <div class="head_image">
+                <img src="./assets/badge/profile.png">
+                </div>
+                <div class="info">
+                    <a class="title">Coda Academy Batch 2021</a>
+                    <p class="subtitle">codaacademybatch20201.slack.com</p>
+                </div>
+            </div>
+            <button mat-menu-item>
+              <span><b>Total Messages</b><br>
+                Upgrade to access your first 17k messages
+            </span>
+            </button>
+            <p class="button partition">Get 60% off a paid plan,for a limited time.</p>
+            <button mat-menu-item class="button">
+              <span>Invite people to Coda Academy Batch 2020</span>  
+            </button>
+            <button mat-menu-item class="button partition">
+              <span>Create a channel</span>
+            </button>
+            <button mat-menu-item class="button">
+                <span>Preferences</span>
+            </button>
+            <button mat-menu-item class="button partition">
+                <span>Administartion</span>
+            </button>
+            <button mat-menu-item class="button partition">
+                <span>Tools</span>
+            </button>
+            <button mat-menu-item class="button partition">
+                <span>Sign out of Coda Academy Batch 2020</span>
+            </button>
+            <button mat-menu-item class="button">
+                <span>Add workspaces</span>
+            </button>
+            <button mat-menu-item class="button">
+                <span>Open the Slack App</span>
+                <img class="logo" src="./assets/badge/logo.png">
+            </button>
+          </mat-menu>
+</div>
