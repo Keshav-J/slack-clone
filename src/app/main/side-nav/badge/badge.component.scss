@@ -1,19 +1,21 @@
 .badge{
     border-top:0.1em solid rgb(59, 55, 55);
-    width: 250px;
+    width: 100%;
     height: 60px;
-    display: inline-flex;
+    display: flex;
     flex-direction:row;
-    flex-wrap: wrap;
+    justify-content: space-between;
     border-bottom: 0.1em solid rgb(59, 55, 55);
 }
 .down_arrow{
     margin-bottom: 0px;
+    position: relative;
+    top: 6px;
 }
 .button_badge{
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: #481449;
+    background-color: #3F0E40;
     border: none;
     color: #ffffff;
 }
