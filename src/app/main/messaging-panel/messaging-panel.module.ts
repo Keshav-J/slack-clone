@@ -9,6 +9,11 @@ import { MessageComponent } from 'src/app/shared/message/message.component';
 import { MessageContainerComponent } from 'src/app/shared/message-container/message-container.component';
 import { MessagingPanelComponent } from './messaging-panel.component';
 
+import {MatDialogModule} from '@angular/material/dialog';
+import { PeopleanduserComponent } from './people-and-user/people-and-user.component';
+import { MatIconModule } from '@angular/material/icon';
+
+
 @NgModule({
   declarations: [
     ChannelComponent,
@@ -18,10 +23,13 @@ import { MessagingPanelComponent } from './messaging-panel.component';
     ChatboxComponent,
     MessageComponent,
     MessageContainerComponent,
-    MessagingPanelComponent
+    MessagingPanelComponent,
+    PeopleanduserComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatIconModule,
+    MatDialogModule
   ],
   exports: [
     ChannelComponent,
@@ -31,7 +39,10 @@ import { MessagingPanelComponent } from './messaging-panel.component';
     ChatboxComponent,
     MessageComponent,
     MessageContainerComponent,
-    MessagingPanelComponent
+    MessagingPanelComponent,
+    PeopleanduserComponent,
+    MatIconModule,
+    MatDialogModule
   ]
 })
 export class MessagingPanelModule { }

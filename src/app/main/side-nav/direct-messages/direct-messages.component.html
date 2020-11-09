@@ -1,1 +1,46 @@
-<p>direct-messages works!</p>
+<div class="direct-message-container">
+    <div class="direct-message-header flex">
+        <div class="left flex" (click)="caret=!caret">
+            <div class="icon">
+                <i *ngIf="caret"  class="fas fa-caret-right"></i>
+                <i *ngIf="caret!=true"  class="fas fa-caret-down"></i>
+            </div>
+            <div>
+                Direct messages
+            </div>
+        </div>
+       <div class="right">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+
+
+    <div *ngIf="caret!=true" class="direct-messages">
+        <div class="direct-message-item" 
+        *ngFor="let message of directMessagesList" 
+        (click) = "selectItem(message.name)" 
+        [class.selected]="message.name == selectedItem">
+        <div class="left">
+            <a class="message-content relative" routerLink='/dm/message.name'>
+            <i [attr.class]="message.iconUrl"  [style.color]="message.color">
+                <div class="online-indicator" [style.background-color]="(message.status==1) ? 'green': 'white'"></div>
+            </i>
+                <span>{{message.name}}</span>
+            </a>  
+        </div>
+        <div class="right">
+            <i class="fas fa-times"></i>
+        </div>
+        </div>
+        <div class="direct-message-item">
+            <div class="left">
+                <a class="message-content">
+                <i class="fas fa-plus" style="background-color: rgba(255, 255, 255, 0.1)"></i>
+                    <span>Add teammates</span>
+                </a>  
+            </div>
+            
+        </div>    
+    </div>
+</div>
+ 

@@ -1,0 +1,30 @@
+.private {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-height: 100%;
+    border-right: 1px solid rgb(220, 220, 220);
+    height: 100%;
+
+    app-message-container {
+        flex-grow: 1;
+        overflow: auto;
+    }
+    app-private-header {
+        height: 4.5em;
+    }
+    app-chatbox {
+        height: 8em;
+    }
+}
+app-message-container::-webkit-scrollbar {
+    width: 6px;    
+    margin: 2px;    
+  }
+
+app-message-container::-webkit-scrollbar-thumb {
+    background-color: rgb(114, 114, 114);  
+    border-radius: 20px;      
+    height: 10px;
+    transition: width 2s;
+}

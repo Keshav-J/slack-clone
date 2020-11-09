@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SideNavService } from '../../../core/side-nav.service';
 
 @Component({
   selector: 'app-direct-messages',
@@ -7,26 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DirectMessagesComponent implements OnInit {
 
-  customList = [
-    {
-      iconUrl: "",
-      name: "Threads"
-    },
-    {
-      iconUrl: "",
-      name: "All DMs"
-    },
-    {
-      iconUrl: "",
-      name: "All unreads"
-    },
-    {
-      iconUrl: "",
-      name: "Save items"
-    }
-  ]
+  caret: boolean = false;
+
+  selectedItem: string = this.sidenavService.getSelectedItem();
   
-  constructor() { }
+  selectItem(item: string): void {
+    this.sidenavService.setSelectedItem(item);
+    this.selectedItem = item;
+  }
+
+  directMessagesList = this.sidenavService.getDirectMessages();
+  
+  constructor(private sidenavService: SideNavService) { }
 
   ngOnInit(): void {
   }

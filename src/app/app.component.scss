@@ -1,20 +1,73 @@
-.container {
+.flex {
     display: flex;
-    flex-direction: row;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.main {
+    width: 100vw;
+    // min-height: 100vh;   
     height: calc(100% - 40px);
-    width: 100%;
+}
 
-    app-side-nav {
-        background-color: #481449;
-        color: #F7F7F7;
-        width: 250px;
-    }
+.side-nav {
+    background-color: #3F0E40;
+    color: rgb(188,171,188);
+    max-width: 40vw;
+    min-width: 300px;
+    flex-direction: column;
+    font-size: 1rem;
+    overflow: auto;
 
-    app-messaging-panel {
-        flex-grow: 1;
-    }
-
-    app-aside {
-        width: 400px;
+    &::-webkit-scrollbar {
+        width: 6px;    
+        margin: 2px;    
+      }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(255,255,255,0.45);
+        border-radius: 20px;      
+        height: 10px;
+        transition: width 2s;
     }
 }
+
+.resizer, .resizer-1 {
+    cursor: ew-resize;
+    width: 5px;
+}
+
+.resizer:hover, .resizer-1:hover {
+    background-color: rgb(40, 131, 216);
+}
+.content {
+    min-width: 600px;
+
+    app-messaging-panel {
+        width: 100%;
+    }
+}
+
+.detail {
+    min-width:300px;
+}
+
+// .container {
+//     display: flex;
+//     flex-direction: row;
+//     height: calc(100% - 40px);
+//     width: 100%;
+
+//     app-side-nav {
+//         background-color: #481449;
+//         color: #F7F7F7;
+//         width: 250px;
+//     }
+
+//     app-messaging-panel {
+//         flex-grow: 1;
+//     }
+
+//     app-aside {
+//         width: 400px;
+//     }

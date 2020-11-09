@@ -5,7 +5,7 @@
     <div class="content">
         <div class = "info">
             <ng-container *ngIf="message">
-                <b><span class = "name">{{ message.username }}</span></b>
+                <b><span class = "name pointer">{{ message.username }}</span></b>
                 <span class = "time">{{ message.time | date:'shortTime' }}</span>
             </ng-container>
         </div>
@@ -13,8 +13,8 @@
             {{message.msg}}
         </div>
     </div>
-    <div class="pop-up hide">
-        <i class="fal fa-smile-plus"></i>
+    <div class="pop-up hide pointer">
+        <i class="fal fa-smile-plus "></i>
         <i class="far fa-comment-lines fa-flip-horizontal"></i>
         <i class="far fa-share"></i>
         <i class="fal fa-bookmark"></i>
