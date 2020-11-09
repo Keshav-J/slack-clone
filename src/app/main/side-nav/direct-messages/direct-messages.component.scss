@@ -5,7 +5,7 @@
     font-size: 15px;
     cursor: pointer;
     position: relative;
-    padding-top: 15px;
+    padding-top: 10px;
 }
 
 .flex {
@@ -65,6 +65,7 @@ a i {
     border-radius: 20%;
     font-size: 16px;
     background-color: rgb(255, 255, 255, .95);
+    opacity: .85;
     
 }
 
@@ -74,8 +75,7 @@ a i {
 } 
 .direct-message-item {
     display: flex;
-    padding-top:1.5px;
-    padding-bottom: 1.5px;
+ 
 }
 .direct-message-item:hover {
     background-color: #350D36;
@@ -93,9 +93,9 @@ span {
 
 
 .online-indicator {
-    width: 10px;
-    height: 10px;
-    background-color: white;
+    width: 7px;
+    height: 7px;
+
     border-radius: 50%;
     z-index: 10;
     position: absolute;
