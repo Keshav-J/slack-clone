@@ -20,11 +20,20 @@
  }
 .p-search_button {
     background: rgb(67,30,68);
-    color: #FFFFFF;
-    width: 550px;
-    height: 60%;
-    border-radius: 5px;
+    border-radius: 8px;
+   
 }
+.search_text{
+    width: 500px;
+    height:20px;
+    background: rgb(67,30,68);
+    border: none rgb(67,30,68);
+    border-radius:10px;
+}
+::placeholder {
+    color: #FFFFFF;
+    opacity: 1;
+  }
 .c-button-unstyled
 {
     border: 0;
@@ -56,7 +65,7 @@
 .col{
     position:absolute;
     top:17px;
-    left: 260px;
+    left: 280px;
     margin-top:3px;
     margin-left:3px;
 }
@@ -65,7 +74,7 @@
     height: 30px;
     margin-top:5px;
     border-radius: 5px;
-    margin-left: 250px;
+    margin-left: 270px;
 }
 .circle{
     line-height: 1;

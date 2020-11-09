@@ -6,6 +6,10 @@ import { ChannelsComponent } from './channels/channels.component';
 import { CustomiseBrowseComponent } from './customise-browse/customise-browse.component';
 import { DirectMessagesComponent } from './direct-messages/direct-messages.component';
 import { SlackBrowseComponent } from './slack-browse/slack-browse.component';
+import { BadgeComponent } from './badge/badge.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+
 
 
 
@@ -16,10 +20,14 @@ import { SlackBrowseComponent } from './slack-browse/slack-browse.component';
     ChannelsComponent,
     CustomiseBrowseComponent,
     DirectMessagesComponent,
-    SlackBrowseComponent
+    SlackBrowseComponent,
+    BadgeComponent,
+
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatMenuModule,
+    MatIconModule,
   ],
   exports: [
     SideNavComponent,

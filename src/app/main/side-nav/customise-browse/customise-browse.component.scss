@@ -6,20 +6,20 @@ i {
 }
 
 .customize-browse-item {
-    margin-bottom: 7px;
+    padding-bottom: 7px;
 }
 
 .item-content {
     padding-left: 16px;
     padding-right: 16px;
-    height: 28px;
+    height: 24px;
     line-height: 28px;
     cursor: pointer;
     font-size: 15px;
     font-family: Consolas,monaco,"Ubuntu Mono",courier,monospace!important;
 }
 
-.item-content:hover {
+.customize-browse-item:hover {
     background-color: #350D36;
 }
 
