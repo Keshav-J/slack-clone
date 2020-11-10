@@ -10,7 +10,8 @@ export class AppsComponent implements OnInit {
   
   caret: boolean = false;
 
-  selectedItem: string = this.sidenavService.getSelectedItem();
+  selectedItem: String;
+  selectedItemSubscription: any
   
   selectItem(item: string): void {
     this.sidenavService.setSelectedItem(item);
@@ -19,7 +20,12 @@ export class AppsComponent implements OnInit {
 
   appsList =  this.sidenavService.getApps();
 
-  constructor(private sidenavService: SideNavService) { }
+  constructor(private sidenavService: SideNavService) { 
+    this.selectedItem = this.sidenavService.getSelectedItem()
+    this.selectedItemSubscription = sidenavService.selectedItemChange.subscribe((value) => {
+      this.selectedItem = value
+  })
+  }
 
   ngOnInit(): void {
   }

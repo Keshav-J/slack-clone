@@ -19,11 +19,16 @@
         *ngFor="let app of appsList" 
         (click) = "selectItem(app.name)" 
         [class.selected]="app.name == selectedItem">
-        <a class="app-content" routerLink='/apps'>
-            <i [attr.class]="app.iconUrl"></i>
-            <span>{{app.name}}</span>
-        </a>
-            
-        </div>    
+            <a class="app-content" routerLink='/apps'>
+                <i [attr.class]="app.iconUrl"></i>
+                <span>{{app.name}}</span>
+            </a>
+        </div>  
+        <div class="app-item">  
+            <a class="app-content">
+            <i class="fas fa-plus" style="background-color: rgba(255, 255, 255, 0.1)"></i>
+                <span>Add apps</span>
+            </a>  
+        </div>       
     </div>
 </div>
