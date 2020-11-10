@@ -19,6 +19,9 @@
         visibility: visible;
     }
 }
+.channel-item.selected:hover {
+    background-color: #1164A3;
+}
 .channel-item:hover {
     background-color: #350D36;
 }

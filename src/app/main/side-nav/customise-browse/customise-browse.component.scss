@@ -19,6 +19,9 @@ i {
     font-family: Consolas,monaco,"Ubuntu Mono",courier,monospace!important;
 }
 
+.customize-browse-item.selected:hover {
+    background-color: #1164A3;
+}
 .customize-browse-item:hover {
     background-color: #350D36;
 }

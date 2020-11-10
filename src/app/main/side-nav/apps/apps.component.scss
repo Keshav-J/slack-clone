@@ -76,6 +76,9 @@ a {
     background-color: #1164A3;
     color:#ECF3F8;
 } 
+.app-item.selected:hover {
+    background-color: #1164A3;
+}
 .app-item:hover {
     background-color: #350D36;
 }
