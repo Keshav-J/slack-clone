@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -19,8 +18,8 @@ export class SideNavService {
       name: "All unreads"
     },
     {
-      iconUrl: "far fa-comment-dots",
-      name: "Save items"
+      iconUrl: "far fa-address-book",
+      name: "People & user groups"
     },
     {
       iconUrl: "fas fa-at",

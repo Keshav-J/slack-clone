@@ -17,14 +17,23 @@
         height: 8em;
     }
 }
-app-message-container::-webkit-scrollbar {
-    width: 6px;    
-    margin: 2px;    
-  }
 
-app-message-container::-webkit-scrollbar-thumb {
-    background-color: rgb(114, 114, 114);  
-    border-radius: 20px;      
-    height: 10px;
-    transition: width 2s;
+app-message-container {
+    &::-webkit-scrollbar {
+        width: 6px;    
+        margin: 2px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: inherit;
+        border-radius: 20px;
+        height: 10px;
+        transition: width 2s;
+    }
+    
+    &:hover {
+        &::-webkit-scrollbar-thumb {
+            background-color: rgb(114, 114, 114);
+        }
+    }
 }

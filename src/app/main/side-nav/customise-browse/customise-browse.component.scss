@@ -12,13 +12,16 @@ i {
 .item-content {
     padding-left: 16px;
     padding-right: 16px;
-    height: 24px;
+    height: 20px;
     line-height: 28px;
     cursor: pointer;
     font-size: 15px;
     font-family: Consolas,monaco,"Ubuntu Mono",courier,monospace!important;
 }
 
+.customize-browse-item.selected:hover {
+    background-color: #1164A3;
+}
 .customize-browse-item:hover {
     background-color: #350D36;
 }

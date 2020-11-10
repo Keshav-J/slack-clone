@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SideNavService } from '../../../../core/side-nav.service';
 
 @Component({
@@ -19,9 +19,18 @@ export class PrivateHeaderComponent implements OnInit {
   })
    }
 
+  @Output() toggleAside = new EventEmitter();
+
+
   ngOnInit(): void {
   }
   makeStar() {
     this.starred = !this.starred;
+  }
+
+  header_toggleAside() {
+    console.log('asdas');
+    
+    this.toggleAside.emit();
   }
 }
