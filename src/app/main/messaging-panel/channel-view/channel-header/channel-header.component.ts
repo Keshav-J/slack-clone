@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SideNavService } from '../../../../core/side-nav.service';
 
 @Component({
   selector: 'app-channel-header',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChannelHeaderComponent implements OnInit {
 
-  constructor() { }
+  channelName: String
+  channelNameSubscription: any
+  constructor(private sidenavService: SideNavService) { 
+    this.channelName = this.sidenavService.getSelectedItem()
+    this.channelNameSubscription = sidenavService.selectedItemChange.subscribe((value) => {
+      this.channelName = value
+    })
+  }
 
   ngOnInit(): void {
   }

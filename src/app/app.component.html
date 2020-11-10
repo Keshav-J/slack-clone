@@ -7,9 +7,8 @@
     <div class="resizer" id="dragMe"></div>
     
     <div class="flex content">
-        <app-messaging-panel (toggleAside)="toggleAside()"></app-messaging-panel>
-        <ng-container *ngIf="displayAside">
-            <app-aside (closeAside)="closeAside()"></app-aside>
-        </ng-container>
+        <!-- <app-messaging-panel (toggleAside)="toggleAside()"></app-messaging-panel> -->
+        <router-outlet class="router-link"></router-outlet>
+        
     </div>
 </div>

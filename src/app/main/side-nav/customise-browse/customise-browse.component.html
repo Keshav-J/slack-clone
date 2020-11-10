@@ -2,11 +2,13 @@
     <div class="customize-browse-item"
      *ngFor="let item of customList"
      (click) = "selectItem(item.name)"
-     [class.selected]="item.name == selectedItem">
+     [class.selected]="item.name == selectedItem"
+     >
+     <a routerLink = {{item.route}}>
         <div class="item-content">
             <i [attr.class]="item.iconUrl"></i>
             <span>{{item.name}}</span>
         </div>
-        
+    </a>
     </div>
 </div>
