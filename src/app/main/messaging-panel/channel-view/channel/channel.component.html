@@ -1,8 +1,10 @@
-<div class="channel">
-    <app-channel-header></app-channel-header>
-    <app-message-container></app-message-container>
-    <app-chatbox></app-chatbox>
+<div class="container">
+    <div class="channel">
+        <app-channel-header (toggleAside)="toggleAside()"></app-channel-header>
+        <app-message-container></app-message-container>
+        <app-chatbox></app-chatbox>
+    </div>
+    <ng-container *ngIf="displayAside">
+        <app-channel-aside (closeAside)="closeAside()"></app-channel-aside>
+    </ng-container>
 </div>
-<!-- <ng-container *ngIf="displayAside">
-    <app-aside (closeAside)="closeAside()"></app-aside>
-</ng-container> -->
