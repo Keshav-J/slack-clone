@@ -10,7 +10,8 @@ import { SideNavService } from '../../../core/side-nav.service';
 export class CustomiseBrowseComponent implements OnInit {
   customList = this.sidenavService.getCustomBrowses();
   
-  selectedItem: string = this.sidenavService.getSelectedItem();
+  selectedItem: String;
+  selectedItemSubscription: any;
   
   selectItem(item: string): void {
     console.log(item)
@@ -18,7 +19,12 @@ export class CustomiseBrowseComponent implements OnInit {
     this.selectedItem = this.sidenavService.getSelectedItem()
   }
 
-  constructor(private sidenavService: SideNavService) { }
+  constructor(private sidenavService: SideNavService) {
+    this.selectedItem = this.sidenavService.getSelectedItem()
+    this.selectedItemSubscription = sidenavService.selectedItemChange.subscribe((value) => {
+      this.selectedItem = value
+    })
+  }
   
   ngOnInit(): void {
   }

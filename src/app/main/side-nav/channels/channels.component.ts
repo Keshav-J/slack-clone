@@ -9,17 +9,24 @@ export class ChannelsComponent implements OnInit {
 
   caret: boolean =false;
 
-  selectedItem: string;
+  selectedItem: String;
   
+  selectedItemSubscription: any;
+
+
   selectItem(item: string): void {
-    console.log(item)
     this.sidenavService.setSelectedItem(item);
     this.selectedItem = item;
   }
 
   channelsList = this.sidenavService.getChannels();
 
-  constructor(private sidenavService: SideNavService) { }
+  constructor(private sidenavService: SideNavService) { 
+    this.selectedItem = this.sidenavService.getSelectedItem()
+    this.selectedItemSubscription = sidenavService.selectedItemChange.subscribe((value) => {
+      this.selectedItem = value
+  })
+  }
 
   ngOnInit(): void {
   }

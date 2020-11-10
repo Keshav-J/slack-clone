@@ -77,12 +77,7 @@ export class SideNavService {
     {
       name:"general",
       iconUrl: "fas fa-hashtag"
-    },
-    {
-      name:"Add channels",
-      iconUrl: "fas fa-plus"
-    },
-    
+    }
   ]
 
   appsList = [
@@ -93,10 +88,6 @@ export class SideNavService {
     {
       name: "mailchimp",
       iconUrl: "fab fa-mailchimp"
-    },
-    {
-      name: "Add apps",
-      iconUrl: "fas fa-plus"
     }
   ]
 
@@ -119,8 +110,12 @@ export class SideNavService {
   //selected item
   selectedItem: string = "Thread";
   
+  selectedItemChange: Subject<String> = new Subject<String>();
+
+
   setSelectedItem(item: string): void {
     this.selectedItem = item;
+    this.selectedItemChange.next(this.selectedItem);
   }
   getSelectedItem(): string {
     return this.selectedItem;
