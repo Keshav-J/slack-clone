@@ -4,11 +4,15 @@ import { AsideComponent } from './aside.component';
 
 import { MatExpansionModule } from '@angular/material/expansion';
 import { UserSingleLineComponent } from 'src/app/shared/user-single-line/user-single-line.component';
+import { ChannelViewComponent } from './channel-view/channel-view.component';
+import { PrivateViewComponent } from './private-view/private-view.component';
 
 @NgModule({
   declarations: [
     AsideComponent,
-    UserSingleLineComponent
+    UserSingleLineComponent,
+    ChannelViewComponent,
+    PrivateViewComponent
   ],
   imports: [
     CommonModule,

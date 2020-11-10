@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-channel',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChannelComponent implements OnInit {
 
+  displayAside: boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  toggleAside() {
+    this.displayAside = !this.displayAside;
+  }
+
+  closeAside() {
+    this.displayAside = false;
+  }
 }

@@ -1,6 +1,19 @@
 <div class="chatbar">
-    <h4 class="tooltip pointer">#{{channelName}}<span class="tooltip-text">general</span></h4>
-    <div class="thumbtack"><img src="assets/img/thumbtack.png" class=""></div>
-    <i class="fal fa-star"></i>
+    <div class="left">
+        <div>
+            <span class="username pointer"> #{{ channelName }}</span>
+            <ng-container>
+                <i *ngIf="!starred" class="fal fa-star pointer" (click)="toggleStar()"></i>
+                <i *ngIf="starred" class="fas fa-star pointer" (click)="toggleStar()"></i>
+            </ng-container>
+        </div>
+        <div class="thumbtack">
+            <img src="assets/img/thumbtack.png" class="">
+            &nbsp; 0 | <span class="topic"> Add a topic </span>
+        </div>
+    </div>
+    <div class="right">
+        <i class="hover-icon far fa-user-plus pointer"></i>
+        <i class="hover-icon fal fa-info-circle pointer" (click)="header_toggleAside()"></i>
+    </div>
 </div>
-

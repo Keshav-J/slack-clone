@@ -1,9 +1,78 @@
-$border-color : 1px solid rgb(128, 125, 125);
+$border-color : 1px solid rgb(220, 220, 220);
+
+.chatbar {
+    border-bottom: $border-color;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2em;
+    .left, .right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        // border: 1px solid black;
+        margin-right: 2em;
+        justify-content: space-between;
+    }
+    .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        .thumbtack {
+            color:  #6F6F6F;
+
+            .topic:hover {
+                cursor: pointer;
+                color: #1264A3;
+            }
+        }
+    }
+    .right {
+        width: 5em;
+    }
+}
+.username {
+    font-weight: 900;
+    position: relative;
+}
+.fa-star{
+    margin-left: 0.8em;
+    font-size: 0.8em;
+    color: $border-color;
+}
+img {
+    object-fit: cover;
+    height: 1em;
+    width: 1em;
+}
+.fas.fa-star{
+    color: rgb(3, 0, 209);
+}
+
+.hover-icon {
+    padding: 5px 5px;
+    font-size: 18px;
+    border-radius: 4px;
+
+    &:hover {
+        background-color:  #F6F6F6;
+        cursor: pointer;
+    }
+}
+
+/* $border-color : 1px solid rgb(128, 125, 125);
 .chatbar {
     border: $border-color;
     height: 60px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.actions {
+    display: flex;
+    flex-direction: row;
 }
 h4 {
     font-weight: 700;
@@ -19,4 +88,4 @@ img {
     object-fit: cover;
     height: 1em;
     width: 1em;
-}
+} */
