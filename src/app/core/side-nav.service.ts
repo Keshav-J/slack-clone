@@ -7,24 +7,28 @@ export class SideNavService {
   customBrowseList = [
     {
       iconUrl: "far fa-comment-dots",
-      name: "Threads"
+      name: "Threads",
+      route: ""
     },
     {
       iconUrl: "far fa-comments",
-      name: "All DMs"
+      name: "All DMs",
+      route: ""
     },
     {
       iconUrl: "fas fa-stream",
-      name: "All unreads"
+      name: "All unreads",
+      route: ""
     },
     {
       iconUrl: "far fa-address-book",
-      name: "People & user groups"
+      name: "People & user groups",
+      route: ""
     },
     {
       iconUrl: "fas fa-at",
-      name: "Mentions & reactions"
-     
+      name: "Mentions & reactions",
+      route: "peopleanduser"
     }
   ]
   directMessagesList = [
