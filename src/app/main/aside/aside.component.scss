@@ -27,10 +27,16 @@ $text-light: #6F6F6F;
         }
         
         &::-webkit-scrollbar-thumb {
-            background-color: rgb(114, 114, 114);  
-            border-radius: 20px;      
+            background-color: inherit;
+            border-radius: 20px;
             height: 10px;
             transition: width 2s;
+        }
+        
+        &:hover {
+            &::-webkit-scrollbar-thumb {
+                background-color: rgb(114, 114, 114);
+            }
         }
     }
 
@@ -306,15 +312,6 @@ $text-light: #6F6F6F;
                 text-align: right;
             }
         }
-
-        /* & {
-            .active-section { display: none; }
-            .inactive-section { display: block; }
-        }
-        &.active-header {
-            .active-section { display: block; }
-            .inactive-section { display: none; }
-        } */
     }
     
     .collapsible-content {

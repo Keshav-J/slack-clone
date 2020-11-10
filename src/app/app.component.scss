@@ -6,8 +6,7 @@
 }
 .main {
     width: 100vw;
-    // min-height: 100vh;   
-    height: calc(100% - 40px);
+    height: calc(100vh - 40px);
 }
 
 .side-nav {
@@ -28,7 +27,7 @@
     background-color: rgb(40, 131, 216);
 }
 .content {
-    min-width: 600px;
+    min-width: 660px;
 
     app-messaging-panel {
         width: 100%;
@@ -36,7 +35,7 @@
 }
 
 .detail {
-    min-width:300px;
+    min-width:200px;
 }
 
 // .container {
