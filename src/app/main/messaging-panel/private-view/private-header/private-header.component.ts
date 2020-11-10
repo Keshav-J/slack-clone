@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-private-header',
@@ -8,12 +8,20 @@ import { Component, OnInit } from '@angular/core';
 export class PrivateHeaderComponent implements OnInit {
 
   starred: boolean = false;
+
+  @Output() toggleAside = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
   }
   makeStar() {
     this.starred = !this.starred;
+  }
 
+  header_toggleAside() {
+    console.log('asdas');
+    
+    this.toggleAside.emit();
   }
 }
