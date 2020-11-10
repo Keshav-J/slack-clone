@@ -8,16 +8,26 @@ import { User } from './user';
 })
 export class ChatService {
 
+  allUsers: Object = {
+    1: new User(1, 'John', 'Doe', true, "assets/profile-pic/profile-pic1.png", 9548756481, 'john123@gmail.com'),
+    2: new User(2, 'Austine', '', false, "assets/profile-pic/profile-pic2.png", 8456217496, 'austine@gmail.com'),
+    3: new User(3, 'Samantha', 'Ruth', false, "assets/profile-pic/profile-pic3.png", 9845621452, 'sam@gmail.com'),
+    4: new User(4, 'Lily', '', true, "assets/profile-pic/profile-pic4.png", 9854562154, 'lily@gmail.com'),
+    5: new User(5, 'Joe', 'Tribiani', true, "assets/profile-pic/profile-pic5.png", 9874563210, 'how_you_doin@gmail.com'),
+    6: new User(6, 'Gowtham', 'S', true, "assets/profile-pic/profile-pic6.png", 9791898746, 'gowthamsuresh6599@gmail.com')
+  };
+
   users: User[];
   files: File[];
 
   constructor(private http: HttpClient) {
     this.users = [
-      new User(1, 'John', 'Doe', true, "assets/profile-pic/profile-pic1.png"),
-      new User(2, 'Austine', '', false, "assets/profile-pic/profile-pic2.png"),
-      new User(3, 'Samantha', 'Ruth', false, "assets/profile-pic/profile-pic3.png"),
-      new User(4, 'Lily', '', true, "assets/profile-pic/profile-pic4.png"),
-      new User(5, 'Joe', 'Tribiani', true, "assets/profile-pic/profile-pic5.png")
+      new User(1, 'John', 'Doe', true, "assets/profile-pic/profile-pic1.png", 9548756481, 'john123@gmail.com'),
+      new User(2, 'Austine', '', false, "assets/profile-pic/profile-pic2.png", 8456217496, 'austine@gmail.com'),
+      new User(3, 'Samantha', 'Ruth', false, "assets/profile-pic/profile-pic3.png", 9845621452, 'sam@gmail.com'),
+      new User(4, 'Lily', '', true, "assets/profile-pic/profile-pic4.png", 9854562154, 'lily@gmail.com'),
+      new User(5, 'Joe', 'Tribiani', true, "assets/profile-pic/profile-pic5.png", 9874563210, 'how_you_doin@gmail.com'),
+      new User(6, 'Gowtham', 'S', true, "assets/profile-pic/profile-pic3.png", 9791898746, 'gowthamsuresh6599@gmail.com')
     ];
 
     this.files = [
@@ -55,5 +65,9 @@ export class ChatService {
 
   getFiles() {
     return this.files;
+  }
+
+  getUser(id: number) {
+    return this.allUsers[id];
   }
 }
