@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ChatService } from 'src/app/core/chat.service';
 import { File } from 'src/app/core/file';
 import { User } from 'src/app/core/user';
@@ -18,6 +18,8 @@ export class AsideComponent implements OnInit {
   containerName: string = '#general';
   sections: boolean[] = [];
   noOfSection: number = 5;
+
+  @Output() closeAside = new EventEmitter();
 
   constructor(private chatService: ChatService) { }
 
@@ -59,6 +61,8 @@ export class AsideComponent implements OnInit {
       }
     });
   }
-  
 
+  closeSelf() {
+    this.closeAside.emit();
+  }
 }

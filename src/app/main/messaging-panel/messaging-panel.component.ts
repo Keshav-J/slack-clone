@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-messaging-panel',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessagingPanelComponent implements OnInit {
 
+  @Output() toggleAside = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  messagingPanel_toggleAside() {
+    this.toggleAside.emit();
+  }
 }

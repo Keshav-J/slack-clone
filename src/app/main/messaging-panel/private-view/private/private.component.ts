@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-private',
@@ -7,11 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivateComponent implements OnInit {
 
+  @Output() togglePrivateAside = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
-    console.log("hiiiiiii");
   }
 
-
+  private_toggleAside() {
+    console.log('asdasdasdasdas');
+    
+    this.togglePrivateAside.emit();
+  }
 }
