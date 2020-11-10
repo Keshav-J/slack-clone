@@ -21,7 +21,7 @@
         (click) = "selectItem(message.name)" 
         [class.selected]="message.name == selectedItem">
         <div class="left">
-            <a class="message-content relative" routerLink='/dm/message.name'>
+            <a class="message-content relative"  routerLink="/private">
             <i [attr.class]="message.iconUrl"  [style.color]="message.color">
                 <div class="online-indicator" [style.background-color]="(message.status==1) ? 'green': 'white'"></div>
             </i>

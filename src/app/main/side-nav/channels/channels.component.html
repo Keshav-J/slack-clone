@@ -19,7 +19,7 @@
         *ngFor="let channel of channelsList" 
         (click) = "selectItem(channel.name)" 
         [class.selected]="channel.name == selectedItem">
-        <a class="channel-content" routerLink='/channels'>
+        <a class="channel-content" routerLink='/channel'>
             <i [attr.class]="channel.iconUrl"></i>
             <span>{{channel.name}}</span>
         </a>

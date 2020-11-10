@@ -9,7 +9,7 @@ import { SlackBrowseComponent } from './slack-browse/slack-browse.component';
 import { BadgeComponent } from './badge/badge.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-
+import { RouterModule } from '@angular/router';
 
 
 
@@ -28,6 +28,7 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     MatMenuModule,
     MatIconModule,
+    RouterModule
   ],
   exports: [
     SideNavComponent,
