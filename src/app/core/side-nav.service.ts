@@ -23,12 +23,12 @@ export class SideNavService {
     {
       iconUrl: "far fa-address-book",
       name: "People & user groups",
-      route: ""
+      route: "peopleanduser"
     },
     {
       iconUrl: "fas fa-at",
       name: "Mentions & reactions",
-      route: "peopleanduser"
+      route: ""
     }
   ]
   directMessagesList = [
@@ -111,7 +111,7 @@ export class SideNavService {
   }
 
   //selected item
-  selectedItem: string = "Thread";
+  selectedItem: string = "general";
   
   selectedItemChange: Subject<String> = new Subject<String>();
 

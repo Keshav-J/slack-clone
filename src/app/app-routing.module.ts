@@ -5,10 +5,11 @@ import { PrivateComponent } from './main/messaging-panel/private-view/private/pr
 import { PeopleanduserComponent } from './main/messaging-panel/people-and-user/people-and-user.component';
 
 const routes: Routes = [
-  {path:'', component: ChannelComponent},
+  {path:'', redirectTo: '/channel', pathMatch: 'full'},
   {path:'channel', component: ChannelComponent},
   {path:'private', component: PrivateComponent},
-  {path: 'peopleanduser', component: PeopleanduserComponent}
+  {path: 'peopleanduser', component: PeopleanduserComponent},
+
 ];
 
 @NgModule({
