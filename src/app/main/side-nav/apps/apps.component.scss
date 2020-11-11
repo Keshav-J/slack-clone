@@ -78,6 +78,12 @@ a {
     background-color: #1164A3;
     color:#ECF3F8;
 } 
+.app-item.selected {
+    span {
+        color: white;
+        font-weight: bold;
+    }
+}
 .app-item.selected:hover {
     background-color: #1164A3;
 }

@@ -77,6 +77,12 @@ a i {
     display: flex;
  
 }
+.direct-message-item.selected {
+    span {
+        color: white;
+        font-weight: bold;
+    }
+}
 .direct-message-item.selected:hover {
     background-color: #1164A3;
 }
