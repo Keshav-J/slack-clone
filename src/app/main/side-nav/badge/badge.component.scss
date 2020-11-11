@@ -6,6 +6,7 @@
     flex-direction:row;
     justify-content: space-between;
     border-bottom: 0.1em solid rgb(59, 55, 55);
+    position: relative;
 }
 .down_arrow{
     margin-bottom: 0px;
@@ -18,13 +19,21 @@
     background-color: #3F0E40;
     border: none;
     color: #ffffff;
+    font-weight: bold;
+}
+.desc {
+    font-size: larger;
+    font-weight: 600;
+    padding-left: 10px;
 }
 .image{
     border-radius: 100px;
     padding-top: 10px;
+    position: absolute;
+    right: 15px;
     img{
         border-radius: 100px;
-        height: 40px;
+        height: 38px;
     }
 }
 .head{
@@ -55,15 +64,22 @@
     height: 10px;
 }
 .button:hover{
-    background-color: blue;
-    }
+    background-color: #1164A3;
+    color: white;
+}
 .partition{
     border-bottom: 1px solid silver;
 }
 .logo{
-        margin-left: 90px;
-        margin-top: 5px;
-        width: 30px;
-        height: 30px;
-        border-radius: 100%;
+    margin-left: 90px;
+    margin-top: 5px; 
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}
+
+button:focus {
+    outline: 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
