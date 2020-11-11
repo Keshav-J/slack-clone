@@ -24,7 +24,7 @@ export class PrivateHeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  makeStar() {
+  toggleStar() {
     this.starred = !this.starred;
   }
 

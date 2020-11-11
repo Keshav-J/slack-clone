@@ -1,6 +1,10 @@
-<div class="private">
-    <app-private-header (toggleAside)="private_toggleAside()"></app-private-header>
-    <app-message-container></app-message-container>
-    <app-chatbox></app-chatbox>
+<div class="container">
+    <div class="private">
+        <app-private-header (toggleAside)="toggleAside()"></app-private-header>
+        <app-message-container></app-message-container>
+        <app-chatbox></app-chatbox>
+    </div>
+    <ng-container *ngIf="displayAside">
+        <app-private-aside (closeAside)="closeAside()"></app-private-aside>
+    </ng-container>
 </div>
-
