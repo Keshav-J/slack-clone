@@ -7,7 +7,7 @@ body{
     display: grid;
     
   grid-template-columns: auto auto auto ;
-  grid-gap: 5px;
+  grid-gap: 2px;
   grid-auto-flow: dense;
     //width: 100%;
     //height: 100%;
@@ -19,7 +19,7 @@ body{
   
     // margin-left: 20%;
     // margin-top: 2%;
-    border: 2px solid purple;
+    // border: 2px solid purple;
 
     
             
@@ -32,20 +32,39 @@ body{
 
         .left{
             float: left;
-         
+            hr {
+              border: none;
+              height: 2px;
+              background-color: rgb(0, 112, 15);
+            }
+            
+            
 
     //grid-column: span 2;  grid-row: span 2;
         }
+        
         .right{
-            margin-right: 12%;
+            margin-right: 2%;
             float:right;
            
-            border: 1px solid black;
-            
+            // border: 1px solid black;
+            .invite {
+              font-weight: 900;
+              border-radius: 5px;
+              padding: 10px 13px 10px 13px;
+              background-color: #fff;
+              border: 1px solid rgb(165, 165, 165);
+            }
             
         }
 
     }
+    .count{
+
+      margin-left: 20px;
+
+    
+  }
     .search{
         height: 30px;
         width: 85%;
@@ -54,14 +73,15 @@ body{
         grid-row: 2;
         grid-column-start: 1;
         grid-column-end:   4;
-
-        //margin-left: auto;
-        //margin-right: auto;
-        //margin-top: 10%;
-        //padding:10px;
-        //box-shadow:1px 1px 1px 1px blue;
-        box-shadow: 0 0 5px 2px blue;
-
+        border-radius: 5px;
+        
+        border : 1px solid rgb(156, 156, 156);
+        &:focus {
+          box-shadow: 0 0 0 1px rgba(18,100,163,1),0 0 0 5px rgba(29,155,209,.3);
+          border-color: transparent;
+          outline: none;
+        }
+        
         
         }
 
@@ -99,14 +119,17 @@ body{
         -ms-flex-wrap: wrap; /* IE10 */
         flex-wrap: wrap;
         padding: 0 4px;
+        width: 100%;
+        
       }
       
       /* Create four equal columns that sits next to each other */
       .column {
-        -ms-flex: 25%; /* IE10 */
+        -ms-flex: 65%; /* IE10 */
         flex: 20%;
         max-width: 20%;
         padding: 0 4px;
+        
         img{
           border: 2px solid lightgray;
           border-radius: 5px;
@@ -151,3 +174,16 @@ body{
         
 
   }
+.imgcol {
+  // border: 1px solid black;
+  
+  .profile {
+    display: flex;
+    // border: 1px solid rgb(243, 0, 0);
+  }
+    
+   .desc {
+     height: 100px;
+   }
+  
+}

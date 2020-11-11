@@ -16,7 +16,7 @@ export class PeopleanduserComponent implements OnInit {
     console.log("hi there");
   }
   openDialog() {
-    this.dialog.open(DialogElementsExampleDialog,{height:'40%',width:'40%',panelClass: 'my-panel'});
+    this.dialog.open(DialogElementsExampleDialog,{height:'50%',width:'40%',panelClass: 'my-panel'});
   }
 
 
