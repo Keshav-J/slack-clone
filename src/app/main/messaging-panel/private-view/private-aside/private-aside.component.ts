@@ -5,37 +5,39 @@ import { SideNavService } from 'src/app/core/side-nav.service';
 import { User } from 'src/app/core/user';
 
 @Component({
-  selector: 'app-channel-aside',
-  templateUrl: './channel-aside.component.html',
-  styleUrls: ['./channel-aside.component.scss']
+  selector: 'app-private-aside',
+  templateUrl: './private-aside.component.html',
+  styleUrls: ['./private-aside.component.scss']
 })
-export class ChannelAsideComponent implements OnInit {
+export class PrivateAsideComponent implements OnInit {
 
-  users: User[];
-  shortcuts: object[];
+  user: User;
   pinned: object[];
   files: File[];
 
-  channelName: String;
-  sections: boolean[] = [];
-  noOfSection: number = 5;
+  userName: String;
+  nameValueSubscription: any;
 
-  channelNameSubscription: any
-  
+  sections: boolean[] = [];
+  noOfSection: number = 3;
+
   @Output() closeAside = new EventEmitter();
 
-  constructor(private chatService: ChatService, private sidenavService: SideNavService) { 
-    this.channelName = this.sidenavService.getSelectedItem()
-    this.channelNameSubscription = sidenavService.selectedItemChange.subscribe((value) => {
-      this.channelName = value;
-    })
-  }
+  constructor(private chatService: ChatService, private sidenavService: SideNavService) {
+    this.userName = this.sidenavService.getSelectedItem()
+    this.nameValueSubscription = sidenavService.selectedItemChange.subscribe((value) => {
+      this.userName = value
+  })
+   }
 
   ngOnInit(): void {
     this.initCollapsibles();
 
-    this.users = this.chatService.getUsers();
-    this.shortcuts = [];
+    this.user = this.chatService.getUser(6);
+    console.log(this.user);
+    
+    this.userName = this.user.first_name + ' ' + this.user.last_name;
+
     this.pinned = [];
     this.files = this.chatService.getFiles();
   }

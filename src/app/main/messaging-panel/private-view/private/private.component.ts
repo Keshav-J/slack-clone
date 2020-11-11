@@ -7,16 +7,18 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class PrivateComponent implements OnInit {
 
-  @Output() togglePrivateAside = new EventEmitter();
+  displayAside: boolean = true;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  private_toggleAside() {
-    console.log('asdasdasdasdas');
-    
-    this.togglePrivateAside.emit();
+  toggleAside() {
+    this.displayAside = !this.displayAside;
+  }
+
+  closeAside() {
+    this.displayAside = false;
   }
 }
