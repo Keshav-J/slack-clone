@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ChatService } from 'src/app/core/chat.service';
 import { File } from 'src/app/core/file';
+import { SideNavService } from 'src/app/core/side-nav.service';
 import { User } from 'src/app/core/user';
 
 @Component({
@@ -14,14 +15,20 @@ export class PrivateAsideComponent implements OnInit {
   pinned: object[];
   files: File[];
 
-  userName: string;
+  userName: String;
+  nameValueSubscription: any;
 
   sections: boolean[] = [];
   noOfSection: number = 3;
 
   @Output() closeAside = new EventEmitter();
 
-  constructor(private chatService: ChatService) { }
+  constructor(private chatService: ChatService, private sidenavService: SideNavService) {
+    this.userName = this.sidenavService.getSelectedItem()
+    this.nameValueSubscription = sidenavService.selectedItemChange.subscribe((value) => {
+      this.userName = value
+  })
+   }
 
   ngOnInit(): void {
     this.initCollapsibles();

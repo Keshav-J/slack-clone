@@ -2,7 +2,7 @@
     <div class="header">
         <div class="left">
             <span class="title"> Details </span>
-            <span> {{ containerName }} </span>
+            <span> # {{ channelName }} </span>
         </div>
         <div class="right" (click)="closeSelf()">
             <i class="fal fa-times"></i>
@@ -15,14 +15,14 @@
                 <i class="action-icon far fa-user-plus"></i>
                 <span class="action-description">Add</span>
                 <span class="tooltip-text">
-                    Add people to {{ containerName }}
+                    Add people to #{{ channelName }}
                 </span>
             </div>
             <div class="action tooltip">
                 <i class="action-icon fal fa-file-search"></i>
                 <span class="action-description">Find</span>
                 <span class="tooltip-text">
-                    Find in {{ containerName }}
+                    Find in #{{ channelName }}
                 </span>
             </div>
             <div class="action tooltip">
@@ -38,7 +38,7 @@
                 <span class="tooltip-text">
                     More options for
                     <br>
-                    {{ containerName }}
+                    #{{ channelName }}
                 </span>
             </div>
         </div>

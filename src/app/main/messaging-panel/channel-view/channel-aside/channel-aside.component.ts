@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ChatService } from 'src/app/core/chat.service';
 import { File } from 'src/app/core/file';
+import { SideNavService } from 'src/app/core/side-nav.service';
 import { User } from 'src/app/core/user';
 
 @Component({
@@ -15,13 +16,20 @@ export class ChannelAsideComponent implements OnInit {
   pinned: object[];
   files: File[];
 
-  containerName: string = '#general';
+  channelName: String;
   sections: boolean[] = [];
   noOfSection: number = 5;
 
+  channelNameSubscription: any
+  
   @Output() closeAside = new EventEmitter();
 
-  constructor(private chatService: ChatService) { }
+  constructor(private chatService: ChatService, private sidenavService: SideNavService) { 
+    this.channelName = this.sidenavService.getSelectedItem()
+    this.channelNameSubscription = sidenavService.selectedItemChange.subscribe((value) => {
+      this.channelName = value;
+    })
+  }
 
   ngOnInit(): void {
     this.initCollapsibles();
