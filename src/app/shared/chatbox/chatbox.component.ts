@@ -9,7 +9,7 @@ import { ChatService } from 'src/app/core/chat.service';
 export class ChatboxComponent implements OnInit {
 
   blur: boolean;
-  showFormat: boolean = true;
+  showFormat = true;
   constructor(private chatservice: ChatService) { }
 
   ngOnInit(): void {
@@ -20,13 +20,14 @@ export class ChatboxComponent implements OnInit {
   changeFormat(): void {
     this.showFormat = !this.showFormat;
   }
-  addToCart(msg) {
+  addToCart(msg): void {
     this.chatservice.addToCart(msg);
   }
-  addmsg(){
-    const msg=(<HTMLInputElement>document.getElementById("msgData")).value;
-    
-    console.log("from add msg "+msg);
+  addmsg(): void {
+    const msg = (document.getElementById('msgData') as HTMLInputElement).value;
+    (document.getElementById('msgData') as HTMLInputElement).value = '';
+
+    console.log(`from add msg ${msg}`);
     this.addToCart(msg);
   }
 }

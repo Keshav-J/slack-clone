@@ -14,7 +14,6 @@ import { AppComponent } from './app.component';
 import { TopnavbarComponent } from './main/header/topnavbar/topnavbar.component';
 import { SideNavModule } from './main/side-nav/side-nav.module';
 import { MessagingPanelModule } from './main/messaging-panel/messaging-panel.module';
-import { AsideModule } from './main/aside/aside.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { AsideModule } from './main/aside/aside.module';
     MatIconModule,
     MatMenuModule,
     MatToolbarModule,
-    AsideModule,
     HttpClientModule,
     SideNavModule,
     MessagingPanelModule

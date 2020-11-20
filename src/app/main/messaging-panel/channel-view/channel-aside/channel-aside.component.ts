@@ -34,7 +34,7 @@ export class ChannelAsideComponent implements OnInit {
   ngOnInit(): void {
     this.initCollapsibles();
 
-    this.users = this.chatService.getUsers();
+    this.users = this.chatService.getMembers();
     this.shortcuts = [];
     this.pinned = [];
     this.files = this.chatService.getFiles();

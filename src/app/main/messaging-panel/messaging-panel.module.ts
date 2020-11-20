@@ -12,7 +12,6 @@ import { MessagingPanelComponent } from './messaging-panel.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { PeopleanduserComponent } from './people-and-user/people-and-user.component';
 import { MatIconModule } from '@angular/material/icon';
-import { PrivateViewComponent } from '../aside/private-view/private-view.component';
 import { PrivateAsideComponent } from './private-view/private-aside/private-aside.component';
 import { ChannelAsideComponent } from './channel-view/channel-aside/channel-aside.component';
 
