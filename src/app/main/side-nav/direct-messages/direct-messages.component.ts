@@ -8,22 +8,22 @@ import { SideNavService } from '../../../core/side-nav.service';
 })
 export class DirectMessagesComponent implements OnInit {
 
-  caret: boolean = false;
+  constructor(private sidenavService: SideNavService) {
+    this.selectedItem = this.sidenavService.getSelectedItem();
+    this.selectedItemSubscription = sidenavService.selectedItemChange.subscribe((value) => {
+      this.selectedItem = value;
+    });
+  }
 
-  selectedItem: String
-  selectedItemSubscription: any
+  caret = false;
+
+  selectedItem: string;
+  selectedItemSubscription: any;
+
+  directMessagesList = this.sidenavService.getDirectMessages();
   selectItem(item: string): void {
     this.sidenavService.setSelectedItem(item);
     this.selectedItem = item;
-  }
-
-  directMessagesList = this.sidenavService.getDirectMessages();
-  
-  constructor(private sidenavService: SideNavService) { 
-    this.selectedItem = this.sidenavService.getSelectedItem()
-    this.selectedItemSubscription = sidenavService.selectedItemChange.subscribe((value) => {
-      this.selectedItem = value
-    })
   }
 
   ngOnInit(): void {

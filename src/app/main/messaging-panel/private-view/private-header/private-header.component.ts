@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChatService } from 'src/app/core/chat.service';
+import { User } from 'src/app/core/user';
 import { SideNavService } from '../../../../core/side-nav.service';
 
 @Component({
@@ -8,29 +10,32 @@ import { SideNavService } from '../../../../core/side-nav.service';
 })
 export class PrivateHeaderComponent implements OnInit {
 
-  name: String
-  nameValueSubscription: any;
-  
-  starred: boolean = false;
-  constructor(private sidenavService: SideNavService) {
-    this.name = this.sidenavService.getSelectedItem()
-    this.nameValueSubscription = sidenavService.selectedItemChange.subscribe((value) => {
-      this.name = value
-  })
-   }
+  user: User;
+  userSubscription: any;
+
+  starred = false;
+  constructor(private sidenavService: SideNavService,
+              private chatService: ChatService) {
+    console.log(this.sidenavService.getSelectedItem() as unknown as number);
+    this.user = this.chatService.getUser(this.sidenavService.getSelectedItem() as unknown as number);
+    this.userSubscription = sidenavService.selectedItemChange.subscribe((value) => {
+      console.log(value as unknown as number);
+      this.user = this.chatService.getUser(value as unknown as number);
+      console.log(this.user);
+    });
+  }
 
   @Output() toggleAside = new EventEmitter();
 
 
   ngOnInit(): void {
   }
-  toggleStar() {
+
+  toggleStar(): void {
     this.starred = !this.starred;
   }
 
-  header_toggleAside() {
-    console.log('asdas');
-    
+  header_toggleAside(): void {
     this.toggleAside.emit();
   }
 }
