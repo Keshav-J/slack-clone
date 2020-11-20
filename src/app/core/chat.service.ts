@@ -8,28 +8,28 @@ import { User } from './user';
 })
 export class ChatService {
 
-  users: { [key: number]: User };
+  users: { [key: string]: User };
   members: User[];
   files: File[];
   messages: Message[];
 
   constructor() {
     this.users = {
-      1: new User(1, 'John', 'Doe', true, 'assets/profile-pic/profile-pic1.png', 9548756481, 'john123@gmail.com'),
-      2: new User(2, 'Austine', '', false, 'assets/profile-pic/profile-pic2.png', 8456217496, 'austine@gmail.com'),
-      3: new User(3, 'Samantha', 'Ruth', false, 'assets/profile-pic/profile-pic3.png', 9845621452, 'sam@gmail.com'),
-      4: new User(4, 'Lily', '', true, 'assets/profile-pic/profile-pic4.png', 9854562154, 'lily@gmail.com'),
-      5: new User(5, 'Joe', 'Tribiani', true, 'assets/profile-pic/profile-pic5.png', 9874563210, 'how_you_doin@gmail.com'),
-      6: new User(6, 'Gowtham', 'S', true, 'assets/profile-pic/profile-pic6.png', 9791898746, 'gowthamsuresh6599@gmail.com')
+      D1: new User('D1', 'John', 'Doe', true, 'assets/profile-pic/profile-pic1.png', 9548756481, 'john123@gmail.com'),
+      D2: new User('D2', 'Austine', '', false, 'assets/profile-pic/profile-pic2.png', 8456217496, 'austine@gmail.com'),
+      D3: new User('D3', 'Samantha', 'Ruth', false, 'assets/profile-pic/profile-pic3.png', 9845621452, 'sam@gmail.com'),
+      D4: new User('D4', 'Lily', '', true, 'assets/profile-pic/profile-pic4.png', 9854562154, 'lily@gmail.com'),
+      D5: new User('D5', 'Joe', 'Tribiani', true, 'assets/profile-pic/profile-pic5.png', 9874563210, 'how_you_doin@gmail.com'),
+      D6: new User('D6', 'Gowtham', 'S', true, 'assets/profile-pic/profile-pic6.png', 9791898746, 'gowthamsuresh6599@gmail.com')
     };
 
     this.members = [
-      this.users[1],
-      this.users[2],
-      this.users[3],
-      this.users[4],
-      this.users[5],
-      this.users[6]
+      this.users.D1,
+      this.users.D2,
+      this.users.D3,
+      this.users.D4,
+      this.users.D5,
+      this.users.D6
     ];
 
     this.files = [
@@ -40,20 +40,20 @@ export class ChatService {
     ];
 
     this.messages = [
-      new Message(1, 1, 'Hi there!', new Date()),
-      new Message(2, 2, 'Hey how r u', new Date()),
-      new Message(3, 3, 'okay', new Date()),
-      new Message(4, 4, 'thank you', new Date()),
-      new Message(5, 1, 'Here comes Joe...', new Date()),
-      new Message(6, 5, 'How you doin', new Date()),
-      new Message(7, 2, '😊', new Date()),
-      new Message(8, 3, '😊', new Date()),
-      new Message(9, 4, '😊', new Date()),
+      new Message(1, 'D1', 'Hi there!', new Date()),
+      new Message(2, 'D2', 'Hey how r u', new Date()),
+      new Message(3, 'D3', 'okay', new Date()),
+      new Message(4, 'D4', 'thank you', new Date()),
+      new Message(5, 'D1', 'Here comes Joe...', new Date()),
+      new Message(6, 'D5', 'How you doin', new Date()),
+      new Message(7, 'D2', '😊', new Date()),
+      new Message(8, 'D3', '😊', new Date()),
+      new Message(9, 'D4', '😊', new Date()),
     ];
   }
 
   addToCart(msg: string): void {
-    this.messages.push(new Message(this.messages.length + 1, 6, msg, new Date()));
+    this.messages.push(new Message(this.messages.length + 1, 'D6', msg, new Date()));
   }
 
   // tslint:disable-next-line: typedef
@@ -61,7 +61,7 @@ export class ChatService {
     return this.messages;
   }
 
-  getUsers(): { [key: number]: User }  {
+  getUsers(): { [key: string]: User }  {
     return this.users;
   }
 

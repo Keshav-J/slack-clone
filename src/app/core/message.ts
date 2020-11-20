@@ -1,11 +1,11 @@
 export class Message {
     id: number;
-    userId: number;
+    userId: string;
     msg: string;
     time: Date;
 
     constructor(id: number,
-                userId: number,
+                userId: string,
                 msg: string,
                 time: Date) {
         this.id = id;

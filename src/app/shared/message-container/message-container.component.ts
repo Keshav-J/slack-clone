@@ -11,7 +11,7 @@ import { User } from 'src/app/core/user';
 export class MessageContainerComponent implements OnInit {
 
   messages: Message[];
-  users: User[];
+  users: { [key: string]: User };
 
   constructor(private chatservice: ChatService) { }
 

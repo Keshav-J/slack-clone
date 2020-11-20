@@ -1,5 +1,5 @@
 export class User {
-    id: number;
+    id: string;
     firstName: string;
     lastName: string;
     isActive: boolean;
@@ -7,7 +7,7 @@ export class User {
     phoneNumber: number;
     email: string;
 
-    constructor(id: number,
+    constructor(id: string,
                 firstName: string,
                 lastName: string,
                 isActive: boolean,
