@@ -11,7 +11,7 @@
     
     <div class="body">
         <div class="user">
-            <img class="display-picture" src="{{ user.display_picture }}" alt="{{ userName }}">
+            <img class="display-picture" src="{{ user.displayPicture }}" alt="{{ userName }}">
             <div class="display-name">
                 {{ userName }}
 
@@ -78,7 +78,7 @@
                         <div class="about-content">
                             <span class="heading"> Phone number </span>
                             <p class="content link">
-                                {{ user.phone_number }}
+                                {{ user.phoneNumber }}
                             </p>
                         </div>
                         <div class="about-content">
@@ -118,12 +118,12 @@
 
                         <div class="file">
                             <div class="file-icon">
-                                <img src="{{ file.preview_image }}" />
+                                <img src="{{ file.previewImage }}" />
                             </div>
                             <div class="file-desc">
                                 <span class="title"> {{ file.name }} </span>
                                 <div>
-                                    <span class="sender"> {{ file.sender_name }} </span>
+                                    <span class="sender"> {{ file.senderName }} </span>
                                     <span class="time"> {{ file.time }} </span>
                                 </div>
                             </div>

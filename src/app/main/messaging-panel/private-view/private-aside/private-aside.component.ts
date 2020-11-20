@@ -36,7 +36,7 @@ export class PrivateAsideComponent implements OnInit {
     this.user = this.chatService.getUser(6);
     console.log(this.user);
     
-    this.userName = this.user.first_name + ' ' + this.user.last_name;
+    this.userName = this.user.firstName + ' ' + this.user.lastName;
 
     this.pinned = [];
     this.files = this.chatService.getFiles();

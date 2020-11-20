@@ -89,10 +89,10 @@
                     <ng-container *ngFor="let user of users">
                         
                         <div class="user-container">
-                            <img class="dp" src="{{ user.display_picture }}" alt="user.first_name">
+                            <img class="dp" src="{{ user.displayPicture }}" alt="user.firstName">
                             <div class="name">
-                                <span> {{ user.first_name }} </span>
-                                <span> {{ user.last_name }} </span>
+                                <span> {{ user.firstName }} </span>
+                                <span> {{ user.lastName }} </span>
                             </div>
                             <div class="is-active">
                                 <ng-container *ngIf="user.isActive;else inactiveUser">
@@ -158,12 +158,12 @@
 
                         <div class="file">
                             <div class="file-icon">
-                                <img src="{{ file.preview_image }}" />
+                                <img src="{{ file.previewImage }}" />
                             </div>
                             <div class="file-desc">
                                 <span class="title"> {{ file.name }} </span>
                                 <div>
-                                    <span class="sender"> {{ file.sender_name }} </span>
+                                    <span class="sender"> {{ file.senderName }} </span>
                                     <span class="time"> {{ file.time }} </span>
                                 </div>
                             </div>
