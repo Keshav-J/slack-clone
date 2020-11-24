@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { ChatService } from 'src/app/core/chat.service';
 import { File } from 'src/app/core/file';
 import { SideNavService } from 'src/app/core/side-nav.service';
@@ -25,12 +26,13 @@ export class PrivateAsideComponent implements OnInit {
 
   @Output() closeAside = new EventEmitter();
 
-  constructor(private sidenavService: SideNavService,
+  constructor(private router: Router,
+              private sidenavService: SideNavService,
               private chatService: ChatService) {
-    console.log(this.sidenavService.getSelectedItem() as unknown as number);
-    this.user = this.chatService.getUser(this.sidenavService.getSelectedItem() as unknown as number);
+    this.user = this.chatService.getUser(this.sidenavService.getSelectedItem());
+
     this.userSubscription = sidenavService.selectedItemChange.subscribe((value) => {
-      this.user = this.chatService.getUser(value as unknown as number);
+      this.user = this.chatService.getUser(value);
       this.userName = this.user.firstName + ' ' + this.user.lastName;
     });
   }
@@ -43,6 +45,8 @@ export class PrivateAsideComponent implements OnInit {
     this.files = this.chatService.getFiles();
 
     this.date = new Date();
+
+    this.userName = this.user.firstName + ' ' + this.user.lastName;
   }
 
   initCollapsibles(): void {
@@ -75,7 +79,14 @@ export class PrivateAsideComponent implements OnInit {
     });
   }
 
-  closeSelf(): void {
-    this.closeAside.emit();
+  closeDetails(): void {
+    const segments = this.router.url.split('/');
+    console.log(segments);
+
+    if (segments[segments.length - 1] === 'details') {
+      segments.pop();
+    }
+
+    this.router.navigate(segments);
   }
 }

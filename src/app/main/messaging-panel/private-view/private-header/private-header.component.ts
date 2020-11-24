@@ -13,15 +13,16 @@ export class PrivateHeaderComponent implements OnInit {
   user: User;
   userSubscription: any;
 
+  userName: string;
+
   starred = false;
   constructor(private sidenavService: SideNavService,
               private chatService: ChatService) {
-    console.log(this.sidenavService.getSelectedItem() as unknown as number);
-    this.user = this.chatService.getUser(this.sidenavService.getSelectedItem() as unknown as number);
+    this.user = this.chatService.getUser(this.sidenavService.getSelectedItem());
+
     this.userSubscription = sidenavService.selectedItemChange.subscribe((value) => {
-      console.log(value as unknown as number);
-      this.user = this.chatService.getUser(value as unknown as number);
-      console.log(this.user);
+      this.user = this.chatService.getUser(value);
+      this.userName = this.user.firstName + ' ' + this.user.lastName;
     });
   }
 

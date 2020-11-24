@@ -1,7 +1,7 @@
 <div class="chatbar">
     <div class="left">
         <i class="fas fa-circle"></i>  
-        <div class="username pointer">{{ user.firstName +  ' ' + user.lastName }}</div>
+        <div class="username pointer">{{ userName }}</div>
         <ng-container *ngIf="!starred"><i class="fal fa-star pointer" (click)="toggleStar()"></i> </ng-container>
         <ng-container *ngIf="starred"><i class="fas fa-star pointer" (click)="toggleStar()"></i> </ng-container>
     </div>

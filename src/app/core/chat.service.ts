@@ -56,8 +56,7 @@ export class ChatService {
     this.messages.push(new Message(this.messages.length + 1, 'D6', msg, new Date()));
   }
 
-  // tslint:disable-next-line: typedef
-  getMessages() {
+  getMessages(): Message[] {
     return this.messages;
   }
 
@@ -73,7 +72,7 @@ export class ChatService {
     return this.files;
   }
 
-  getUser(id: number): User {
+  getUser(id: string): User {
     return this.users[id];
   }
 }

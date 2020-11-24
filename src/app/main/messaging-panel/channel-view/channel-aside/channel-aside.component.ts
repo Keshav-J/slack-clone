@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { ChatService } from 'src/app/core/chat.service';
 import { File } from 'src/app/core/file';
 import { SideNavService } from 'src/app/core/side-nav.service';
@@ -22,9 +23,7 @@ export class ChannelAsideComponent implements OnInit {
 
   channelNameSubscription: any
   
-  @Output() closeAside = new EventEmitter();
-
-  constructor(private chatService: ChatService, private sidenavService: SideNavService) { 
+  constructor(private router: Router, private chatService: ChatService, private sidenavService: SideNavService) { 
     this.channelName = this.sidenavService.getSelectedItem()
     this.channelNameSubscription = sidenavService.selectedItemChange.subscribe((value) => {
       this.channelName = value;
@@ -70,7 +69,14 @@ export class ChannelAsideComponent implements OnInit {
     });
   }
 
-  closeSelf() {
-    this.closeAside.emit();
+  closeDetails(): void {
+    const segments = this.router.url.split('/');
+    console.log(segments);
+
+    if (segments[segments.length - 1] === 'details') {
+      segments.pop();
+    }
+
+    this.router.navigate(segments);
   }
 }

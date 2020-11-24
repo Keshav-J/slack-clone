@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-private',
@@ -7,18 +8,20 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class PrivateComponent implements OnInit {
 
-  displayAside: boolean = true;
-
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  toggleAside() {
-    this.displayAside = !this.displayAside;
-  }
+  toggleAside(): void {
+    const segments = this.router.url.split('/');
+    console.log(segments);
 
-  closeAside() {
-    this.displayAside = false;
+    if (segments[segments.length - 1] === 'details') {
+      segments.pop();
+    } else {
+      segments.push('details');
+    }
+    this.router.navigate(segments);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-channel',
@@ -9,16 +10,20 @@ export class ChannelComponent implements OnInit {
 
   displayAside = true;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   toggleAside(): void {
-    this.displayAside = !this.displayAside;
-  }
+    const segments = this.router.url.split('/');
+    console.log(segments);
 
-  closeAside(): void {
-    this.displayAside = false;
+    if (segments[segments.length - 1] === 'details') {
+      segments.pop();
+    } else {
+      segments.push('details');
+    }
+    this.router.navigate(segments);
   }
 }

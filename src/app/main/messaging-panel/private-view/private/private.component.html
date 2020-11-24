@@ -4,7 +4,5 @@
         <app-message-container></app-message-container>
         <app-chatbox></app-chatbox>
     </div>
-    <ng-container *ngIf="displayAside">
-        <app-private-aside (closeAside)="closeAside()"></app-private-aside>
-    </ng-container>
+    <router-outlet></router-outlet>
 </div>
