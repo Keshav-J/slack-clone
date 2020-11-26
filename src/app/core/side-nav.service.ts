@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Channel } from './channel';
 import { ChatService } from './chat.service';
 import { User } from './user';
 @Injectable({
@@ -9,7 +10,7 @@ export class SideNavService {
 
   customBrowseList: object[];
   directMessagesList: User[];
-  channelsList: object[];
+  channelsList: Channel[];
   appsList: object[];
   selectedItem: string;
 
@@ -42,26 +43,9 @@ export class SideNavService {
       }
     ];
 
-    this.directMessagesList = this.chatService.getMembers();
+    this.directMessagesList = this.chatService.getUsersList();
 
-    this.channelsList = [
-      {
-        name:'coda-support',
-        iconUrl: 'fas fa-lock'
-      },
-      {
-        name:'bug-slayers',
-        iconUrl: 'fas fa-lock'
-      },
-      {
-        name:'fun pandrom',
-        iconUrl: 'fas fa-lock'
-      },
-      {
-        name:'general',
-        iconUrl: 'fas fa-hashtag'
-      }
-    ];
+    this.channelsList = this.chatService.getChannelsList();
 
     this.appsList = [
       {
@@ -75,7 +59,7 @@ export class SideNavService {
     ];
 
     // selected item
-    this.selectedItem = 'general';
+    this.selectedItem = 'C01';
   }
 
   selectedItemChange: Subject<string> = new Subject<string>();
@@ -86,10 +70,10 @@ export class SideNavService {
   getSlackBrowses(): object[] {
     return this.customBrowseList;
   }
-  getChannels(): object[] {
+  getChannels(): Channel[] {
     return this.channelsList;
   }
-  getDirectMessages(): object[] {
+  getDirectMessages(): User[] {
     return this.directMessagesList;
   }
   getApps(): object[] {

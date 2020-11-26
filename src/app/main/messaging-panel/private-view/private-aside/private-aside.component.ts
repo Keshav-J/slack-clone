@@ -27,12 +27,12 @@ export class PrivateAsideComponent implements OnInit {
   @Output() closeAside = new EventEmitter();
 
   constructor(private router: Router,
-              private sidenavService: SideNavService,
-              private chatService: ChatService) {
-    this.user = this.chatService.getUser(this.sidenavService.getSelectedItem());
+              private chatService: ChatService,
+              private sidenavService: SideNavService) {
+    this.user = this.chatService.getUserById(this.sidenavService.getSelectedItem());
 
     this.userSubscription = sidenavService.selectedItemChange.subscribe((value) => {
-      this.user = this.chatService.getUser(value);
+      this.user = this.chatService.getUserById(value);
       this.userName = this.user.firstName + ' ' + this.user.lastName;
     });
   }

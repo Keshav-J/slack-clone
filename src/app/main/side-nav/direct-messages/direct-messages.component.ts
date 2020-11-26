@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/core/user';
 import { SideNavService } from '../../../core/side-nav.service';
 
 @Component({
@@ -20,13 +21,15 @@ export class DirectMessagesComponent implements OnInit {
   selectedItem: string;
   selectedItemSubscription: any;
 
-  directMessagesList = this.sidenavService.getDirectMessages();
+  directMessagesList: User[];
+
   selectItem(item: string): void {
     this.sidenavService.setSelectedItem(item);
     this.selectedItem = item;
   }
 
   ngOnInit(): void {
+    this.directMessagesList = this.sidenavService.getDirectMessages();
   }
 
 }

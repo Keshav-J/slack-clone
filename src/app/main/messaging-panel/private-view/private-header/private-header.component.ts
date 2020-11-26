@@ -18,10 +18,10 @@ export class PrivateHeaderComponent implements OnInit {
   starred = false;
   constructor(private sidenavService: SideNavService,
               private chatService: ChatService) {
-    this.user = this.chatService.getUser(this.sidenavService.getSelectedItem());
+    this.user = this.chatService.getUserById(this.sidenavService.getSelectedItem());
 
     this.userSubscription = sidenavService.selectedItemChange.subscribe((value) => {
-      this.user = this.chatService.getUser(value);
+      this.user = this.chatService.getUserById(value);
       this.userName = this.user.firstName + ' ' + this.user.lastName;
     });
   }

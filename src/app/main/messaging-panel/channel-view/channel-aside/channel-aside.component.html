@@ -2,7 +2,10 @@
     <div class="header">
         <div class="left">
             <span class="title"> Details </span>
-            <span> # {{ channelName }} </span>
+            <span class="channel-name">
+                <i [attr.class]="channel.isGroup ? 'chat-type fas fa-lock' : 'chat-type fas fa-hashtag'"></i>
+                {{ channel.name }}
+            </span>
         </div>
         <div class="right" (click)="closeDetails()">
             <i class="fal fa-times"></i>
@@ -15,14 +18,18 @@
                 <i class="action-icon far fa-user-plus"></i>
                 <span class="action-description">Add</span>
                 <span class="tooltip-text">
-                    Add people to #{{ channelName }}
+                    Add people to
+                    <i *ngIf="!channel.isGroup" class="chat-type fas fa-hashtag"></i>
+                    {{ channel.name }}
                 </span>
             </div>
             <div class="action tooltip">
                 <i class="action-icon fal fa-file-search"></i>
                 <span class="action-description">Find</span>
                 <span class="tooltip-text">
-                    Find in #{{ channelName }}
+                    Find in
+                    <i *ngIf="!channel.isGroup" class="chat-type fas fa-hashtag"></i>
+                    {{ channel.name }}
                 </span>
             </div>
             <div class="action tooltip">
@@ -38,7 +45,8 @@
                 <span class="tooltip-text">
                     More options for
                     <br>
-                    #{{ channelName }}
+                    <i *ngIf="!channel.isGroup" class="chat-type fas fa-hashtag"></i>
+                    {{ channel.name }}
                 </span>
             </div>
         </div>
@@ -57,20 +65,24 @@
                         <div class="about-content">
                             <span class="heading"> Topic </span>
                             <p class="content">
-                                What’s up for discussion?
+                                {{ channel.topic == '' ? 'What’s up for discussion?' : channel.topic }}
                             </p>
                             <a class="edit"> Edit </a>
                         </div>
                         <div class="about-content">
                             <span class="heading"> Description </span>
                             <p class="content">
-                                This is the one channel that will always include everyone. It’s a great spot for announcements and team-wide conversations.
+                                {{
+                                    channel.description == ''
+                                    ? 'This is the one channel that will always include everyone. It’s a great spot for announcements and team-wide conversations.'
+                                    : channel.description
+                                }}
                             </p>
                             <a class="edit"> Edit </a>
                         </div>
                         <div class="about-content about-created">
                             <img src="assets/images/profile-1.png" />
-                            <span class="created-date"> Created on September 4, 2020 </span>
+                            <span class="created-date"> Created on {{ channel.created | date:'MMMM d, yyyy' }} </span>
                         </div>
                     </div>
                 </div>
@@ -80,14 +92,14 @@
                 <div class="collapsible-header" (click)="toggleSection(1)">
                     <label> Members </label>
                     <div class="right">
-                        <span> {{ users.length }} </span>
+                        <span> {{ members.length }} </span>
                         <i *ngIf="!sections[1]" class="fal fa-angle-right inactive-section"></i>
                         <i *ngIf="sections[1]" class="fal fa-angle-down active-section"></i>
                     </div>
                 </div>
                 <div class="collapsible-content" id="section-1">
-                    <ng-container *ngFor="let user of users">
-                        
+                    <ng-container *ngFor="let user of members">
+
                         <div class="user-container">
                             <img class="dp" src="{{ user.displayPicture }}" alt="user.firstName">
                             <div class="name">
@@ -108,7 +120,7 @@
                     
                     <div class="button-section">
                         <button class="btn left">
-                            See All {{ users.length }} Members
+                            See All {{ members.length }} Members
                         </button>
                         <button class="btn right">
                             Add People
@@ -135,7 +147,7 @@
                 <div class="collapsible-header" (click)="toggleSection(3)">
                     <label> Pinned </label>
                     <div class="right">
-                        <span> {{ pinned.length }} </span>
+                        <span> {{ channel.pinnedIds.length }} </span>
                         <i *ngIf="!sections[3]" class="fal fa-angle-right inactive-section"></i>
                         <i *ngIf="sections[3]" class="fal fa-angle-down active-section"></i>
                     </div>
@@ -154,7 +166,7 @@
                     </div>
                 </div>
                 <div class="collapsible-content" id="section-4">
-                    <ng-container *ngFor="let file of files">
+                    <ng-container *ngFor="let file of channel.files">
 
                         <div class="file">
                             <div class="file-icon">

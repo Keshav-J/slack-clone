@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Channel } from 'src/app/core/channel';
+import { ChatService } from 'src/app/core/chat.service';
 import { SideNavService } from '../../../../core/side-nav.service';
 
 @Component({
@@ -8,14 +10,18 @@ import { SideNavService } from '../../../../core/side-nav.service';
 })
 export class ChannelHeaderComponent implements OnInit {
 
-  starred: boolean = false;
-  channelName: String
-  channelNameSubscription: any
-  constructor(private sidenavService: SideNavService) { 
-    this.channelName = this.sidenavService.getSelectedItem()
-    this.channelNameSubscription = sidenavService.selectedItemChange.subscribe((value) => {
-      this.channelName = value
-    })
+  channel: Channel;
+  channelSubscription: any;
+
+  starred = false;
+
+  constructor(private sidenavService: SideNavService,
+              private chatService: ChatService) {
+    this.channel = this.chatService.getChannelById(this.sidenavService.getSelectedItem());
+
+    this.channelSubscription = sidenavService.selectedItemChange.subscribe((value) => {
+      this.channel = this.chatService.getChannelById(this.sidenavService.getSelectedItem());
+    });
   }
 
   @Output() toggleAside = new EventEmitter();
@@ -23,11 +29,11 @@ export class ChannelHeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  toggleStar() {
+  toggleStar(): void {
     this.starred = !this.starred;
   }
 
-  header_toggleAside() {
+  header_toggleAside(): void {
     this.toggleAside.emit();
   }
 }

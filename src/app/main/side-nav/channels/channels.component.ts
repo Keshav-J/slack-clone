@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Channel } from 'src/app/core/channel';
 import { SideNavService } from '../../../core/side-nav.service';
 @Component({
   selector: 'app-channels',
@@ -7,11 +8,20 @@ import { SideNavService } from '../../../core/side-nav.service';
 })
 export class ChannelsComponent implements OnInit {
 
-  caret: boolean =false;
+  constructor(private sidenavService: SideNavService) {
+    this.selectedItem = this.sidenavService.getSelectedItem();
+    this.selectedItemSubscription = sidenavService.selectedItemChange.subscribe((value) => {
+        this.selectedItem = value;
+    });
+  }
 
-  selectedItem: String;
-  
+  caret = false;
+
+  selectedItem: string;
+
   selectedItemSubscription: any;
+
+  channelsList: Channel[];
 
 
   selectItem(item: string): void {
@@ -19,16 +29,8 @@ export class ChannelsComponent implements OnInit {
     this.selectedItem = item;
   }
 
-  channelsList = this.sidenavService.getChannels();
-
-  constructor(private sidenavService: SideNavService) { 
-    this.selectedItem = this.sidenavService.getSelectedItem()
-    this.selectedItemSubscription = sidenavService.selectedItemChange.subscribe((value) => {
-      this.selectedItem = value
-  })
-  }
-
   ngOnInit(): void {
+    this.channelsList = this.sidenavService.getChannels();
   }
 
 }
