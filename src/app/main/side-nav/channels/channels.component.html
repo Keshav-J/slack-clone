@@ -19,7 +19,7 @@
         *ngFor="let channel of channelsList" 
         (click) = "selectItem(channel.id)" 
         [class.selected]="channel.id == selectedItem">
-        <a class="channel-content" routerLink='/channel'>
+        <a class="channel-content" routerLink='/chats/channel'>
             <i [attr.class]="channel.isGroup ? 'fas fa-lock' : 'fas fa-hashtag'"></i>
             <span>{{channel.name}}</span>
         </a>

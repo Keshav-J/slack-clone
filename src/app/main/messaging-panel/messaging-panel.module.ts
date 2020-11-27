@@ -11,7 +11,6 @@ import { PrivateAsideComponent } from './private-view/private-aside/private-asid
 import { MessageContainerComponent } from 'src/app/shared/message-container/message-container.component';
 import { MessageComponent } from 'src/app/shared/message/message.component';
 import { ChatboxComponent } from 'src/app/shared/chatbox/chatbox.component';
-import { MessagingPanelComponent } from './messaging-panel.component';
 import { PeopleanduserComponent } from './people-and-user/people-and-user.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -19,7 +18,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
-    MessagingPanelComponent,
     ChannelComponent,
     ChannelHeaderComponent,
     ChannelAsideComponent,

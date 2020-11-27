@@ -13,7 +13,6 @@ import { AppComponent } from './app.component';
 
 import { TopnavbarComponent } from './main/header/topnavbar/topnavbar.component';
 import { SideNavModule } from './main/side-nav/side-nav.module';
-import { MessagingPanelModule } from './main/messaging-panel/messaging-panel.module';
 
 @NgModule({
   declarations: [
@@ -29,8 +28,7 @@ import { MessagingPanelModule } from './main/messaging-panel/messaging-panel.mod
     MatMenuModule,
     MatToolbarModule,
     HttpClientModule,
-    SideNavModule,
-    MessagingPanelModule
+    SideNavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

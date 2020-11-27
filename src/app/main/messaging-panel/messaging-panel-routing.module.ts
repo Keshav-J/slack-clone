@@ -12,7 +12,17 @@ const routes: Routes = [
     children: [
       {
         path: 'details',
-        component: ChannelAsideComponent
+        component: ChannelAsideComponent,
+        children: [
+          {
+            path: '**',
+            redirectTo: ''
+          }
+        ]
+      },
+      {
+        path: '**',
+        redirectTo: ''
       }
     ]
   },
@@ -22,9 +32,23 @@ const routes: Routes = [
     children: [
       {
         path: 'details',
-        component: PrivateAsideComponent
+        component: PrivateAsideComponent,
+        children: [
+          {
+            path: '**',
+            redirectTo: ''
+          }
+        ]
+      },
+      {
+        path: '**',
+        redirectTo: ''
       }
     ]
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 

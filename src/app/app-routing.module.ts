@@ -5,9 +5,13 @@ import { PeopleanduserComponent } from './main/messaging-panel/people-and-user/p
 const routes: Routes = [
   {path: 'peopleanduser', component: PeopleanduserComponent},
   {
-    path: '',
+    path: 'chats',
     loadChildren: () => import('./main/messaging-panel/messaging-panel.module')
                         .then(m => m.MessagingPanelModule)
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 
