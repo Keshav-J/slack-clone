@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ChatService } from 'src/app/core/chat.service';
 import { File } from 'src/app/core/file';
 import { SideNavService } from 'src/app/core/side-nav.service';
@@ -17,7 +18,9 @@ export class PrivateAsideComponent implements OnInit {
   files: File[];
 
   userName: string;
-  userSubscription: any;
+
+  selectedUserId: string;
+  selectedUserIdSubscription: Subscription;
 
   sections: boolean[] = [];
   noOfSection: number;
@@ -29,17 +32,17 @@ export class PrivateAsideComponent implements OnInit {
   constructor(private router: Router,
               private chatService: ChatService,
               private sidenavService: SideNavService) {
-    this.user = this.chatService.getUserById(this.sidenavService.getSelectedItem());
-
-    this.userSubscription = sidenavService.selectedItemChange.subscribe((value) => {
-      this.user = this.chatService.getUserById(value);
-      this.userName = this.user.firstName + ' ' + this.user.lastName;
+    this.selectedUserId = this.sidenavService.getSelectedItem();
+    this.selectedUserIdSubscription = sidenavService.selectedItemChange.subscribe(value => {
+      this.selectedUserId = value;
+      this.ngOnInit();
     });
   }
 
   ngOnInit(): void {
-    this.noOfSection = 3;
     this.initCollapsibles();
+
+    this.user = this.chatService.getUserById(this.selectedUserId);
 
     this.pinned = [];
     this.files = this.chatService.getFiles();
@@ -50,6 +53,7 @@ export class PrivateAsideComponent implements OnInit {
   }
 
   initCollapsibles(): void {
+    this.noOfSection = 3;
     for (let idx = 0; idx < this.noOfSection ; idx++) {
       this.sections.push(false);
       const content = document.getElementById('section-' + idx);

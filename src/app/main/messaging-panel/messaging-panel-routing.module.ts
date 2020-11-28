@@ -7,7 +7,7 @@ import { PrivateComponent } from './private-view/private/private.component';
 
 const routes: Routes = [
   {
-    path: 'channel',
+    path: 'channel/:id',
     component: ChannelComponent,
     children: [
       {
@@ -27,7 +27,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'private',
+    path: 'private/:id',
     component: PrivateComponent,
     children: [
       {
@@ -48,7 +48,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: ''
+    redirectTo: './'
   }
 ];
 

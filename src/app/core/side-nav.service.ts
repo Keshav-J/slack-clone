@@ -59,7 +59,7 @@ export class SideNavService {
     ];
 
     // selected item
-    this.selectedItem = 'C01';
+    this.selectedItem = '';
   }
 
   selectedItemChange: Subject<string> = new Subject<string>();

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/core/user';
 import { SideNavService } from '../../../core/side-nav.service';
 
@@ -9,7 +10,8 @@ import { SideNavService } from '../../../core/side-nav.service';
 })
 export class DirectMessagesComponent implements OnInit {
 
-  constructor(private sidenavService: SideNavService) {
+  constructor(private router: Router,
+              private sidenavService: SideNavService) {
     this.selectedItem = this.sidenavService.getSelectedItem();
     this.selectedItemSubscription = sidenavService.selectedItemChange.subscribe((value) => {
       this.selectedItem = value;
@@ -30,6 +32,24 @@ export class DirectMessagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.directMessagesList = this.sidenavService.getDirectMessages();
+  }
+
+  redirect(id: string): void {
+    let segments = this.router.url.split('/');
+    console.log(segments);
+
+    if (segments.includes('private')) {
+      const idx = segments.indexOf('private');
+      segments[idx + 1] = id;
+    } else if (segments.includes('channel')) {
+      const idx = segments.indexOf('channel');
+      segments[idx] = 'private';
+      segments[idx + 1] = id;
+    } else {
+      segments = ['', 'chats', 'private', id];
+    }
+
+    this.router.navigate(segments);
   }
 
 }

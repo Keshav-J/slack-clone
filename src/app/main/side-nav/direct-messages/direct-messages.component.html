@@ -18,10 +18,10 @@
     <div *ngIf="caret!=true" class="direct-messages">
         <div class="direct-message-item" 
         *ngFor="let user of directMessagesList" 
-        (click) = "selectItem(user.id)" 
+        (click)="redirect(user.id)"
         [class.selected]="user.id == selectedItem">
         <div class="left">
-            <a class="message-content relative"  routerLink="/chats/private">
+            <a class="message-content relative">
                 <img class="display-picture" src="{{ user.displayPicture }}" />
                 <div class="online-indicator" [style.background-color]="(user.isActive==1) ? 'green': 'white'"></div>
                 <span class="display-name">{{ user.firstName + ' ' + user.lastName }}</span>

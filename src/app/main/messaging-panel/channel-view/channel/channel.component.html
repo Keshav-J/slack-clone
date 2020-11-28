@@ -1,7 +1,7 @@
 <div class="container">
     <div class="channel">
-        <app-channel-header (toggleAside)="toggleAside()"></app-channel-header>
-        <app-message-container></app-message-container>
+        <app-channel-header (toggleAside)="toggleAside()" [channelName]="channel.name" [isGroup]="channel.isGroup"></app-channel-header>
+        <app-message-container [messages]="channel.messages"></app-message-container>
         <app-chatbox></app-chatbox>
     </div>
     <router-outlet></router-outlet>

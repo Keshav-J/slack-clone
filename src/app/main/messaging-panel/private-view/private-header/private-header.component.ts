@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ChatService } from 'src/app/core/chat.service';
 import { User } from 'src/app/core/user';
 import { SideNavService } from '../../../../core/side-nav.service';
@@ -10,21 +10,11 @@ import { SideNavService } from '../../../../core/side-nav.service';
 })
 export class PrivateHeaderComponent implements OnInit {
 
-  user: User;
-  userSubscription: any;
-
-  userName: string;
+  @Input() userName: string;
 
   starred = false;
-  constructor(private sidenavService: SideNavService,
-              private chatService: ChatService) {
-    this.user = this.chatService.getUserById(this.sidenavService.getSelectedItem());
 
-    this.userSubscription = sidenavService.selectedItemChange.subscribe((value) => {
-      this.user = this.chatService.getUserById(value);
-      this.userName = this.user.firstName + ' ' + this.user.lastName;
-    });
-  }
+  constructor() { }
 
   @Output() toggleAside = new EventEmitter();
 

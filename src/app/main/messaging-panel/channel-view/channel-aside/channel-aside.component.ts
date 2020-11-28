@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Channel } from 'src/app/core/channel';
 import { ChatService } from 'src/app/core/chat.service';
 import { File } from 'src/app/core/file';
@@ -18,28 +19,32 @@ export class ChannelAsideComponent implements OnInit {
 
   channel: Channel;
   sections: boolean[] = [];
-  noOfSection = 5;
+  noOfSection: number;
 
-  channelSubscription: any;
+  selectedChannelId: string;
+  selectedChannelIdSubscription: Subscription;
 
   constructor(private router: Router,
               private chatService: ChatService,
               private sidenavService: SideNavService) {
-    this.channel = this.chatService.getChannelById(this.sidenavService.getSelectedItem());
-
-    this.channelSubscription = sidenavService.selectedItemChange.subscribe((value) => {
-      this.channel = this.chatService.getChannelById(this.sidenavService.getSelectedItem());
+    this.selectedChannelId = this.sidenavService.getSelectedItem();
+    this.selectedChannelIdSubscription = sidenavService.selectedItemChange.subscribe(value => {
+      this.selectedChannelId = value;
+      this.ngOnInit();
     });
   }
 
   ngOnInit(): void {
     this.initCollapsibles();
 
+    this.channel = this.chatService.getChannelById(this.selectedChannelId);
+
     this.members = this.chatService.getUsersWithId(this.channel.memberIds);
     this.shortcuts = [];
   }
 
   initCollapsibles(): void {
+    this.noOfSection = 5;
     for (let idx = 0; idx < this.noOfSection ; idx++) {
       this.sections.push(false);
       const content = document.getElementById('section-' + idx);
@@ -53,9 +58,9 @@ export class ChannelAsideComponent implements OnInit {
       console.log(idx, val);
       const content = document.getElementById('section-' + idx);
 
-      if (idx == id) {
+      if (idx === id) {
         this.sections[idx] = !this.sections[idx];
-        if (content.style.height == '0px') {
+        if (content.style.height === '0px') {
           content.style.height = Math.max(15, content.scrollHeight) + 'px';
         }
         else {

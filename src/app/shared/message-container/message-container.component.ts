@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ChatService } from 'src/app/core/chat.service';
 import { Message } from 'src/app/core/message';
 import { User } from 'src/app/core/user';
@@ -10,15 +10,13 @@ import { User } from 'src/app/core/user';
 })
 export class MessageContainerComponent implements OnInit {
 
-  messages: Message[];
+  @Input() messages: Message[];
   users: { [key: string]: User };
 
   constructor(private chatservice: ChatService) { }
 
   ngOnInit(): void {
-    this.messages = this.chatservice.getMessages();
     this.users = this.chatservice.getUsers();
-    console.log(this.messages);
   }
 
   addToCart(msg): void {

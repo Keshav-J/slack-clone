@@ -2,8 +2,8 @@
     <div class="left">
         <div>
             <span class="username pointer">
-                <i [attr.class]="channel.isGroup ? 'fas fa-lock' : 'fas fa-hashtag'"></i>
-                {{ channel.name }}
+                <i [attr.class]="isGroup ? 'fas fa-lock' : 'fas fa-hashtag'"></i>
+                {{ channelName }}
             </span>
             <ng-container>
                 <i *ngIf="!starred" class="fal fa-star pointer" (click)="toggleStar()"></i>
