@@ -8,6 +8,14 @@ i {
 .customize-browse-item {
     padding-bottom: 7px;
 }
+.customize-browse-item.selected {
+    * {
+        color: white;
+    }
+    span {
+        font-weight: bold;
+    }
+}
 
 .item-content {
     padding-left: 16px;

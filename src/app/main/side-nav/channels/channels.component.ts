@@ -32,13 +32,8 @@ export class ChannelsComponent implements OnInit {
     let segments = this.router.url.split('/');
     console.log(segments);
 
-    if (segments.includes('channel')) {
-      const idx = segments.indexOf('channel');
-      segments[idx + 1] = id;
-    } else if (segments.includes('private')) {
-      const idx = segments.indexOf('private');
-      segments[idx] = 'channel';
-      segments[idx + 1] = id;
+    if (segments.includes('details')) {
+      segments = ['', 'chats', 'channel', id].concat(segments.slice(segments.indexOf('details')));
     } else {
       segments = ['', 'chats', 'channel', id];
     }

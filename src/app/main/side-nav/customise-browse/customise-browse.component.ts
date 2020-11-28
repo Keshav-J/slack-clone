@@ -1,4 +1,3 @@
-import { DIR_DOCUMENT } from '@angular/cdk/bidi';
 import { Component, OnInit } from '@angular/core';
 import { SideNavService } from '../../../core/side-nav.service';
 
@@ -8,25 +7,26 @@ import { SideNavService } from '../../../core/side-nav.service';
   styleUrls: ['./customise-browse.component.scss']
 })
 export class CustomiseBrowseComponent implements OnInit {
+
   customList = this.sidenavService.getCustomBrowses();
-  
-  selectedItem: String;
+
+  selectedItem: string;
   selectedItemSubscription: any;
-  
-  selectItem(item: string): void {
-    console.log(item)
-    this.sidenavService.setSelectedItem(item);
-    this.selectedItem = this.sidenavService.getSelectedItem()
-  }
 
   constructor(private sidenavService: SideNavService) {
-    this.selectedItem = this.sidenavService.getSelectedItem()
+    this.selectedItem = this.sidenavService.getSelectedItem();
     this.selectedItemSubscription = sidenavService.selectedItemChange.subscribe((value) => {
-      this.selectedItem = value
-    })
+      this.selectedItem = value;
+    });
   }
-  
+
   ngOnInit(): void {
+  }
+
+  selectItem(item: string): void {
+    console.log(item);
+    this.sidenavService.setSelectedItem(item);
+    this.selectedItem = this.sidenavService.getSelectedItem();
   }
 
 }

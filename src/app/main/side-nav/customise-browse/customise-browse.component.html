@@ -1,8 +1,8 @@
 <div class="customize-browse-container">
     <div class="customize-browse-item"
      *ngFor="let item of customList"
-     (click) = "selectItem(item.name)"
-     [class.selected]="item.name == selectedItem"
+     (click) = "selectItem(item.route)"
+     [class.selected]="item.route == selectedItem"
      >
      <a routerLink = {{item.route}}>
         <div class="item-content">

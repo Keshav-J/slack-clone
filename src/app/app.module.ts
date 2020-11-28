@@ -13,11 +13,16 @@ import { AppComponent } from './app.component';
 
 import { TopnavbarComponent } from './main/header/topnavbar/topnavbar.component';
 import { SideNavModule } from './main/side-nav/side-nav.module';
+import { PageNotFoundComponent } from './anonymous/page-not-found/page-not-found.component';
+import { UnderConstructionComponent } from './anonymous/under-construction/under-construction.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopnavbarComponent,
+    PageNotFoundComponent,
+    UnderConstructionComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +30,7 @@ import { SideNavModule } from './main/side-nav/side-nav.module';
     BrowserAnimationsModule,
     FormsModule,
     MatIconModule,
+    MatDialogModule,
     MatMenuModule,
     MatToolbarModule,
     HttpClientModule,

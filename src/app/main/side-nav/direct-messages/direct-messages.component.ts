@@ -38,13 +38,8 @@ export class DirectMessagesComponent implements OnInit {
     let segments = this.router.url.split('/');
     console.log(segments);
 
-    if (segments.includes('private')) {
-      const idx = segments.indexOf('private');
-      segments[idx + 1] = id;
-    } else if (segments.includes('channel')) {
-      const idx = segments.indexOf('channel');
-      segments[idx] = 'private';
-      segments[idx + 1] = id;
+    if (segments.includes('details')) {
+      segments = ['', 'chats', 'private', id].concat(segments.slice(segments.indexOf('details')));
     } else {
       segments = ['', 'chats', 'private', id];
     }

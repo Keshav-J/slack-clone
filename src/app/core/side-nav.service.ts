@@ -19,27 +19,22 @@ export class SideNavService {
       {
         iconUrl: 'far fa-comment-dots',
         name: 'Threads',
-        route: ''
+        route: 'threads'
       },
       {
         iconUrl: 'far fa-comments',
         name: 'All DMs',
-        route: ''
-      },
-      {
-        iconUrl: 'fas fa-stream',
-        name: 'All unreads',
-        route: ''
+        route: 'all-dms'
       },
       {
         iconUrl: 'far fa-address-book',
         name: 'People & user groups',
-        route: 'peopleanduser'
+        route: 'browse-people'
       },
       {
-        iconUrl: 'fas fa-at',
-        name: 'Mentions & reactions',
-        route: ''
+        iconUrl: 'far fa-bookmark',
+        name: 'Saved items',
+        route: 'saved-page'
       }
     ];
 
@@ -50,11 +45,13 @@ export class SideNavService {
     this.appsList = [
       {
         name: 'Dropbox',
-        iconUrl: 'fab fa-dropbox'
+        iconUrl: 'fab fa-dropbox',
+        route: 'dropbox'
       },
       {
-        name: 'mailchimp',
-        iconUrl: 'fab fa-mailchimp'
+        name: 'Mailchimp',
+        iconUrl: 'fab fa-mailchimp',
+        route: 'mailchimp'
       }
     ];
 
