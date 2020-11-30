@@ -15,19 +15,28 @@ export class ChannelComponent implements OnInit {
   channel: Channel;
 
   constructor(private router: Router,
-              private route: ActivatedRoute,
               private chatService: ChatService,
               private sidenavService: SideNavService) {
-    this.route.params.subscribe(val => {
-      this.ngOnInit();
+    sidenavService.selectedItemChange.subscribe(id => {
+      if ((id.startsWith('C') || id.startsWith('G'))) {
+        const channel = this.chatService.getChannelById(id);
+
+        if (channel === undefined) {
+          this.router.navigate(['']);
+        } else {
+          this.channel = channel;
+        }
+      }
     });
   }
 
   ngOnInit(): void {
     const segments = this.router.url.split('/');
-    console.log('segments => ', segments, segments.indexOf('channel'), segments[segments.indexOf('channel') + 1]);
+    console.log('segments => ', segments, segments[3]);
 
-    const id = segments[segments.indexOf('channel') + 1];
+    if (segments.length < 4) { this.router.navigate(['']); }
+
+    const id = segments[3];
 
     const channel = this.chatService.getChannelById(id);
 

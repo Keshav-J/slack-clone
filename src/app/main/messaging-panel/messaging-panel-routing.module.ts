@@ -1,13 +1,35 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, UrlSegment, UrlMatcher } from '@angular/router';
 import { ChannelAsideComponent } from './channel-view/channel-aside/channel-aside.component';
 import { ChannelComponent } from './channel-view/channel/channel.component';
 import { PrivateAsideComponent } from './private-view/private-aside/private-aside.component';
 import { PrivateComponent } from './private-view/private/private.component';
 
+// tslint:disable-next-line: typedef
+function checkChannel(url: UrlSegment[]) {
+  if (url.length > 0 && (url[0].path.startsWith('C') || url[0].path.startsWith('G'))) {
+    return {
+      consumed: [ url[0] ]
+    };
+  } else {
+    return null;
+  }
+}
+
+// tslint:disable-next-line: typedef
+function checkDirectMessage(url: UrlSegment[]) {
+  if (url.length > 0 && url[0].path.startsWith('D')) {
+    return {
+      consumed: [ url[0] ]
+    };
+  } else {
+    return null;
+  }
+}
+
 const routes: Routes = [
   {
-    path: 'channel/:id',
+    matcher: checkChannel,
     component: ChannelComponent,
     children: [
       {
@@ -27,7 +49,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'private/:id',
+    matcher: checkDirectMessage,
     component: PrivateComponent,
     children: [
       {

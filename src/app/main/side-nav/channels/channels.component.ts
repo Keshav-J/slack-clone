@@ -33,10 +33,12 @@ export class ChannelsComponent implements OnInit {
     console.log(segments);
 
     if (segments.includes('details')) {
-      segments = ['', 'chats', 'channel', id].concat(segments.slice(segments.indexOf('details')));
+      segments = ['', 'client', 'T01AA4Y2QCU', id].concat(segments.slice(segments.indexOf('details')));
     } else {
-      segments = ['', 'chats', 'channel', id];
+      segments = ['', 'client', 'T01AA4Y2QCU', id];
     }
+
+    this.sidenavService.setSelectedItem(id);
 
     this.router.navigate(segments);
   }

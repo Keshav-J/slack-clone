@@ -4,7 +4,7 @@
      (click) = "selectItem(item.route)"
      [class.selected]="item.route == selectedItem"
      >
-     <a routerLink = {{item.route}}>
+     <a [routerLink]="['/', 'client', 'T01AA4Y2QCU', item.route]" routerLinkActive="router-link-active">
         <div class="item-content">
             <i [attr.class]="item.iconUrl"></i>
             <span>{{item.name}}</span>

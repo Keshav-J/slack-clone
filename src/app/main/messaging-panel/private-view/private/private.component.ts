@@ -21,16 +21,28 @@ export class PrivateComponent implements OnInit {
               private route: ActivatedRoute,
               private chatService: ChatService,
               private sidenavService: SideNavService) {
-    this.route.params.subscribe(() => {
-      this.ngOnInit();
+    sidenavService.selectedItemChange.subscribe(id => {
+      if (id.startsWith('D')) {
+        const user = this.chatService.getUserById(id);
+
+        if (user === undefined) {
+          this.router.navigate(['']);
+        } else {
+          this.user = user;
+          this.userName = this.user.firstName + (this.user.lastName === '' ? '' : (' ' + this.user.lastName));
+          this.messages = this.chatService.getMessages();
+        }
+      }
     });
   }
 
   ngOnInit(): void {
     const segments = this.router.url.split('/');
-    console.log('segments => ', segments, segments.indexOf('private'), segments[segments.indexOf('private') + 1]);
+    console.log('segments => ', segments, segments[3]);
 
-    const id = segments[segments.indexOf('private') + 1];
+    if (segments.length < 4) { this.router.navigate(['']); }
+
+    const id = segments[3];
 
     const user = this.chatService.getUserById(id);
 
