@@ -6,7 +6,7 @@ import { PeopleanduserComponent } from './main/messaging-panel/people-and-user/p
 
 // tslint:disable-next-line: typedef
 function checkChat(url: UrlSegment[]) {
-  if (url.length > 0 && (url[0].path.startsWith('C') || url[0].path.startsWith('G') || url[0].path.startsWith('D'))) {
+  if (url.length > 0 && (url[0].path.startsWith('C01') || url[0].path.startsWith('G01') || url[0].path.startsWith('D01'))) {
     return { consumed: [] };
   } else {
     return null;

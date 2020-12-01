@@ -18,7 +18,7 @@ export class ChannelComponent implements OnInit {
               private chatService: ChatService,
               private sidenavService: SideNavService) {
     sidenavService.selectedItemChange.subscribe(id => {
-      if ((id.startsWith('C') || id.startsWith('G'))) {
+      if ((id.startsWith('C01') || id.startsWith('G01'))) {
         const channel = this.chatService.getChannelById(id);
 
         if (channel === undefined) {

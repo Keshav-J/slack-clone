@@ -7,7 +7,7 @@ import { PrivateComponent } from './private-view/private/private.component';
 
 // tslint:disable-next-line: typedef
 function checkChannel(url: UrlSegment[]) {
-  if (url.length > 0 && (url[0].path.startsWith('C') || url[0].path.startsWith('G'))) {
+  if (url.length > 0 && (url[0].path.startsWith('C01') || url[0].path.startsWith('G01'))) {
     return {
       consumed: [ url[0] ]
     };
@@ -18,7 +18,7 @@ function checkChannel(url: UrlSegment[]) {
 
 // tslint:disable-next-line: typedef
 function checkDirectMessage(url: UrlSegment[]) {
-  if (url.length > 0 && url[0].path.startsWith('D')) {
+  if (url.length > 0 && url[0].path.startsWith('D01')) {
     return {
       consumed: [ url[0] ]
     };

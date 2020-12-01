@@ -22,7 +22,7 @@ export class PrivateComponent implements OnInit {
               private chatService: ChatService,
               private sidenavService: SideNavService) {
     sidenavService.selectedItemChange.subscribe(id => {
-      if (id.startsWith('D')) {
+      if (id.startsWith('D01')) {
         const user = this.chatService.getUserById(id);
 
         if (user === undefined) {
