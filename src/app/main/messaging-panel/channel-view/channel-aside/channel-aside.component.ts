@@ -18,8 +18,8 @@ export class ChannelAsideComponent implements OnInit {
   shortcuts: object[];
 
   channel: Channel;
-  sections: boolean[] = [];
-  noOfSection: number;
+  sections: string[];
+  activeSection: string;
 
   selectedChannelId: string;
   selectedChannelIdSubscription: Subscription;
@@ -35,40 +35,45 @@ export class ChannelAsideComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initCollapsibles();
+    this.initCollapsibleSections();
 
     this.channel = this.chatService.getChannelById(this.selectedChannelId);
 
-    this.members = this.chatService.getUsersWithId(this.channel.memberIds);
+    if (this.channel) {
+      this.members = this.chatService.getUsersWithId(this.channel.memberIds);
+    }
     this.shortcuts = [];
   }
 
-  initCollapsibles(): void {
-    this.noOfSection = 5;
-    for (let idx = 0; idx < this.noOfSection ; idx++) {
-      this.sections.push(false);
-      const content = document.getElementById('section-' + idx);
-      content.style.height = '0px';
-    }
+  initCollapsibleSections(): void {
+    this.sections = ['info', 'members', 'actions', 'pins', 'shared_files'];
+    this.activeSection = '';
+    this.sections.forEach(sectionName => {
+      const content = document.getElementById(sectionName);
+      if (content !== null) {
+        content.style.height = '0px';
+      }
+    });
   }
 
-  toggleSection(id: number): void {
-    console.log(id);
-    this.sections.forEach((val, idx) => {
-      console.log(idx, val);
-      const content = document.getElementById('section-' + idx);
+  toggleSection(name: string): void {
+    console.log(name);
+    this.sections.forEach((sectionName) => {
+      const content = document.getElementById(sectionName);
 
-      if (idx === id) {
-        this.sections[idx] = !this.sections[idx];
-        if (content.style.height === '0px') {
+      if (content === undefined) { return; }
+
+      if (sectionName === name) {
+        if (this.activeSection !== sectionName) {
           content.style.height = Math.max(15, content.scrollHeight) + 'px';
+          this.activeSection = sectionName;
         }
         else {
           content.style.height = '0px';
+          this.activeSection = '';
         }
       }
       else {
-        this.sections[idx] = false;
         content.style.height = '0px';
       }
     });

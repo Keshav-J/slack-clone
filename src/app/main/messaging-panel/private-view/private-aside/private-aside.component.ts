@@ -22,8 +22,8 @@ export class PrivateAsideComponent implements OnInit {
   selectedUserId: string;
   selectedUserIdSubscription: Subscription;
 
-  sections: boolean[] = [];
-  noOfSection: number;
+  sections: string[];
+  activeSection: string;
 
   date: Date;
 
@@ -40,7 +40,7 @@ export class PrivateAsideComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initCollapsibles();
+    this.initCollapsibleSections();
 
     this.user = this.chatService.getUserById(this.selectedUserId);
 
@@ -49,35 +49,38 @@ export class PrivateAsideComponent implements OnInit {
 
     this.date = new Date();
 
-    this.userName = this.user.firstName + ' ' + this.user.lastName;
-  }
-
-  initCollapsibles(): void {
-    this.noOfSection = 3;
-    for (let idx = 0; idx < this.noOfSection ; idx++) {
-      this.sections.push(false);
-      const content = document.getElementById('section-' + idx);
-      content.style.height = '0px';
+    if (this.user) {
+      this.userName = this.user.firstName + ' ' + this.user.lastName;
     }
   }
 
-  toggleSection(id: number): void {
-    console.log(id);
-    this.sections.forEach((val, idx) => {
-      console.log(idx, val);
-      const content = document.getElementById('section-' + idx);
+  initCollapsibleSections(): void {
+    this.sections = ['info', 'pins', 'shared_files'];
+    this.activeSection = '';
+    this.sections.forEach(sectionName => {
+      const content = document.getElementById(sectionName);
+      content.style.height = '0px';
+    });
+  }
 
-      if (idx === id) {
-        this.sections[idx] = !this.sections[idx];
-        if (content.style.height === '0px') {
+  toggleSection(name: string): void {
+    console.log(name);
+    this.sections.forEach((sectionName) => {
+      const content = document.getElementById(sectionName);
+
+      if (content === undefined) { return; }
+
+      if (sectionName === name) {
+        if (this.activeSection !== sectionName) {
           content.style.height = Math.max(15, content.scrollHeight) + 'px';
+          this.activeSection = sectionName;
         }
         else {
           content.style.height = '0px';
+          this.activeSection = '';
         }
       }
       else {
-        this.sections[idx] = false;
         content.style.height = '0px';
       }
     });

@@ -54,14 +54,14 @@
 
         <div class="menu-section">
             <div class="about collapsible">
-                <div class="collapsible-header" (click)="toggleSection(0)">
+                <div class="collapsible-header" (click)="toggleSection('info')">
                     <label> About </label>
                     <div class="right">
-                        <i *ngIf="!sections[0]" class="fal fa-angle-right inactive-section"></i>
-                        <i *ngIf="sections[0]" class="fal fa-angle-down active-section"></i>
+                        <i *ngIf="(activeSection != 'info')" class="fal fa-angle-right inactive-section"></i>
+                        <i *ngIf="(activeSection == 'info')" class="fal fa-angle-down active-section"></i>
                     </div>
                 </div>
-                <div class="collapsible-content" id="section-0">
+                <div class="collapsible-content" id="info">
                     <div class="collapsible-content-container">
                         <div class="about-content">
                             <span class="heading"> Display Name </span>
@@ -92,28 +92,28 @@
             </div>
             
             <div class="collapsible">
-                <div class="collapsible-header" (click)="toggleSection(1)">
+                <div class="collapsible-header" (click)="toggleSection('pins')">
                     <label> Pinned </label>
                     <div class="right">
                         <span> {{ pinned.length }} </span>
-                        <i *ngIf="!sections[1]" class="fal fa-angle-right inactive-section"></i>
-                        <i *ngIf="sections[1]" class="fal fa-angle-down active-section"></i>
+                        <i *ngIf="(activeSection != 'pins')" class="fal fa-angle-right inactive-section"></i>
+                        <i *ngIf="(activeSection == 'pins')" class="fal fa-angle-down active-section"></i>
                     </div>
                 </div>
-                <div class="collapsible-content" id="section-1">
+                <div class="collapsible-content" id="pins">
                     
                 </div>
             </div>
 
             <div class="files collapsible">
-                <div class="collapsible-header" (click)="toggleSection(2)">
+                <div class="collapsible-header" (click)="toggleSection('shared_files')">
                     <label> Files </label>
                     <div class="right">
-                        <i *ngIf="!sections[2]" class="fal fa-angle-right inactive-section"></i>
-                        <i *ngIf="sections[2]" class="fal fa-angle-down active-section"></i>
+                        <i *ngIf="(activeSection != 'shared_files')" class="fal fa-angle-right inactive-section"></i>
+                        <i *ngIf="(activeSection == 'shared_files')" class="fal fa-angle-down active-section"></i>
                     </div>
                 </div>
-                <div class="collapsible-content" id="section-2">
+                <div class="collapsible-content" id="shared_files">
                     <ng-container *ngFor="let file of files">
 
                         <div class="file">
