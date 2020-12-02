@@ -95,7 +95,7 @@
                 <div class="collapsible-header" (click)="toggleSection('pins')">
                     <label> Pinned </label>
                     <div class="right">
-                        <span> {{ pinned.length }} </span>
+                        <span> {{ directMessage.pinnedIds.length }} </span>
                         <i *ngIf="(activeSection != 'pins')" class="fal fa-angle-right inactive-section"></i>
                         <i *ngIf="(activeSection == 'pins')" class="fal fa-angle-down active-section"></i>
                     </div>
@@ -114,7 +114,7 @@
                     </div>
                 </div>
                 <div class="collapsible-content" id="shared_files">
-                    <ng-container *ngFor="let file of files">
+                    <ng-container *ngFor="let file of directMessage.files">
 
                         <div class="file">
                             <div class="file-icon">

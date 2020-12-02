@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ChatService } from 'src/app/core/chat.service';
+import { DirectMessage } from 'src/app/core/direct-message';
 import { User } from 'src/app/core/user';
 import { SideNavService } from '../../../core/side-nav.service';
 
@@ -11,6 +13,7 @@ import { SideNavService } from '../../../core/side-nav.service';
 export class DirectMessagesComponent implements OnInit {
 
   constructor(private router: Router,
+              private chatService: ChatService,
               private sidenavService: SideNavService) {
     this.selectedItem = this.sidenavService.getSelectedItem();
     this.selectedItemSubscription = sidenavService.selectedItemChange.subscribe((value) => {
@@ -23,7 +26,8 @@ export class DirectMessagesComponent implements OnInit {
   selectedItem: string;
   selectedItemSubscription: any;
 
-  directMessagesList: User[];
+  users: { [key: string]: User };
+  directMessagesList: DirectMessage[];
 
   selectItem(item: string): void {
     this.sidenavService.setSelectedItem(item);
@@ -32,6 +36,7 @@ export class DirectMessagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.directMessagesList = this.sidenavService.getDirectMessages();
+    this.users = this.chatService.getUsers();
   }
 
   redirect(id: string): void {
@@ -49,4 +54,7 @@ export class DirectMessagesComponent implements OnInit {
     this.router.navigate(segments);
   }
 
+  closeChat(userId: string): void {
+    this.sidenavService.closeDirectMessage(userId);
+  }
 }

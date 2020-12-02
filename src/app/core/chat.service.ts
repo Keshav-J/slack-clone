@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Channel } from './channel';
+import { DirectMessage } from './direct-message';
 import { File } from './file';
 import { Message } from './message';
 import { User } from './user';
@@ -11,19 +12,16 @@ export class ChatService {
 
   users: { [key: string]: User };
   channels: { [key: string]: Channel };
-
-  members: User[];
-  files: File[];
-  messages: Message[];
+  directMessages: { [key: string]: DirectMessage };
 
   constructor() {
     this.users = {
+      D01GOWTHAMS: new User('D01GOWTHAMS', 'Gowtham', 'S', true, 'assets/profile-pic/profile-pic6.png', 9791898746, 'gowthamsuresh6599@gmail.com'),
       D01JOHNDOE0: new User('D01JOHNDOE0', 'John', 'Doe', true, 'assets/profile-pic/profile-pic1.png', 9548756481, 'john123@gmail.com'),
       D01AUSTINE0: new User('D01AUSTINE0', 'Austine', '', false, 'assets/profile-pic/profile-pic2.png', 8456217496, 'austine@gmail.com'),
       D01SAMANTHA: new User('D01SAMANTHA', 'Samantha', 'Ruth', false, 'assets/profile-pic/profile-pic3.png', 9845621452, 'sam@gmail.com'),
       D01LILY0000: new User('D01LILY0000', 'Lily', '', true, 'assets/profile-pic/profile-pic4.png', 9854562154, 'lily@gmail.com'),
-      D01JOETRIBI: new User('D01JOETRIBI', 'Joe', 'Tribiani', true, 'assets/profile-pic/profile-pic5.png', 9874563210, 'how_you_doin@gmail.com'),
-      D01GOWTHAMS: new User('D01GOWTHAMS', 'Gowtham', 'S', true, 'assets/profile-pic/profile-pic6.png', 9791898746, 'gowthamsuresh6599@gmail.com')
+      D01JOETRIBI: new User('D01JOETRIBI', 'Joe', 'Tribiani', true, 'assets/profile-pic/profile-pic5.png', 9874563210, 'how_you_doin@gmail.com')
     };
 
     this.channels = {
@@ -57,7 +55,7 @@ export class ChatService {
                         'training',
                         '',
                         'Channel to share training related information and documents.',
-                        false,
+                        true,
                         new Date(2020, 8, 4),
                         ['D01SAMANTHA', 'D01JOETRIBI', 'D01GOWTHAMS'],
                         [
@@ -92,45 +90,79 @@ export class ChatService {
                     )
     };
 
-    this.members = [
-      this.users.D01JOHNDOE0,
-      this.users.D01AUSTINE0,
-      this.users.D01SAMANTHA,
-      this.users.D01LILY0000,
-      this.users.D01JOETRIBI,
-      this.users.D01GOWTHAMS
-    ];
-
-    this.files = [
-      new File(1, 'Angular Documentation', 'Miško Hevery', 'Yesterday at 10:00', 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png'),
-      new File(2, 'React Documentation', 'Jordan Walke', 'Yesterday at 16:00', 'https://cdn.auth0.com/blog/react-js/react.png'),
-      new File(3, 'Vue', 'Evan You', 'Today at 10:00', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png'),
-      new File(4, 'HTML docs', 'Tim Berners-Lee', 'Oct 20th at 08:10', 'https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png')
-    ];
-
-    this.messages = [
-      new Message(1, 'D01JOHNDOE0', 'Hi there!', new Date()),
-      new Message(2, 'D01AUSTINE0', 'Hey how r u', new Date()),
-      new Message(3, 'D01SAMANTHA', 'okay', new Date()),
-      new Message(4, 'D01LILY0000', 'thank you', new Date()),
-      new Message(5, 'D01JOHNDOE0', 'Here comes Joe...', new Date()),
-      new Message(6, 'D01JOETRIBI', 'How you doin', new Date()),
-      new Message(7, 'D01AUSTINE0', '😊', new Date()),
-      new Message(8, 'D01SAMANTHA', '😊', new Date()),
-      new Message(9, 'D01LILY0000', '😊', new Date()),
-    ];
+    this.directMessages = {
+      D01GOWTHAMS: new DirectMessage(
+                      'D01GOWTHAMS',
+                      true,
+                      [
+                        new Message(1, 'D01GOWTHAMS', 'Hi!', new Date()),
+                        new Message(2, 'D01GOWTHAMS', 'Message to me', new Date())
+                      ],
+                      [],
+                      [
+                        new File(1, 'Angular Documentation', 'Miško Hevery', 'Yesterday at 10:00', 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png'),
+                        new File(2, 'HTML docs', 'Tim Berners-Lee', 'Oct 20th at 08:10', 'https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png')
+                      ]
+                    ),
+      D01JOHNDOE0: new DirectMessage(
+                      'D01JOHNDOE0',
+                      true,
+                      [
+                        new Message(1, 'D01JOHNDOE0', 'Hey, This is John!', new Date()),
+                        new Message(2, 'D01GOWTHAMS', 'Hello John', new Date())
+                      ],
+                      [],
+                      [
+                        new File(1, 'Vue', 'Evan You', 'Today at 10:00', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png'),
+                        new File(2, 'HTML docs', 'Tim Berners-Lee', 'Oct 20th at 08:10', 'https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png')
+                      ]
+                    ),
+      D01AUSTINE0: new DirectMessage(
+                      'D01AUSTINE0',
+                      true,
+                      [],
+                      [],
+                      []
+                    ),
+      D01SAMANTHA: new DirectMessage(
+                      'D01SAMANTHA',
+                      true,
+                      [
+                        new Message(1, 'D01GOWTHAMS', 'Hi...!! This is Gowtham', new Date()),
+                        new Message(2, 'D01SAMANTHA', 'K', new Date())
+                      ],
+                      [],
+                      []
+                    ),
+      D01LILY0000: new DirectMessage(
+                      'D01LILY0000',
+                      true,
+                      [],
+                      [],
+                      []
+                    ),
+      D01JOETRIBI: new DirectMessage(
+                      'D01JOETRIBI',
+                      true,
+                      [
+                        new Message(1, 'D01GOWTHAMS', 'Hello Joe', new Date()),
+                        new Message(2, 'D01JOETRIBI', 'Hey, how you doin...', new Date()),
+                        new Message(3, 'D01GOWTHAMS', 'WHAT!', new Date())
+                      ],
+                      [],
+                      []
+                    )
+    };
   }
 
-  addToCart(msg: string): void {
-    this.messages.push(new Message(this.messages.length + 1, 'D01GOWTHAMS', msg, new Date()));
-  }
+  addToCart(msg: string): void { }
 
   getChannels(): { [key: string]: Channel } {
     return this.channels;
   }
 
-  getMessages(): Message[] {
-    return this.messages;
+  getDirectMessages(): { [key: string]: DirectMessage } {
+    return this.directMessages;
   }
 
   getUsers(): { [key: string]: User }  {
@@ -147,14 +179,6 @@ export class ChatService {
     return filteredUsers;
   }
 
-  getMembers(): User[] {
-    return this.members;
-  }
-
-  getFiles(): File[] {
-    return this.files;
-  }
-
   getUserById(id: string): User {
     return this.users[id];
   }
@@ -163,11 +187,25 @@ export class ChatService {
     return this.channels[id];
   }
 
+  getDirectMessageById(id: string): DirectMessage {
+    return this.directMessages[id];
+  }
+
+
   getUsersList(): User[] {
     return Object.values(this.users);
   }
 
   getChannelsList(): Channel[] {
     return Object.values(this.channels);
+  }
+
+  getDirectMessagesList(): DirectMessage[] {
+    return Object.values(this.directMessages);
+  }
+
+
+  closeDirectMessage(id: string): void {
+    this.directMessages[id].isDisplayed = false;
   }
 }

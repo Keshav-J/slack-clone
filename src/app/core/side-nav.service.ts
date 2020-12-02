@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Channel } from './channel';
 import { ChatService } from './chat.service';
+import { DirectMessage } from './direct-message';
 import { User } from './user';
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,10 @@ import { User } from './user';
 export class SideNavService {
 
   customBrowseList: object[];
-  directMessagesList: User[];
+  directMessagesList: DirectMessage[];
   channelsList: Channel[];
   appsList: object[];
+
   selectedItem: string;
 
   constructor(private chatService: ChatService) {
@@ -38,7 +40,7 @@ export class SideNavService {
       }
     ];
 
-    this.directMessagesList = this.chatService.getUsersList();
+    this.directMessagesList = this.chatService.getDirectMessagesList();
 
     this.channelsList = this.chatService.getChannelsList();
 
@@ -70,7 +72,7 @@ export class SideNavService {
   getChannels(): Channel[] {
     return this.channelsList;
   }
-  getDirectMessages(): User[] {
+  getDirectMessages(): DirectMessage[] {
     return this.directMessagesList;
   }
   getApps(): object[] {
@@ -78,12 +80,17 @@ export class SideNavService {
   }
 
 
+  getSelectedItem(): string {
+    return this.selectedItem;
+  }
   setSelectedItem(item: string): void {
     this.selectedItem = item;
     this.selectedItemChange.next(this.selectedItem);
   }
-  getSelectedItem(): string {
-    return this.selectedItem;
+
+
+  closeDirectMessage(id: string): void {
+    this.chatService.closeDirectMessage(id);
   }
 }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChatService } from 'src/app/core/chat.service';
+import { DirectMessage } from 'src/app/core/direct-message';
 import { Message } from 'src/app/core/message';
 import { SideNavService } from 'src/app/core/side-nav.service';
 import { User } from 'src/app/core/user';
@@ -15,10 +16,9 @@ export class PrivateComponent implements OnInit {
   user: User;
   userName: string;
 
-  messages: Message[];
+  directMessage: DirectMessage;
 
   constructor(private router: Router,
-              private route: ActivatedRoute,
               private chatService: ChatService,
               private sidenavService: SideNavService) {
     sidenavService.selectedItemChange.subscribe(id => {
@@ -30,7 +30,8 @@ export class PrivateComponent implements OnInit {
         } else {
           this.user = user;
           this.userName = this.user.firstName + (this.user.lastName === '' ? '' : (' ' + this.user.lastName));
-          this.messages = this.chatService.getMessages();
+
+          this.directMessage = this.chatService.getDirectMessageById(id);
         }
       }
     });
@@ -51,7 +52,8 @@ export class PrivateComponent implements OnInit {
     } else {
       this.user = user;
       this.userName = this.user.firstName + (this.user.lastName === '' ? '' : (' ' + this.user.lastName));
-      this.messages = this.chatService.getMessages();
+
+      this.directMessage = this.chatService.getDirectMessageById(id);
 
       this.sidenavService.setSelectedItem(this.user.id);
     }

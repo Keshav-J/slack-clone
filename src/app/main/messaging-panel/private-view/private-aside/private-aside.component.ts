@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ChatService } from 'src/app/core/chat.service';
+import { DirectMessage } from 'src/app/core/direct-message';
 import { File } from 'src/app/core/file';
 import { SideNavService } from 'src/app/core/side-nav.service';
 import { User } from 'src/app/core/user';
@@ -14,8 +15,7 @@ import { User } from 'src/app/core/user';
 export class PrivateAsideComponent implements OnInit {
 
   user: User;
-  pinned: object[];
-  files: File[];
+  directMessage: DirectMessage;
 
   userName: string;
 
@@ -43,9 +43,7 @@ export class PrivateAsideComponent implements OnInit {
     this.initCollapsibleSections();
 
     this.user = this.chatService.getUserById(this.selectedUserId);
-
-    this.pinned = [];
-    this.files = this.chatService.getFiles();
+    this.directMessage = this.chatService.getDirectMessageById(this.selectedUserId);
 
     this.date = new Date();
 
