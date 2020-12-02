@@ -1,6 +1,6 @@
 <div class="chatbox">
     <div class="input">
-        <input placeholder="Send a message to #general" id="msgData" (blur)="isBlur()">
+        <input placeholder="Send a message to {{ name }}" id="msgData" (blur)="isBlur()" (keyup.enter)="sendMessage()">
     </div>
     <ng-container *ngIf="blur?false:true"> <hr> </ng-container>
     <ng-container *ngIf="showFormat">
@@ -21,7 +21,7 @@
                 <i class="fal fa-at pointer"></i>
                 <i class="fal fa-smile pointer"></i>
                 <i class="far fa-paperclip pointer"></i>
-                <span class="material-icons send-msg pointer" (click)="addmsg()" >send</span>
+                <span class="material-icons send-msg pointer" (click)="sendMessage()" >send</span>
             </div>
             
         </div>

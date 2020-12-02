@@ -2,7 +2,7 @@
     <div class="private">
         <app-private-header (toggleAside)="toggleAside()" [userName]="userName"></app-private-header>
         <app-message-container [messages]="directMessage.messages"></app-message-container>
-        <app-chatbox></app-chatbox>
+        <app-chatbox [id]="directMessage.userId" [name]="userName"></app-chatbox>
     </div>
     <router-outlet></router-outlet>
 </div>

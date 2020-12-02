@@ -29,3 +29,7 @@ body * {
 app-private, app-channel {
     width: 100%;
 }
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}

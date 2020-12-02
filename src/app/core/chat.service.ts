@@ -155,18 +155,49 @@ export class ChatService {
     };
   }
 
-  addToCart(msg: string): void { }
+  addMessage(id: string, msg: string): void {
+    let message: Message;
+    if (id.startsWith('D01')) {
+      const messageId = this.directMessages[id].messages.length + 1;
+      message = new Message(messageId, 'D01GOWTHAMS', msg, new Date());
+      this.directMessages[id].messages.push(message);
+    } else {
+      const messageId = this.channels[id].messages.length + 1;
+      message = new Message(messageId, 'D01GOWTHAMS', msg, new Date());
+      this.channels[id].messages.push(message);
+    }
+  }
+
+
+  // ---------- Channels ----------
+
 
   getChannels(): { [key: string]: Channel } {
     return this.channels;
   }
 
-  getDirectMessages(): { [key: string]: DirectMessage } {
-    return this.directMessages;
+  getChannelsList(): Channel[] {
+    return Object.values(this.channels);
   }
+
+  getChannelById(id: string): Channel {
+    return this.channels[id];
+  }
+
+
+  // ---------- Users ----------
+
 
   getUsers(): { [key: string]: User }  {
     return this.users;
+  }
+
+  getUsersList(): User[] {
+    return Object.values(this.users);
+  }
+
+  getUserById(id: string): User {
+    return this.users[id];
   }
 
   getUsersWithId(ids: string[]): User[] {
@@ -179,31 +210,21 @@ export class ChatService {
     return filteredUsers;
   }
 
-  getUserById(id: string): User {
-    return this.users[id];
-  }
 
-  getChannelById(id: string): Channel {
-    return this.channels[id];
-  }
-
-  getDirectMessageById(id: string): DirectMessage {
-    return this.directMessages[id];
-  }
+  // ---------- Users ----------
 
 
-  getUsersList(): User[] {
-    return Object.values(this.users);
-  }
-
-  getChannelsList(): Channel[] {
-    return Object.values(this.channels);
+  getDirectMessages(): { [key: string]: DirectMessage } {
+    return this.directMessages;
   }
 
   getDirectMessagesList(): DirectMessage[] {
     return Object.values(this.directMessages);
   }
 
+  getDirectMessageById(id: string): DirectMessage {
+    return this.directMessages[id];
+  }
 
   closeDirectMessage(id: string): void {
     this.directMessages[id].isDisplayed = false;

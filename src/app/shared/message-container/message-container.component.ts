@@ -18,20 +18,4 @@ export class MessageContainerComponent implements OnInit {
   ngOnInit(): void {
     this.users = this.chatservice.getUsers();
   }
-
-  addToCart(msg): void {
-    this.chatservice.addToCart(msg);
-  }
-
-  addmsg(): void {
-    const msg = (document.getElementById('msgData') as HTMLInputElement).value;
-
-    console.log(`from add msg ${msg}`);
-    this.addToCart(msg);
-  }
-
-  makeBreak(message): boolean {
-    message.time = message.time;
-    return true;
-  }
 }
