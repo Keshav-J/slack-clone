@@ -57,21 +57,30 @@ export class PrivateAsideComponent implements OnInit {
       content.style.height = '0px';
     });
 
-    const segments = this.router.url.split('/');
-    if (this.sections.includes(segments[segments.length - 1])) {
-      this.openSection(segments[segments.length - 1]);
-    }
+    this.checkOpensection();
+
+    setTimeout(() => {
+      this.checkOpensection();
+    }, 1000);
   }
 
-  openSection(name: string): void {
+  checkOpensection(): void {
+    const segments = this.router.url.split('/');
+
+    if (!this.sections.includes(segments[segments.length - 1])) {
+      return;
+    }
+
+    const name = segments[segments.length - 1];
     console.log(name);
+
     this.sections.forEach((sectionName) => {
       const content = document.getElementById(sectionName);
 
       if (content === undefined) { return; }
 
       if (sectionName === name) {
-        content.style.height = Math.max(15, content.scrollHeight) + 'px';
+        content.style.height = 'fit-content';
         this.activeSection = sectionName;
       }
       else {
@@ -90,7 +99,7 @@ export class PrivateAsideComponent implements OnInit {
 
       if (sectionName === name) {
         if (this.activeSection !== sectionName) {
-          content.style.height = Math.max(15, content.scrollHeight) + 'px';
+          content.style.height = 'fit-content';
           this.activeSection = sectionName;
 
           if (segments[segments.length - 1] === 'details') {
