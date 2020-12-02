@@ -47,16 +47,16 @@
 
     <div class="container" [matMenuTriggerFor]="user">
     <div class=row>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSui0UOaWxrG-kLX4QHo8chotDj_j1HJusnPg&usqp=CAU" class="image" [title]="user">
+        <img src="{{ displayPicture }}" class="image" [title]="user">
         <div class="col">
             <mat-icon class="circle">trip_origin</mat-icon>
         </div>
     </div> 
     <mat-menu #user="matMenu" class="user_menu">
         <div class="user_details">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSui0UOaWxrG-kLX4QHo8chotDj_j1HJusnPg&usqp=CAU" class="user_image">
+            <img src="{{ displayPicture }}" class="user_image">
             <div class="user_detail">
-            <span class="username">Username</span>
+            <span class="username"> {{ userName }} </span>
             <div class="activity_status">
             <mat-icon class="circle">circle </mat-icon>
             <span>Active</span>
