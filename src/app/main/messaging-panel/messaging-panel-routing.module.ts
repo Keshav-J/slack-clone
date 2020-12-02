@@ -27,13 +27,45 @@ function checkDirectMessage(url: UrlSegment[]) {
   }
 }
 
+// tslint:disable-next-line: typedef
+function checkChannelDetails(url: UrlSegment[]) {
+  if (url.length === 1 && url[0].path === 'details') {
+    return { consumed: url };
+  } else if (url.length === 2 && url[0].path === 'details'
+              && ['info', 'members', 'actions', 'pins', 'shared_files'].includes(url[1].path)) {
+    return { consumed: url };
+  } else if (url.length > 0 && url[0].path === 'details') {
+    return {
+      consumed: [ url[0] ]
+    };
+  } else {
+    return null;
+  }
+}
+
+// tslint:disable-next-line: typedef
+function checkDirectMessageDetails(url: UrlSegment[]) {
+  if (url.length === 1 && url[0].path === 'details') {
+    return { consumed: url };
+  } else if (url.length === 2 && url[0].path === 'details'
+              && ['info', 'pins', 'shared_files'].includes(url[1].path)) {
+    return { consumed: url };
+  } else if (url.length > 0 && url[0].path === 'details') {
+    return {
+      consumed: [ url[0] ]
+    };
+  } else {
+    return null;
+  }
+}
+
 const routes: Routes = [
   {
     matcher: checkChannel,
     component: ChannelComponent,
     children: [
       {
-        path: 'details',
+        matcher: checkChannelDetails,
         component: ChannelAsideComponent,
         children: [
           {
@@ -53,7 +85,7 @@ const routes: Routes = [
     component: PrivateComponent,
     children: [
       {
-        path: 'details',
+        matcher: checkDirectMessageDetails,
         component: PrivateAsideComponent,
         children: [
           {

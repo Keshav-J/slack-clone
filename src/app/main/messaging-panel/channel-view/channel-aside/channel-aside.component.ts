@@ -53,9 +53,32 @@ export class ChannelAsideComponent implements OnInit {
         content.style.height = '0px';
       }
     });
+
+    const segments = this.router.url.split('/');
+    if (this.sections.includes(segments[segments.length - 1])) {
+      this.openSection(segments[segments.length - 1]);
+    }
+  }
+
+  openSection(name: string): void {
+    console.log(name);
+    this.sections.forEach((sectionName) => {
+      const content = document.getElementById(sectionName);
+
+      if (content === undefined) { return; }
+
+      if (sectionName === name) {
+        content.style.height = Math.max(15, content.scrollHeight) + 'px';
+        this.activeSection = sectionName;
+      }
+      else {
+        content.style.height = '0px';
+      }
+    });
   }
 
   toggleSection(name: string): void {
+    const segments = this.router.url.split('/');
     console.log(name);
     this.sections.forEach((sectionName) => {
       const content = document.getElementById(sectionName);
@@ -66,24 +89,33 @@ export class ChannelAsideComponent implements OnInit {
         if (this.activeSection !== sectionName) {
           content.style.height = Math.max(15, content.scrollHeight) + 'px';
           this.activeSection = sectionName;
+
+          if (segments[segments.length - 1] === 'details') {
+            segments.push(sectionName);
+          } else {
+            segments[segments.length - 1] = sectionName;
+          }
         }
         else {
           content.style.height = '0px';
           this.activeSection = '';
+
+          segments.pop();
         }
       }
       else {
         content.style.height = '0px';
       }
     });
+    this.router.navigate(segments);
   }
 
   closeDetails(): void {
     const segments = this.router.url.split('/');
     console.log(segments);
 
-    if (segments[segments.length - 1] === 'details') {
-      segments.pop();
+    if (segments.includes('details')) {
+      segments.splice(segments.indexOf('details'));
     }
 
     this.router.navigate(segments);
