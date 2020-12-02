@@ -1,11 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Channel } from 'src/app/core/channel';
+import { Channel } from 'src/app/core/models/channel';
 import { ChatService } from 'src/app/core/chat.service';
-import { File } from 'src/app/core/file';
 import { SideNavService } from 'src/app/core/side-nav.service';
-import { User } from 'src/app/core/user';
+import { User } from 'src/app/core/models/user';
 
 @Component({
   selector: 'app-channel-aside',

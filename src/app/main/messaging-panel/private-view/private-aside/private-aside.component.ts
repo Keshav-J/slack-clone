@@ -1,11 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ChatService } from 'src/app/core/chat.service';
-import { DirectMessage } from 'src/app/core/direct-message';
-import { File } from 'src/app/core/file';
+import { DirectMessage } from 'src/app/core/models/direct-message';
 import { SideNavService } from 'src/app/core/side-nav.service';
-import { User } from 'src/app/core/user';
+import { User } from 'src/app/core/models/user';
 
 @Component({
   selector: 'app-private-aside',
@@ -26,8 +25,6 @@ export class PrivateAsideComponent implements OnInit {
   activeSection: string;
 
   date: Date;
-
-  @Output() closeAside = new EventEmitter();
 
   constructor(private router: Router,
               private chatService: ChatService,

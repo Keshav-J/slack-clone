@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Channel } from './channel';
+import { Channel } from './models/channel';
 import { ChatService } from './chat.service';
-import { DirectMessage } from './direct-message';
-import { User } from './user';
+import { DirectMessage } from './models/direct-message';
 @Injectable({
   providedIn: 'root'
 })

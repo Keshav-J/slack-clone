@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ChatService } from 'src/app/core/chat.service';
 
 @Component({
   selector: 'app-channel-header',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Channel } from 'src/app/core/channel';
+import { Router } from '@angular/router';
+import { Channel } from 'src/app/core/models/channel';
 import { ChatService } from 'src/app/core/chat.service';
 import { SideNavService } from 'src/app/core/side-nav.service';
 

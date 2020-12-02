@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SideNavService } from '../../../core/side-nav.service';
+import { SideNavService } from 'src/app/core/side-nav.service';
 
 @Component({
   selector: 'app-customise-browse',

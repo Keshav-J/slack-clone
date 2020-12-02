@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Channel } from './channel';
-import { DirectMessage } from './direct-message';
-import { File } from './file';
-import { Message } from './message';
-import { User } from './user';
+import { Channel } from './models/channel';
+import { DirectMessage } from './models/direct-message';
+import { File } from './models/file';
+import { Message } from './models/message';
+import { User } from './models/user';
 
 @Injectable({
   providedIn: 'root'

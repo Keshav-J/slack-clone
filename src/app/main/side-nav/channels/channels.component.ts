@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Channel } from 'src/app/core/channel';
-import { SideNavService } from '../../../core/side-nav.service';
+import { Channel } from 'src/app/core/models/channel';
+import { SideNavService } from 'src/app/core/side-nav.service';
 @Component({
   selector: 'app-channels',
   templateUrl: './channels.component.html',

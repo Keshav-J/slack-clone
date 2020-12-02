@@ -1,7 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ChatService } from 'src/app/core/chat.service';
-import { User } from 'src/app/core/user';
-import { SideNavService } from '../../../../core/side-nav.service';
 
 @Component({
   selector: 'app-private-header',

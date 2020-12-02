@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ChatService } from 'src/app/core/chat.service';
-import { DirectMessage } from 'src/app/core/direct-message';
-import { Message } from 'src/app/core/message';
+import { DirectMessage } from 'src/app/core/models/direct-message';
 import { SideNavService } from 'src/app/core/side-nav.service';
-import { User } from 'src/app/core/user';
+import { User } from 'src/app/core/models/user';
 
 @Component({
   selector: 'app-private',
