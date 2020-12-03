@@ -23,7 +23,7 @@ export class PageNotFoundComponent implements OnInit {
 
     if (this.isHome) {
       setTimeout(() => {
-        this.router.navigate(['', 'chats', 'channel', 'C01']);
+        this.router.navigate(['', 'client', 'T01AA4Y2QCU', 'C01GENERAL0']);
       }, 1000);
     }
   }
