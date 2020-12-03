@@ -10,6 +10,7 @@ $text-light: #6F6F6F;
 
 .container {
     border-right: 1px solid $bg-med;
+    width: 450px;
     
     .header, .actions, .menu-section > * {
         background-color: $white;
@@ -253,6 +254,17 @@ $text-light: #6F6F6F;
     }
 }
 
+// Reusable class
+.chat-type.fa-hashtag {
+    font-size: 11px;
+    font-weight: 100;
+}
+
+.chat-type.fa-lock {
+    font-size: 10px;
+    font-weight: 900;
+}
+
 // Tool Tip
 
 .tooltip .tooltip-text {
@@ -285,6 +297,7 @@ $text-light: #6F6F6F;
         * {
             color: $text-dark;
             font-weight: 600;
+            cursor: pointer;
         }
 
         .right {

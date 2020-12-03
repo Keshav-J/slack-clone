@@ -8,6 +8,14 @@ i {
 .customize-browse-item {
     padding-bottom: 7px;
 }
+.customize-browse-item.selected {
+    * {
+        color: white;
+    }
+    span {
+        font-weight: bold;
+    }
+}
 
 .item-content {
     padding-left: 16px;
@@ -17,6 +25,20 @@ i {
     cursor: pointer;
     font-size: 15px;
     font-family: Consolas,monaco,"Ubuntu Mono",courier,monospace!important;
+    display: flex;
+    align-items: baseline;
+
+    i {
+        display: inline-block;
+    }
+
+    span {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
 }
 
 .customize-browse-item.selected:hover {

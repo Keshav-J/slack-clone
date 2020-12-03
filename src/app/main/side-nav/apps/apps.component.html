@@ -17,9 +17,9 @@
     <div *ngIf="caret!=true" class="apps">
         <div class="app-item" 
         *ngFor="let app of appsList" 
-        (click) = "selectItem(app.name)" 
-        [class.selected]="app.name == selectedItem">
-            <a class="app-content" routerLink='/apps'>
+        (click) = "selectItem(app.route)" 
+        [class.selected]="app.route == selectedItem">
+            <a class="app-content" [routerLink]="['/', 'client', 'T01AA4Y2QCU', app.route]" routerLinkActive="router-link-active">
                 <i [attr.class]="app.iconUrl"></i>
                 <span>{{app.name}}</span>
             </a>

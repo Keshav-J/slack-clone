@@ -1,19 +1,19 @@
 export class File {
     id: number;
     name: string;
-    sender_name: string;
+    senderName: string;
     time: string;
-    preview_image: string;
+    previewImage: string;
 
     constructor(id: number,
                 name: string,
-                sender_name: string,
+                senderName: string,
                 time: string,
-                preview_image: string) {
+                previewImage: string) {
         this.id = id;
         this.name = name;
-        this.sender_name = sender_name;
+        this.senderName = senderName;
         this.time = time;
-        this.preview_image = preview_image;
+        this.previewImage = previewImage;
     }
 }

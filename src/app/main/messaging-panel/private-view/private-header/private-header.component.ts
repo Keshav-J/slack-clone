@@ -1,5 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { SideNavService } from '../../../../core/side-nav.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-private-header',
@@ -8,29 +7,23 @@ import { SideNavService } from '../../../../core/side-nav.service';
 })
 export class PrivateHeaderComponent implements OnInit {
 
-  name: String
-  nameValueSubscription: any;
-  
-  starred: boolean = false;
-  constructor(private sidenavService: SideNavService) {
-    this.name = this.sidenavService.getSelectedItem()
-    this.nameValueSubscription = sidenavService.selectedItemChange.subscribe((value) => {
-      this.name = value
-  })
-   }
+  @Input() userName: string;
+
+  starred = false;
+
+  constructor() { }
 
   @Output() toggleAside = new EventEmitter();
 
 
   ngOnInit(): void {
   }
-  toggleStar() {
+
+  toggleStar(): void {
     this.starred = !this.starred;
   }
 
-  header_toggleAside() {
-    console.log('asdas');
-    
+  header_toggleAside(): void {
     this.toggleAside.emit();
   }
 }

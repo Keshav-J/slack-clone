@@ -1,8 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ChatService } from 'src/app/core/chat.service';
-import { File } from 'src/app/core/file';
+import { DirectMessage } from 'src/app/core/models/direct-message';
 import { SideNavService } from 'src/app/core/side-nav.service';
-import { User } from 'src/app/core/user';
+import { User } from 'src/app/core/models/user';
 
 @Component({
   selector: 'app-private-aside',
@@ -12,67 +14,122 @@ import { User } from 'src/app/core/user';
 export class PrivateAsideComponent implements OnInit {
 
   user: User;
-  pinned: object[];
-  files: File[];
+  directMessage: DirectMessage;
 
-  userName: String;
-  nameValueSubscription: any;
+  userName: string;
 
-  sections: boolean[] = [];
-  noOfSection: number = 3;
+  selectedUserId: string;
+  selectedUserIdSubscription: Subscription;
 
-  @Output() closeAside = new EventEmitter();
+  sections: string[];
+  activeSection: string;
 
-  constructor(private chatService: ChatService, private sidenavService: SideNavService) {
-    this.userName = this.sidenavService.getSelectedItem()
-    this.nameValueSubscription = sidenavService.selectedItemChange.subscribe((value) => {
-      this.userName = value
-  })
-   }
+  date: Date;
 
-  ngOnInit(): void {
-    this.initCollapsibles();
-
-    this.user = this.chatService.getUser(6);
-    console.log(this.user);
-    
-    this.userName = this.user.first_name + ' ' + this.user.last_name;
-
-    this.pinned = [];
-    this.files = this.chatService.getFiles();
+  constructor(private router: Router,
+              private chatService: ChatService,
+              private sidenavService: SideNavService) {
+    this.selectedUserId = this.sidenavService.getSelectedItem();
+    this.selectedUserIdSubscription = sidenavService.selectedItemChange.subscribe(value => {
+      this.selectedUserId = value;
+      this.ngOnInit();
+    });
   }
 
-  initCollapsibles() {
-    for (let idx = 0; idx < this.noOfSection ; idx++) {
-      this.sections.push(false);
-      let content = document.getElementById('section-' + idx);
-      content.style.height = '0px';
+  ngOnInit(): void {
+    this.initCollapsibleSections();
+
+    this.user = this.chatService.getUserById(this.selectedUserId);
+    this.directMessage = this.chatService.getDirectMessageById(this.selectedUserId);
+
+    this.date = new Date();
+
+    if (this.user) {
+      this.userName = this.user.firstName + ' ' + this.user.lastName;
     }
   }
 
-  toggleSection(id: number) {
-    console.log(id);
-    this.sections.forEach((val, idx) => {
-      console.log(idx, val);
-      let content = document.getElementById('section-' + idx);
-      
-      if(idx == id) {
-        this.sections[idx] = !this.sections[idx];
-        if(content.style.height == '0px') {
-          content.style.height = Math.max(15, content.scrollHeight) + 'px';
-        }
-        else {
-          content.style.height = '0px';
-        }
+  initCollapsibleSections(): void {
+    this.sections = ['info', 'pins', 'shared_files'];
+    this.activeSection = '';
+    this.sections.forEach(sectionName => {
+      const content = document.getElementById(sectionName);
+      content.style.height = '0px';
+    });
+
+    this.checkOpensection();
+
+    setTimeout(() => {
+      this.checkOpensection();
+    }, 1000);
+  }
+
+  checkOpensection(): void {
+    const segments = this.router.url.split('/');
+
+    if (!this.sections.includes(segments[segments.length - 1])) {
+      return;
+    }
+
+    const name = segments[segments.length - 1];
+    console.log(name);
+
+    this.sections.forEach((sectionName) => {
+      const content = document.getElementById(sectionName);
+
+      if (content === undefined) { return; }
+
+      if (sectionName === name) {
+        content.style.height = 'fit-content';
+        this.activeSection = sectionName;
       }
       else {
-        this.sections[idx] = false;
         content.style.height = '0px';
       }
     });
   }
 
-  closeSelf() {
-    this.closeAside.emit();
+  toggleSection(name: string): void {
+    const segments = this.router.url.split('/');
+    console.log(name);
+    this.sections.forEach((sectionName) => {
+      const content = document.getElementById(sectionName);
+
+      if (content === undefined) { return; }
+
+      if (sectionName === name) {
+        if (this.activeSection !== sectionName) {
+          content.style.height = 'fit-content';
+          this.activeSection = sectionName;
+
+          if (segments[segments.length - 1] === 'details') {
+            segments.push(sectionName);
+          } else {
+            segments[segments.length - 1] = sectionName;
+          }
+        }
+        else {
+          content.style.height = '0px';
+          this.activeSection = '';
+
+          segments.pop();
+        }
+      }
+      else {
+        content.style.height = '0px';
+      }
+    });
+    this.router.navigate(segments);
+  }
+
+  closeDetails(): void {
+    const segments = this.router.url.split('/');
+    console.log(segments);
+
+    if (segments.includes('details')) {
+      segments.splice(segments.indexOf('details'));
+    }
+
+    this.router.navigate(segments);
   }
 }

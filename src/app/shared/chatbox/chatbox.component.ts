@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ChatService } from 'src/app/core/chat.service';
 
 @Component({
@@ -9,7 +9,11 @@ import { ChatService } from 'src/app/core/chat.service';
 export class ChatboxComponent implements OnInit {
 
   blur: boolean;
-  showFormat: boolean = true;
+  showFormat = true;
+
+  @Input() id: string;
+  @Input() name: string;
+
   constructor(private chatservice: ChatService) { }
 
   ngOnInit(): void {
@@ -20,13 +24,14 @@ export class ChatboxComponent implements OnInit {
   changeFormat(): void {
     this.showFormat = !this.showFormat;
   }
-  addToCart(msg) {
-    this.chatservice.addToCart(msg);
+
+  sendMessage(): void {
+    const msg = (document.getElementById('msgData') as HTMLInputElement).value;
+    (document.getElementById('msgData') as HTMLInputElement).value = '';
+
+    console.log(`from add msg ${msg}`);
+
+    this.chatservice.addMessage(this.id, msg);
   }
-  addmsg(){
-    const msg=(<HTMLInputElement>document.getElementById("msgData")).value;
-    
-    console.log("from add msg "+msg);
-    this.addToCart(msg);
-  }
+
 }

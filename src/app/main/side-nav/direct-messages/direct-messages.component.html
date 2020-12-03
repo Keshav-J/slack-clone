@@ -16,26 +16,27 @@
 
 
     <div *ngIf="caret!=true" class="direct-messages">
-        <div class="direct-message-item" 
-        *ngFor="let message of directMessagesList" 
-        (click) = "selectItem(message.name)" 
-        [class.selected]="message.name == selectedItem">
-        <div class="left">
-            <a class="message-content relative"  routerLink="/private">
-            <i [attr.class]="message.iconUrl"  [style.color]="message.color">
-                <div class="online-indicator" [style.background-color]="(message.status==1) ? 'green': 'white'"></div>
-            </i>
-                <span>{{message.name}}</span>
-            </a>  
-        </div>
-        <div class="right">
-            <i class="fas fa-times"></i>
-        </div>
-        </div>
+        <ng-container *ngFor="let dm of directMessagesList" >
+            <div class="direct-message-item" 
+                (click)="redirect(dm.userId)"
+                [class.selected]="dm.userId == selectedItem"
+                *ngIf="dm.isDisplayed">
+                <div class="left">
+                    <a class="message-content relative">
+                        <img class="display-picture" src="{{ users[dm.userId].displayPicture }}" />
+                        <div class="online-indicator" [style.background-color]="(users[dm.userId].isActive==1) ? 'green': 'white'"></div>
+                        <span class="display-name">{{ users[dm.userId].firstName + ' ' + users[dm.userId].lastName }}</span>
+                    </a>  
+                </div>
+                <div class="right">
+                    <i class="fas fa-times" (click)="closeChat(dm.userId)"></i>
+                </div>
+            </div>
+        </ng-container>
         <div class="direct-message-item">
             <div class="left">
                 <a class="message-content">
-                <i class="fas fa-plus" style="background-color: rgba(255, 255, 255, 0.1)"></i>
+                    <i class="fas fa-plus" style="background-color: rgba(255, 255, 255, 0.1)"></i>
                     <span>Add teammates</span>
                 </a>  
             </div>

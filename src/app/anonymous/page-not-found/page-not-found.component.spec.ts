@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChannelViewComponent } from './channel-view.component';
+import { PageNotFoundComponent } from './page-not-found.component';
 
-describe('ChannelViewComponent', () => {
-  let component: ChannelViewComponent;
-  let fixture: ComponentFixture<ChannelViewComponent>;
+describe('PageNotFoundComponent', () => {
+  let component: PageNotFoundComponent;
+  let fixture: ComponentFixture<PageNotFoundComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChannelViewComponent ]
+      declarations: [ PageNotFoundComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChannelViewComponent);
+    fixture = TestBed.createComponent(PageNotFoundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

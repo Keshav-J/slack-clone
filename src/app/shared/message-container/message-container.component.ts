@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ChatService } from 'src/app/core/chat.service';
+import { Message } from 'src/app/core/models/message';
+import { User } from 'src/app/core/models/user';
 
 @Component({
   selector: 'app-message-container',
@@ -8,24 +10,12 @@ import { ChatService } from 'src/app/core/chat.service';
 })
 export class MessageContainerComponent implements OnInit {
 
-  messages;
+  @Input() messages: Message[];
+  users: { [key: string]: User };
+
   constructor(private chatservice: ChatService) { }
 
   ngOnInit(): void {
-    this.messages = this.chatservice.getMessages();
-    console.log(this.messages);
-  }
-  addToCart(msg) {
-    this.chatservice.addToCart(msg);
-  }
-  addmsg(){
-    const msg=(<HTMLInputElement>document.getElementById("msgData")).value;
-    
-    console.log("from add msg "+msg);
-    this.addToCart(msg);
-  }
-  makeBreak(message): boolean {
-    message.time = message.time;
-    return true;
+    this.users = this.chatservice.getUsers();
   }
 }

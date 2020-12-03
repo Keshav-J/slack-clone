@@ -1,10 +1,8 @@
 <div class="container">
     <div class="private">
-        <app-private-header (toggleAside)="toggleAside()"></app-private-header>
-        <app-message-container></app-message-container>
-        <app-chatbox></app-chatbox>
+        <app-private-header (toggleAside)="toggleAside()" [userName]="userName"></app-private-header>
+        <app-message-container [messages]="directMessage.messages"></app-message-container>
+        <app-chatbox [id]="directMessage.userId" [name]="userName"></app-chatbox>
     </div>
-    <ng-container *ngIf="displayAside">
-        <app-private-aside (closeAside)="closeAside()"></app-private-aside>
-    </ng-container>
+    <router-outlet></router-outlet>
 </div>

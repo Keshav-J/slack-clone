@@ -1,4 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ChatService } from 'src/app/core/chat.service';
+import { DirectMessage } from 'src/app/core/models/direct-message';
+import { SideNavService } from 'src/app/core/side-nav.service';
+import { User } from 'src/app/core/models/user';
 
 @Component({
   selector: 'app-private',
@@ -7,18 +12,61 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class PrivateComponent implements OnInit {
 
-  displayAside: boolean = true;
+  user: User;
+  userName: string;
 
-  constructor() { }
+  directMessage: DirectMessage;
+
+  constructor(private router: Router,
+              private chatService: ChatService,
+              private sidenavService: SideNavService) {
+    sidenavService.selectedItemChange.subscribe(id => {
+      if (id.startsWith('D01')) {
+        const user = this.chatService.getUserById(id);
+
+        if (user === undefined) {
+          this.router.navigate(['']);
+        } else {
+          this.user = user;
+          this.userName = this.user.firstName + (this.user.lastName === '' ? '' : (' ' + this.user.lastName));
+
+          this.directMessage = this.chatService.getDirectMessageById(id);
+        }
+      }
+    });
+  }
 
   ngOnInit(): void {
+    const segments = this.router.url.split('/');
+    console.log('segments => ', segments, segments[3]);
+
+    if (segments.length < 4) { this.router.navigate(['']); }
+
+    const id = segments[3];
+
+    const user = this.chatService.getUserById(id);
+
+    if (user === undefined) {
+      this.router.navigate(['']);
+    } else {
+      this.user = user;
+      this.userName = this.user.firstName + (this.user.lastName === '' ? '' : (' ' + this.user.lastName));
+
+      this.directMessage = this.chatService.getDirectMessageById(id);
+
+      this.sidenavService.setSelectedItem(this.user.id);
+    }
   }
 
-  toggleAside() {
-    this.displayAside = !this.displayAside;
-  }
+  toggleAside(): void {
+    const segments = this.router.url.split('/');
+    console.log(segments);
 
-  closeAside() {
-    this.displayAside = false;
+    if (segments[segments.length - 1] === 'details') {
+      segments.pop();
+    } else {
+      segments.push('details');
+    }
+    this.router.navigate(segments);
   }
 }

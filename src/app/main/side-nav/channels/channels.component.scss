@@ -20,8 +20,10 @@
     }
 }
 .channel-item.selected {
-    span {
+    * {
         color: white;
+    }
+    span {
         font-weight: bold;
     }
 }

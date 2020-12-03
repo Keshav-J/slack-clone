@@ -5,12 +5,12 @@
     <div class="content">
         <div class = "info">
             <ng-container *ngIf="message">
-                <b><span class = "name pointer">{{ message.username }}</span></b>
+                <b><span class = "name pointer">{{ user.firstName + ' ' + user.lastName }}</span></b>
                 <span class = "time">{{ message.time | date:'shortTime' }}</span>
             </ng-container>
         </div>
         <div class="message">
-            {{message.msg}}
+            {{ message.msg }}
         </div>
     </div>
     <div class="pop-up hide pointer">

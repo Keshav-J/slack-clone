@@ -1,8 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { Channel } from 'src/app/core/models/channel';
 import { ChatService } from 'src/app/core/chat.service';
-import { File } from 'src/app/core/file';
 import { SideNavService } from 'src/app/core/side-nav.service';
-import { User } from 'src/app/core/user';
+import { User } from 'src/app/core/models/user';
 
 @Component({
   selector: 'app-channel-aside',
@@ -11,66 +13,120 @@ import { User } from 'src/app/core/user';
 })
 export class ChannelAsideComponent implements OnInit {
 
-  users: User[];
+  members: User[];
   shortcuts: object[];
-  pinned: object[];
-  files: File[];
 
-  channelName: String;
-  sections: boolean[] = [];
-  noOfSection: number = 5;
+  channel: Channel;
+  sections: string[];
+  activeSection: string;
 
-  channelNameSubscription: any
-  
-  @Output() closeAside = new EventEmitter();
+  selectedChannelId: string;
+  selectedChannelIdSubscription: Subscription;
 
-  constructor(private chatService: ChatService, private sidenavService: SideNavService) { 
-    this.channelName = this.sidenavService.getSelectedItem()
-    this.channelNameSubscription = sidenavService.selectedItemChange.subscribe((value) => {
-      this.channelName = value;
-    })
+  constructor(private router: Router,
+              private chatService: ChatService,
+              private sidenavService: SideNavService) {
+    this.selectedChannelId = this.sidenavService.getSelectedItem();
+    this.selectedChannelIdSubscription = sidenavService.selectedItemChange.subscribe(value => {
+      this.selectedChannelId = value;
+      this.ngOnInit();
+    });
   }
 
   ngOnInit(): void {
-    this.initCollapsibles();
+    this.initCollapsibleSections();
 
-    this.users = this.chatService.getUsers();
-    this.shortcuts = [];
-    this.pinned = [];
-    this.files = this.chatService.getFiles();
-  }
+    this.channel = this.chatService.getChannelById(this.selectedChannelId);
 
-  initCollapsibles() {
-    for (let idx = 0; idx < this.noOfSection ; idx++) {
-      this.sections.push(false);
-      let content = document.getElementById('section-' + idx);
-      content.style.height = '0px';
+    if (this.channel) {
+      this.members = this.chatService.getUsersWithId(this.channel.memberIds);
     }
+    this.shortcuts = [];
   }
 
-  toggleSection(id: number) {
-    console.log(id);
-    this.sections.forEach((val, idx) => {
-      console.log(idx, val);
-      let content = document.getElementById('section-' + idx);
-      
-      if(idx == id) {
-        this.sections[idx] = !this.sections[idx];
-        if(content.style.height == '0px') {
-          content.style.height = Math.max(15, content.scrollHeight) + 'px';
-        }
-        else {
-          content.style.height = '0px';
-        }
+  initCollapsibleSections(): void {
+    this.sections = ['info', 'members', 'actions', 'pins', 'shared_files'];
+    this.activeSection = '';
+    this.sections.forEach(sectionName => {
+      const content = document.getElementById(sectionName);
+      if (content !== null) {
+        content.style.height = '0px';
+      }
+    });
+
+    this.checkOpensection();
+
+    setTimeout(() => {
+      this.checkOpensection();
+    }, 1000);
+  }
+
+  checkOpensection(): void {
+    const segments = this.router.url.split('/');
+
+    if (!this.sections.includes(segments[segments.length - 1])) {
+      return;
+    }
+
+    const name = segments[segments.length - 1];
+    console.log(name);
+
+    this.sections.forEach((sectionName) => {
+      const content = document.getElementById(sectionName);
+
+      if (content === undefined) { return; }
+
+      if (sectionName === name) {
+        content.style.height = 'fit-content';
+        this.activeSection = sectionName;
       }
       else {
-        this.sections[idx] = false;
         content.style.height = '0px';
       }
     });
   }
 
-  closeSelf() {
-    this.closeAside.emit();
+  toggleSection(name: string): void {
+    const segments = this.router.url.split('/');
+    console.log(name);
+    this.sections.forEach((sectionName) => {
+      const content = document.getElementById(sectionName);
+
+      if (content === undefined) { return; }
+
+      if (sectionName === name) {
+        if (this.activeSection !== sectionName) {
+          content.style.height = 'fit-content';
+          this.activeSection = sectionName;
+
+          if (segments[segments.length - 1] === 'details') {
+            segments.push(sectionName);
+          } else {
+            segments[segments.length - 1] = sectionName;
+          }
+        }
+        else {
+          content.style.height = '0px';
+          this.activeSection = '';
+
+          segments.pop();
+        }
+      }
+      else {
+        content.style.height = '0px';
+      }
+    });
+    this.router.navigate(segments);
+  }
+
+  closeDetails(): void {
+    const segments = this.router.url.split('/');
+    console.log(segments);
+
+    if (segments.includes('details')) {
+      segments.splice(segments.indexOf('details'));
+    }
+
+    this.router.navigate(segments);
   }
 }

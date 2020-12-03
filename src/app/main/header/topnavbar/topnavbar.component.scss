@@ -29,6 +29,7 @@
     background: rgb(67,30,68);
     border: none rgb(67,30,68);
     border-radius:10px;
+    color: white;
 }
 ::placeholder {
     color: #FFFFFF;
@@ -57,63 +58,49 @@
  }
 .container{
     margin-top: 5px;
-}
-.row{
-    position: relative;
-    margin-bottom: 2px;
-}
-.col{
-    position:absolute;
-    top:17px;
-    left: 280px;
-    margin-top:3px;
-    margin-left:3px;
-}
-.image{
-    width: 29px;
-    height: 30px;
-    margin-top:5px;
-    border-radius: 5px;
-    margin-left: 270px;
-}
-.circle{
-    line-height: 1;
-    transform: scale(0.5);
-    color: white;
-    background-color: #350D36;
-    border-radius:9px;
-}
-.tooltip {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width:auto;
-    height: auto;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 10px 5px;
     position: absolute;
-    top: 150%;
-    left: 50%;
+    right: 15px;
+    width: 30px;
+    cursor: pointer;
+    
+    .row{
+        width: 30px;
+        left: 0px;
+        margin-bottom: 2px;
+        .image{
+            width: 30px;
+            height: 30px;
+            margin-top:5px;
+            border-radius: 5px;
+        }
+        .col{
+            position:absolute;
+            top:17px;
+            left: 15px;
+            margin-top:3px;
+            margin-left:3px;
+            
+            .circle{
+                line-height: 1;
+                transform: scale(0.5);
+                color: #2BAC76;
+                border-radius: 50%;
+                background-color:#350D36;
+            }
+        }
+    }
 }
-.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width:3px;
-    border-style: solid;
-    border-color: transparent transparent black transparent;
-  }
-.tooltip:hover .tooltiptext {
-    visibility: visible;
+
+.tooltip  .tooltip-text {
+    font-weight: 550;
+    padding: 7px 12px 7px 12px;
+    top: calc(100% + 5px);
+    width: max-content;
+    max-width: 150px;
+    left: unset;
+    margin-left: -50%;
 }
+
 .guide_icon{
     margin-left: 115px;
     transform: scale(0.6);

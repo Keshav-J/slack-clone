@@ -2,9 +2,12 @@
     <div class="header">
         <div class="left">
             <span class="title"> Details </span>
-            <span> # {{ channelName }} </span>
+            <span class="channel-name">
+                <i [attr.class]="channel.isGroup ? 'chat-type fas fa-lock' : 'chat-type fas fa-hashtag'"></i>
+                {{ channel.name }}
+            </span>
         </div>
-        <div class="right" (click)="closeSelf()">
+        <div class="right" (click)="closeDetails()">
             <i class="fal fa-times"></i>
         </div>
     </div>
@@ -15,14 +18,18 @@
                 <i class="action-icon far fa-user-plus"></i>
                 <span class="action-description">Add</span>
                 <span class="tooltip-text">
-                    Add people to #{{ channelName }}
+                    Add people to
+                    <i *ngIf="!channel.isGroup" class="chat-type fas fa-hashtag"></i>
+                    {{ channel.name }}
                 </span>
             </div>
             <div class="action tooltip">
                 <i class="action-icon fal fa-file-search"></i>
                 <span class="action-description">Find</span>
                 <span class="tooltip-text">
-                    Find in #{{ channelName }}
+                    Find in
+                    <i *ngIf="!channel.isGroup" class="chat-type fas fa-hashtag"></i>
+                    {{ channel.name }}
                 </span>
             </div>
             <div class="action tooltip">
@@ -38,61 +45,66 @@
                 <span class="tooltip-text">
                     More options for
                     <br>
-                    #{{ channelName }}
+                    <i *ngIf="!channel.isGroup" class="chat-type fas fa-hashtag"></i>
+                    {{ channel.name }}
                 </span>
             </div>
         </div>
 
         <div class="menu-section">
             <div class="about collapsible">
-                <div class="collapsible-header" (click)="toggleSection(0)">
+                <div class="collapsible-header" (click)="toggleSection('info')">
                     <label> About </label>
                     <div class="right">
-                        <i *ngIf="!sections[0]" class="fal fa-angle-right inactive-section"></i>
-                        <i *ngIf="sections[0]" class="fal fa-angle-down active-section"></i>
+                        <i *ngIf="(activeSection != 'info')" class="fal fa-angle-right inactive-section"></i>
+                        <i *ngIf="(activeSection == 'info')" class="fal fa-angle-down active-section"></i>
                     </div>
                 </div>
-                <div class="collapsible-content" id="section-0">
+                <div class="collapsible-content" id="info">
                     <div class="collapsible-content-container">
                         <div class="about-content">
                             <span class="heading"> Topic </span>
                             <p class="content">
-                                What’s up for discussion?
+                                {{ channel.topic == '' ? 'What’s up for discussion?' : channel.topic }}
                             </p>
                             <a class="edit"> Edit </a>
                         </div>
                         <div class="about-content">
                             <span class="heading"> Description </span>
                             <p class="content">
-                                This is the one channel that will always include everyone. It’s a great spot for announcements and team-wide conversations.
+                                {{
+                                    channel.description == ''
+                                    ? 'This is the one channel that will always include everyone. It’s a great spot for announcements and team-wide conversations.'
+                                    : channel.description
+                                }}
                             </p>
                             <a class="edit"> Edit </a>
                         </div>
                         <div class="about-content about-created">
                             <img src="assets/images/profile-1.png" />
-                            <span class="created-date"> Created on September 4, 2020 </span>
+                            <span class="created-date"> Created on {{ channel.created | date:'MMMM d, yyyy' }} </span>
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="members collapsible">
-                <div class="collapsible-header" (click)="toggleSection(1)">
+                <div class="collapsible-header" (click)="toggleSection('members')">
                     <label> Members </label>
                     <div class="right">
-                        <span> {{ users.length }} </span>
-                        <i *ngIf="!sections[1]" class="fal fa-angle-right inactive-section"></i>
-                        <i *ngIf="sections[1]" class="fal fa-angle-down active-section"></i>
+                        <span> {{ members.length }} </span>
+                        <i *ngIf="(activeSection != 'members')" class="fal fa-angle-right inactive-section"></i>
+                        <i *ngIf="(activeSection == 'members')" class="fal fa-angle-down active-section"></i>
                     </div>
                 </div>
-                <div class="collapsible-content" id="section-1">
-                    <ng-container *ngFor="let user of users">
-                        
+                <div class="collapsible-content" id="members">
+                    <ng-container *ngFor="let user of members">
+
                         <div class="user-container">
-                            <img class="dp" src="{{ user.display_picture }}" alt="user.first_name">
+                            <img class="dp" src="{{ user.displayPicture }}" alt="user.firstName">
                             <div class="name">
-                                <span> {{ user.first_name }} </span>
-                                <span> {{ user.last_name }} </span>
+                                <span> {{ user.firstName }} </span>
+                                <span> {{ user.lastName }} </span>
                             </div>
                             <div class="is-active">
                                 <ng-container *ngIf="user.isActive;else inactiveUser">
@@ -108,7 +120,7 @@
                     
                     <div class="button-section">
                         <button class="btn left">
-                            See All {{ users.length }} Members
+                            See All {{ members.length }} Members
                         </button>
                         <button class="btn right">
                             Add People
@@ -118,52 +130,52 @@
             </div>
             
             <div class="collapsible">
-                <div class="collapsible-header" (click)="toggleSection(2)">
+                <div class="collapsible-header" (click)="toggleSection('actions')">
                     <label> Shortcuts </label>
                     <div class="right">
                         <span> {{ shortcuts.length }} </span>
-                        <i *ngIf="!sections[2]" class="fal fa-angle-right inactive-section"></i>
-                        <i *ngIf="sections[2]" class="fal fa-angle-down active-section"></i>
+                        <i *ngIf="(activeSection != 'actions')" class="fal fa-angle-right inactive-section"></i>
+                        <i *ngIf="(activeSection == 'actions')" class="fal fa-angle-down active-section"></i>
                     </div>
                 </div>
-                <div class="collapsible-content" id="section-2">
+                <div class="collapsible-content" id="actions">
                     
                 </div>
             </div>
 
             <div class="collapsible">
-                <div class="collapsible-header" (click)="toggleSection(3)">
+                <div class="collapsible-header" (click)="toggleSection('pins')">
                     <label> Pinned </label>
                     <div class="right">
-                        <span> {{ pinned.length }} </span>
-                        <i *ngIf="!sections[3]" class="fal fa-angle-right inactive-section"></i>
-                        <i *ngIf="sections[3]" class="fal fa-angle-down active-section"></i>
+                        <span> {{ channel.pinnedIds.length }} </span>
+                        <i *ngIf="(activeSection != 'pins')" class="fal fa-angle-right inactive-section"></i>
+                        <i *ngIf="(activeSection == 'pins')" class="fal fa-angle-down active-section"></i>
                     </div>
                 </div>
-                <div class="collapsible-content" id="section-3">
+                <div class="collapsible-content" id="pins">
                     
                 </div>
             </div>
 
             <div class="files collapsible">
-                <div class="collapsible-header" (click)="toggleSection(4)">
+                <div class="collapsible-header" (click)="toggleSection('shared_files')">
                     <label> Files </label>
                     <div class="right">
-                        <i *ngIf="!sections[4]" class="fal fa-angle-right inactive-section"></i>
-                        <i *ngIf="sections[4]" class="fal fa-angle-down active-section"></i>
+                        <i *ngIf="(activeSection != 'shared_files')" class="fal fa-angle-right inactive-section"></i>
+                        <i *ngIf="(activeSection == 'shared_files')" class="fal fa-angle-down active-section"></i>
                     </div>
                 </div>
-                <div class="collapsible-content" id="section-4">
-                    <ng-container *ngFor="let file of files">
+                <div class="collapsible-content" id="shared_files">
+                    <ng-container *ngFor="let file of channel.files">
 
                         <div class="file">
                             <div class="file-icon">
-                                <img src="{{ file.preview_image }}" />
+                                <img src="{{ file.previewImage }}" />
                             </div>
                             <div class="file-desc">
                                 <span class="title"> {{ file.name }} </span>
                                 <div>
-                                    <span class="sender"> {{ file.sender_name }} </span>
+                                    <span class="sender"> {{ file.senderName }} </span>
                                     <span class="time"> {{ file.time }} </span>
                                 </div>
                             </div>

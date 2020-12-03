@@ -4,14 +4,14 @@
             <span class="title"> Details </span>
             <span> {{ userName }} </span>
         </div>
-        <div class="right" (click)="closeSelf()">
+        <div class="right" (click)="closeDetails()">
             <i class="fal fa-times"></i>
         </div>
     </div>
     
     <div class="body">
         <div class="user">
-            <img class="display-picture" src="{{ user.display_picture }}" alt="{{ userName }}">
+            <img class="display-picture" src="{{ user.displayPicture }}" alt="{{ userName }}">
             <div class="display-name">
                 {{ userName }}
 
@@ -54,14 +54,14 @@
 
         <div class="menu-section">
             <div class="about collapsible">
-                <div class="collapsible-header" (click)="toggleSection(0)">
+                <div class="collapsible-header" (click)="toggleSection('info')">
                     <label> About </label>
                     <div class="right">
-                        <i *ngIf="!sections[0]" class="fal fa-angle-right inactive-section"></i>
-                        <i *ngIf="sections[0]" class="fal fa-angle-down active-section"></i>
+                        <i *ngIf="(activeSection != 'info')" class="fal fa-angle-right inactive-section"></i>
+                        <i *ngIf="(activeSection == 'info')" class="fal fa-angle-down active-section"></i>
                     </div>
                 </div>
-                <div class="collapsible-content" id="section-0">
+                <div class="collapsible-content" id="info">
                     <div class="collapsible-content-container">
                         <div class="about-content">
                             <span class="heading"> Display Name </span>
@@ -72,13 +72,13 @@
                         <div class="about-content">
                             <span class="heading"> Local time </span>
                             <p class="content">
-                                {{ '23:10' }}
+                                {{ date | date:'HH:mm' }}
                             </p>
                         </div>
                         <div class="about-content">
                             <span class="heading"> Phone number </span>
                             <p class="content link">
-                                {{ user.phone_number }}
+                                {{ user.phoneNumber }}
                             </p>
                         </div>
                         <div class="about-content">
@@ -92,38 +92,38 @@
             </div>
             
             <div class="collapsible">
-                <div class="collapsible-header" (click)="toggleSection(1)">
+                <div class="collapsible-header" (click)="toggleSection('pins')">
                     <label> Pinned </label>
                     <div class="right">
-                        <span> {{ pinned.length }} </span>
-                        <i *ngIf="!sections[1]" class="fal fa-angle-right inactive-section"></i>
-                        <i *ngIf="sections[1]" class="fal fa-angle-down active-section"></i>
+                        <span> {{ directMessage.pinnedIds.length }} </span>
+                        <i *ngIf="(activeSection != 'pins')" class="fal fa-angle-right inactive-section"></i>
+                        <i *ngIf="(activeSection == 'pins')" class="fal fa-angle-down active-section"></i>
                     </div>
                 </div>
-                <div class="collapsible-content" id="section-1">
+                <div class="collapsible-content" id="pins">
                     
                 </div>
             </div>
 
             <div class="files collapsible">
-                <div class="collapsible-header" (click)="toggleSection(2)">
+                <div class="collapsible-header" (click)="toggleSection('shared_files')">
                     <label> Files </label>
                     <div class="right">
-                        <i *ngIf="!sections[2]" class="fal fa-angle-right inactive-section"></i>
-                        <i *ngIf="sections[2]" class="fal fa-angle-down active-section"></i>
+                        <i *ngIf="(activeSection != 'shared_files')" class="fal fa-angle-right inactive-section"></i>
+                        <i *ngIf="(activeSection == 'shared_files')" class="fal fa-angle-down active-section"></i>
                     </div>
                 </div>
-                <div class="collapsible-content" id="section-2">
-                    <ng-container *ngFor="let file of files">
+                <div class="collapsible-content" id="shared_files">
+                    <ng-container *ngFor="let file of directMessage.files">
 
                         <div class="file">
                             <div class="file-icon">
-                                <img src="{{ file.preview_image }}" />
+                                <img src="{{ file.previewImage }}" />
                             </div>
                             <div class="file-desc">
                                 <span class="title"> {{ file.name }} </span>
                                 <div>
-                                    <span class="sender"> {{ file.sender_name }} </span>
+                                    <span class="sender"> {{ file.senderName }} </span>
                                     <span class="time"> {{ file.time }} </span>
                                 </div>
                             </div>

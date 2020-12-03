@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PrivateViewComponent } from './private-view.component';
+import { UnderConstructionComponent } from './under-construction.component';
 
-describe('PrivateViewComponent', () => {
-  let component: PrivateViewComponent;
-  let fixture: ComponentFixture<PrivateViewComponent>;
+describe('UnderConstructionComponent', () => {
+  let component: UnderConstructionComponent;
+  let fixture: ComponentFixture<UnderConstructionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PrivateViewComponent ]
+      declarations: [ UnderConstructionComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PrivateViewComponent);
+    fixture = TestBed.createComponent(UnderConstructionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

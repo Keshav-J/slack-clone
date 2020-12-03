@@ -1,98 +1,66 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Channel } from './models/channel';
+import { ChatService } from './chat.service';
+import { DirectMessage } from './models/direct-message';
 @Injectable({
   providedIn: 'root'
 })
 export class SideNavService {
-  customBrowseList = [
-    {
-      iconUrl: "far fa-comment-dots",
-      name: "Threads",
-      route: ""
-    },
-    {
-      iconUrl: "far fa-comments",
-      name: "All DMs",
-      route: ""
-    },
-    {
-      iconUrl: "fas fa-stream",
-      name: "All unreads",
-      route: ""
-    },
-    {
-      iconUrl: "far fa-address-book",
-      name: "People & user groups",
-      route: "peopleanduser"
-    },
-    {
-      iconUrl: "fas fa-at",
-      name: "Mentions & reactions",
-      route: ""
-    }
-  ]
-  directMessagesList = [
-    {
-      name: "Keshav",
-      iconUrl: "fas fa-user",
-      color: "red",
-      status: "1"
-    },
-    {
-      name: "Gowtham",
-      iconUrl: "fas fa-user",
-      color: "orange",
-      status: "0"
-    },
-    {
-      name: "Damini",
-      iconUrl: "fas fa-user",
-      color: "green",
-      status: "1"
-    },
-    {
-      name: "Thirumalai",
-      iconUrl: "fas fa-user",
-      color: "pink",
-      status: "1"
-    },
-    {
-      name: "Jegathish",
-      iconUrl: "fas fa-user",
-      color: "blue",
-      status: "0"
-    }    
-  ]
 
-  channelsList = [
-    {
-      name:"coda-support",
-      iconUrl: "fas fa-lock"
-    },
-    {
-      name:"bug-slayers",
-      iconUrl: "fas fa-lock"
-    },
-    {
-      name:"fun pandrom",
-      iconUrl: "fas fa-lock"
-    },
-    {
-      name:"general",
-      iconUrl: "fas fa-hashtag"
-    }
-  ]
+  customBrowseList: object[];
+  directMessagesList: DirectMessage[];
+  channelsList: Channel[];
+  appsList: object[];
 
-  appsList = [
-    {
-      name: "Dropbox",
-      iconUrl: "fab fa-dropbox"
-    },
-    {
-      name: "mailchimp",
-      iconUrl: "fab fa-mailchimp"
-    }
-  ]
+  selectedItem: string;
+
+  constructor(private chatService: ChatService) {
+    this.customBrowseList = [
+      {
+        iconUrl: 'far fa-comment-dots',
+        name: 'Threads',
+        route: 'threads'
+      },
+      {
+        iconUrl: 'far fa-comments',
+        name: 'All DMs',
+        route: 'all-dms'
+      },
+      {
+        iconUrl: 'far fa-address-book',
+        name: 'People & user groups',
+        route: 'browse-people'
+      },
+      {
+        iconUrl: 'far fa-bookmark',
+        name: 'Saved items',
+        route: 'saved-page'
+      }
+    ];
+
+    this.directMessagesList = this.chatService.getDirectMessagesList();
+
+    this.channelsList = this.chatService.getChannelsList();
+
+    this.appsList = [
+      {
+        name: 'Dropbox',
+        iconUrl: 'fab fa-dropbox',
+        route: 'dropbox'
+      },
+      {
+        name: 'Mailchimp',
+        iconUrl: 'fab fa-mailchimp',
+        route: 'mailchimp'
+      }
+    ];
+
+    // selected item
+    this.selectedItem = '';
+  }
+
+  selectedItemChange: Subject<string> = new Subject<string>();
 
   getCustomBrowses(): object[] {
     return this.customBrowseList;
@@ -100,30 +68,28 @@ export class SideNavService {
   getSlackBrowses(): object[] {
     return this.customBrowseList;
   }
-  getChannels(): object[] {
+  getChannels(): Channel[] {
     return this.channelsList;
   }
-  getDirectMessages(): object[] {
+  getDirectMessages(): DirectMessage[] {
     return this.directMessagesList;
   }
   getApps(): object[] {
     return this.appsList;
   }
 
-  //selected item
-  selectedItem: string = "general";
-  
-  selectedItemChange: Subject<String> = new Subject<String>();
 
-
+  getSelectedItem(): string {
+    return this.selectedItem;
+  }
   setSelectedItem(item: string): void {
     this.selectedItem = item;
     this.selectedItemChange.next(this.selectedItem);
   }
-  getSelectedItem(): string {
-    return this.selectedItem;
-  }
-  constructor() { 
+
+
+  closeDirectMessage(id: string): void {
+    this.chatService.closeDirectMessage(id);
   }
 }
 

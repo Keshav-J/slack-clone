@@ -36,6 +36,10 @@ $border-color : 1px solid rgb(220, 220, 220);
 .username {
     font-weight: 900;
     position: relative;
+
+    i {
+        font-size: 11px;
+    }
 }
 .fa-star{
     margin-left: 0.8em;

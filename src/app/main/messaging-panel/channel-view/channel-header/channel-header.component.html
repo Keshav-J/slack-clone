@@ -1,7 +1,10 @@
 <div class="chatbar">
     <div class="left">
         <div>
-            <span class="username pointer"> #{{ channelName }}</span>
+            <span class="username pointer">
+                <i [attr.class]="isGroup ? 'fas fa-lock' : 'fas fa-hashtag'"></i>
+                {{ channelName }}
+            </span>
             <ng-container>
                 <i *ngIf="!starred" class="fal fa-star pointer" (click)="toggleStar()"></i>
                 <i *ngIf="starred" class="fas fa-star pointer" (click)="toggleStar()"></i>
