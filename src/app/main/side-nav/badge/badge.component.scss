@@ -7,24 +7,48 @@
     justify-content: space-between;
     border-bottom: 0.1em solid rgb(59, 55, 55);
     position: relative;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #350d36;
+    }
 }
 .down_arrow{
     margin-bottom: 0px;
     position: relative;
     top: 6px;
 }
+.badge_description {
+    width: 100%;
+}
 .button_badge{
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: #3F0E40;
+    background-color: inherit;
     border: none;
     color: #ffffff;
     font-weight: bold;
-}
-.desc {
-    font-size: larger;
-    font-weight: 600;
-    padding-left: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+
+    .desc {
+        margin-left: 5px;
+        font-weight: 900;
+        font-size: 15px;
+        padding-left: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 65%;
+        max-width: 190px;
+        text-overflow: ellipsis;
+        transform: translateY(50%);
+    }
+    .down_arrow {
+        font-size: 15px;
+        transform: translateY(35%);
+    }
 }
 .image{
     border-radius: 100px;
